@@ -6,8 +6,8 @@
 <title>콩콩 Party Game</title>
 <meta name="theme-color" content="#f6f4fc">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="kk-icon-192.png">
+<link rel="apple-touch-icon" href="kk-apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="콩콩 Party">
@@ -244,7 +244,7 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50}
 .av{display:block}.av.xl{width:min(220px,52vw);height:auto}.av.md{width:78px;height:78px}.av.sm{width:56px;height:56px}
 .closet{display:grid;gap:16px;max-width:900px;margin:0 auto}
 .cltop{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center}.cltop h1{margin:0;font-size:40px}.cltop .xpb{width:220px;height:12px;margin:8px 0}
-.cltabs{justify-content:center}.pill.lock{opacity:.55}
+.cltabs{justify-content:center}.clinfo{display:grid;gap:8px;justify-items:start}.clname{font:inherit;font-size:22px;font-weight:900;border:2px solid var(--line);border-radius:14px;padding:8px 14px;width:min(260px,70vw);background:#fff;color:inherit}.clname:focus{outline:none;border-color:#6c4cf5}.clg button{font-size:15px}.pill.lock{opacity:.55}
 .clgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:10px}
 .clit{background:#fff;border:2px solid var(--line);border-radius:18px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;color:inherit}
 .clit.on{border-color:#6c4cf5;box-shadow:0 0 0 3px rgba(108,76,245,.18)}.clit.lock{opacity:.5;filter:grayscale(.7)}.clit .none{width:78px;height:78px;display:grid;place-items:center;font-size:30px;color:#b8b0d0}
@@ -261,6 +261,8 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50}
 .jdot{width:22px;height:22px;border-radius:50%;flex:none;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}.jcap{font-family:'Noto Serif KR','Batang',serif;font-weight:800;letter-spacing:1px}
 /* ---------- 스도쿠 ---------- */
 .sdk,.tmw,.hkw,.wmw,.ldw{max-width:480px;margin:0 auto;display:grid;gap:12px}
+.tmw{max-width:min(660px,100%);width:100%}.tmtray{margin-top:22px}
+html,body,button,.tmb,.tt,canvas,svg{touch-action:manipulation}
 .sdinfo{display:flex;justify-content:space-between;gap:10px;font-weight:800;flex-wrap:wrap}
 .sdg{display:grid;grid-template-columns:repeat(9,1fr);background:#fff;border:3px solid #2a2340;border-radius:12px;overflow:hidden;aspect-ratio:1}
 .sc{border:0;border-right:1px solid #ddd6ee;border-bottom:1px solid #ddd6ee;background:#fff;font:inherit;font-size:clamp(17px,5vw,26px);font-weight:600;color:#5b3fd1;padding:0;cursor:pointer;position:relative;aspect-ratio:1}
@@ -270,8 +272,8 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50}
 .sdpad{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}.sdn{border:1px solid var(--line);background:#fff;border-radius:12px;font:inherit;font-size:22px;font-weight:800;padding:8px 0 4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#2a2340}
 .sdn small{font-size:10px;opacity:.5}.sdn.done{opacity:.3}
 /* ---------- 타일 매치 ---------- */
-.tmb{position:relative;aspect-ratio:6/7.3;width:100%;background:linear-gradient(160deg,#e9f9f0,#e3efff);border-radius:20px;padding:0}
-.tt{position:absolute;width:calc(100%/6);height:calc(100%/7.3);border:0;padding:3px;background:none;cursor:pointer;font-size:clamp(22px,7vw,34px);display:grid;place-items:center}
+.tmb{position:relative;aspect-ratio:6/7.3;width:min(100%,calc(64vh*.822));margin:0 auto;background:linear-gradient(160deg,#e9f9f0,#e3efff);border-radius:20px;padding:0}
+.tt{position:absolute;width:calc(100%/6);height:calc(100%/7.3);border:0;padding:3px;background:none;cursor:pointer;font-size:clamp(26px,8.6vw,44px);display:grid;place-items:center}
 .tt::before{content:'';position:absolute;inset:3px;background:#fffdf6;border-radius:12px;box-shadow:0 4px 0 #d9cfb4,0 6px 10px rgba(60,40,10,.18);z-index:-1}
 .tt{isolation:isolate}.tt.cov{filter:brightness(.55) saturate(.6);cursor:default}
 .tmtray{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;background:#2a2340;border-radius:16px;padding:6px}
@@ -292,6 +294,22 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50}
 .spbar{height:8px;border-radius:9px;background:#ece8f7;overflow:hidden}.spbar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#6c4cf5,#ff4d8d)}
 .sphint{animation:sphb 1s ease-in-out infinite}@keyframes sphb{50%{opacity:.25}}
 .sppad{padding:40px 20px}.spin{width:40px;height:40px;border-radius:50%;border:5px solid #ddd6f5;border-top-color:#6c4cf5;animation:spin .8s linear infinite;margin:0 auto 12px}
+
+/* 칠교 */
+.tgw,.wsw,.flw{display:flex;flex-direction:column;gap:8px}
+.tgbox{width:min(94vw,420px);margin:0 auto}
+.tgsv{width:100%;height:auto;display:block;touch-action:none;background:#211c36;border-radius:16px}
+.tgp{cursor:grab}
+/* 물 정렬 */
+.wsbox{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 10px;padding:18px 4px 6px}
+.wst{width:46px;height:158px;padding:4px;border:3px solid rgba(255,255,255,.75);border-top:0;border-radius:4px 4px 24px 24px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;gap:0;cursor:pointer;transition:transform .15s;touch-action:manipulation}
+.wst i{display:block;flex:0 0 25%;width:100%}
+.wst i:last-child{border-radius:0 0 18px 18px}
+.wst.sel{transform:translateY(-14px);border-color:#ffd43b}
+.wst.full{box-shadow:0 0 14px rgba(255,212,59,.7)}
+/* 색깔 선 잇기 */
+.flbox{width:min(94vw,460px);margin:0 auto}
+.flsv{width:100%;height:auto;display:block;touch-action:none;background:#1d1830;border-radius:14px}
 
 </style>
 </head>
@@ -444,7 +462,7 @@ const GAMES=[
  {id:'egu',cat:'team',ko:1,ic:'📣',mode:'cards',name:N2('이구동성',''),desc:N2('네 사람이 한 글자씩 동시에 외치면 나머지가 맞혀요. 맞히는 사람은 화면을 보면 안 돼요.',''),data:()=>D.EGU},
  {id:'shout',cat:'team',ic:'🎧',mode:'cards',name:N2('고요 속의 외침','Whisper Challenge'),desc:N2('헤드폰을 끼고 입 모양만 보고 말을 전달해요.','Wear headphones with music on and pass the phrase by lip-reading.'),data:()=>P(D.SHOUT,E.SHOUT)},
  {id:'twist',cat:'team',ic:'👅',mode:'cards',name:N2('잰말 놀이','Tongue Twisters'),desc:N2('발음하기 어려운 문장을 틀리지 않고 읽어요.','Read the tricky sentence without a slip.'),data:()=>P(D.TWIST,E.TWIST)},
- {id:'spot',cat:'quiz',ic:'🖼️',mode:'spot',name:N2('명화 다른 그림 찾기','Spot the Difference'),desc:N2('명화를 잠깐 외운 뒤, 달라진 곳 5군데를 찾아요.','Memorize a famous painting, then find the 5 changes.')},
+ {id:'spot',cat:'quiz',ic:'🖼️',mode:'spot',name:N2('명화 다른 그림 찾기','Spot the Difference'),desc:N2('명화를 잠깐 외운 뒤, 사라지거나 색이 바뀐 곳을 찾아요.','Memorize a famous painting, then find what vanished or changed color.')},
  {id:'chess',cat:'board',ic:'♟️',mode:'chess',name:N2('체스','Chess'),desc:N2('상대 킹이 피할 곳 없이 공격받으면(체크메이트) 이겨요. 컴퓨터(상·중·하)나 가족과 대결해요.','Checkmate the king to win. Play the computer (three levels) or each other.')},
  {id:'janggi',cat:'board',ic:'🀄',mode:'janggi',name:N2('장기','Janggi'),desc:N2('궁을 피할 곳 없이 몰아넣으면(외통수) 이겨요. 컴퓨터(1~10단계)나 가족과 대결해요.','Korean chess. Trap the general to win. Play the computer (levels 1-10) or each other.')},
  {id:'sudoku',cat:'board',ic:'🔢',mode:'sudoku',name:N2('스도쿠','Sudoku'),desc:N2('가로줄, 세로줄, 3×3 칸에 1~9가 한 번씩만 들어가게 채워요.','Fill every row, column and 3x3 box with 1 to 9 exactly once.')},
@@ -452,6 +470,9 @@ const GAMES=[
  {id:'hockey',cat:'board',ic:'🏒',mode:'hockey',name:N2('에어하키','Air Hockey'),desc:N2('채로 퍽을 쳐서 상대 골대에 넣어요. 컴퓨터나 친구와 한 화면에서 대결!','Hit the puck into the other goal. Play the computer or a friend on one screen.')},
  {id:'worm',cat:'board',ic:'🪱',mode:'worm',name:N2('지렁이 먹이 먹기','Hungry Worm'),desc:N2('사과를 먹고 길어져요. 벽, 바위, 내 몸에 부딪히지 않게 조심!','Eat apples to grow. Do not crash into walls, rocks or yourself!')},
  {id:'line',cat:'board',ic:'✏️',mode:'line',name:N2('한붓그리기','One Line'),desc:N2('손가락을 떼지 않고 모든 선을 한 번씩만 지나가요.','Trace every line exactly once without lifting your finger.')},
+ {id:'water',cat:'board',ic:'🧪',mode:'water',name:N2('물 정렬','Water Sort'),desc:N2('시험관의 색깔 물을 옮겨 같은 색끼리 모아요.','Pour colored water until every tube holds one color.')},
+ {id:'flow',cat:'board',ic:'🔗',mode:'flow',name:N2('색깔 선 잇기','Color Connect'),desc:N2('같은 색 점끼리 선으로 잇고 모든 칸을 채워요.','Join matching dots and fill every square.')},
+ {id:'tangram',cat:'board',ic:'🔷',mode:'tangram',name:N2('칠교 놀이','Tangram'),desc:N2('일곱 조각을 맞춰 주어진 모양을 완성해요.','Fit the seven pieces together to fill the shape.')},
  {id:'omok',cat:'board',ic:'⚫',mode:'omok',name:N2('오목','Gomoku'),desc:N2('가로, 세로, 대각선으로 돌 다섯 개를 먼저 이으면 이겨요. 컴퓨터나 가족과 대결해요.','Five in a row wins. Play against the computer or each other.')},
  {id:'liar',cat:'board',tool:1,ic:'🕵️',name:N2('라이어 게임','Liar Game')},
  {id:'coin',cat:'tool',tool:1,ic:'🪙',name:N2('동전 던지기','Coin Toss')},
@@ -466,7 +487,7 @@ const GAMES=[
  {id:'nunchi',cat:'tool',tool:1,ic:'👀',name:N2('눈치 게임','Nunchi Game')},
  {id:'zero',cat:'tool',tool:1,ic:'👍',name:N2('제로 게임','Zero Game')},
 ];
-const ORDER=['flag','people','place','chosung','emoji','trivia','music','zoom','spot','match','photo','nonsense','capital','idiom','proverb','eprov','scramble','slang','opposite','math','act','chain','egu','shout','twist','tele','balance','omok','chess','janggi','sudoku','tile','hockey','worm','line','liar','bingo','coin','balloon','cup','limbo','order','bomb','chair','nunchi','zero'];
+const ORDER=['flag','people','place','chosung','emoji','trivia','music','zoom','spot','match','photo','nonsense','capital','idiom','proverb','eprov','scramble','slang','opposite','math','act','chain','egu','shout','twist','tele','balance','omok','chess','janggi','sudoku','tile','hockey','worm','line','water','flow','tangram','liar','bingo','coin','balloon','cup','limbo','order','bomb','chair','nunchi','zero'];
 GAMES.sort((a,b)=>ORDER.indexOf(a.id)-ORDER.indexOf(b.id));
 const GBY=Object.fromEntries(GAMES.map(g=>[g.id,g]));
 const gname=g=>g.name[LANG]||g.name.ko;
@@ -1056,74 +1077,7 @@ const savePR=()=>store.set('kk_pr',PR);
 function lvInfo(x=PR.xp){let l=1,need=60;while(x>=need){x-=need;l++;need=60+25*(l-1)}return {l,cur:x,need}}
 const isSolo=()=>S.app==='solo';
 const glv=id=>PR.gl[id]||1;
-const SOLO_IDS=['chess','omok','janggi','sudoku','tile','hockey','worm','line','spot'];
-const SLOTS=[['body',1],['hat',1],['glasses',3],['hand',5],['face',7],['bg',10]];
-const ITEMS=[
- ['green','body',1,'초록 콩','Green bean'],['pink','body',2,'분홍 콩','Pink bean'],['sky','body',4,'하늘 콩','Sky bean'],['yellow','body',6,'노랑 콩','Yellow bean'],['purple','body',9,'보라 콩','Purple bean'],['mint','body',12,'민트 콩','Mint bean'],['rainbow','body',20,'무지개 콩','Rainbow bean'],['gold','body',30,'황금 콩','Golden bean'],
- ['ribbon','hat',1,'리본','Bow'],['cap','hat',2,'야구 모자','Cap'],['flower','hat',3,'꽃 핀','Flower pin'],['party','hat',4,'파티 모자','Party hat'],['cat','hat',6,'고양이 귀','Cat ears'],['crown','hat',8,'왕관','Crown'],['bunny','hat',11,'토끼 귀','Bunny ears'],['phones','hat',13,'헤드폰','Headphones'],['wizard','hat',15,'마법사 모자','Wizard hat'],
- ['round','glasses',3,'동그란 안경','Round glasses'],['sun','glasses',5,'선글라스','Sunglasses'],['heartg','glasses',9,'하트 안경','Heart glasses'],['starg','glasses',14,'별 안경','Star glasses'],
- ['balloon','hand',5,'풍선','Balloon'],['lolli','hand',6,'막대사탕','Lollipop'],['wand','hand',7,'요술봉','Magic wand'],['mic','hand',10,'마이크','Microphone'],['trophy','hand',18,'트로피','Trophy'],
- ['blush','face',7,'볼터치','Blush'],['sparkle','face',8,'반짝이','Sparkles'],['band','face',12,'반창고','Bandage'],['stache','face',16,'콧수염','Mustache'],
- ['stars','bg',10,'별빛','Starlight'],['rainbowbg','bg',14,'무지개','Rainbow'],['hearts','bg',17,'하트','Hearts'],['stage','bg',22,'무대 조명','Spotlight']];
-const ITEM=Object.fromEntries(ITEMS.map(i=>[i[0],i]));
-const BODY={green:['#8fd46a','#5aa63c'],pink:['#ffa9cc','#e2709f'],sky:['#8fd2ff','#4fa2dc'],yellow:['#ffd968','#e0a92a'],purple:['#bba4ff','#8466e0'],mint:['#7ee6c8','#3cb592'],rainbow:['url(#rbw)','#9a6bff'],gold:['url(#gld)','#c58f12']};
-let AVN=0;
-function avatarSVG(eq=PR.eq,cls='av'){const n=++AVN,id=s=>s+n;const [fill,line]=BODY[eq.body]||BODY.green;const f=fill.replace(/url\(#(\w+)\)/,(m,x)=>`url(#${id(x)})`);
-  const star=(x,y,r,c)=>{let p='';for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.45:r;p+=(k?'L':'M')+(x+rr*Math.cos(a)).toFixed(1)+' '+(y+rr*Math.sin(a)).toFixed(1)}return `<path d="${p}Z" fill="${c}"/>`};
-  const heart=(x,y,s,c)=>`<path d="M${x} ${y+s*.9}C${x-s*1.4} ${y} ${x-s*.9} ${y-s} ${x} ${y-s*.3}C${x+s*.9} ${y-s} ${x+s*1.4} ${y} ${x} ${y+s*.9}Z" fill="${c}"/>`;
-  let bg='<circle cx="60" cy="60" r="58" fill="#efeafe"/>';
-  if(eq.bg==='stars')bg=`<circle cx="60" cy="60" r="58" fill="#24205a"/>${star(22,28,5,'#ffe27a')}${star(98,24,4,'#fff')}${star(100,92,5,'#ffe27a')}${star(18,92,3.5,'#fff')}${star(60,12,3,'#fff')}`;
-  if(eq.bg==='rainbowbg')bg=`<circle cx="60" cy="60" r="58" fill="#e6f6ff"/>${['#ff5c5c','#ffad42','#ffe14d','#5fd36a','#4aa8ff','#9a6bff'].map((c,k)=>`<path d="M${8+k*5} 74A${52-k*5} ${52-k*5} 0 0 1 ${112-k*5} 74" fill="none" stroke="${c}" stroke-width="5"/>`).join('')}`;
-  if(eq.bg==='hearts')bg=`<circle cx="60" cy="60" r="58" fill="#ffe3ef"/>${heart(20,30,7,'#ff7aa8')}${heart(100,30,6,'#ff9cc0')}${heart(16,90,6,'#ff9cc0')}${heart(104,88,7,'#ff7aa8')}`;
-  if(eq.bg==='stage')bg=`<circle cx="60" cy="60" r="58" fill="#1d1830"/><ellipse cx="60" cy="64" rx="50" ry="56" fill="url(#${id('spot')})"/><ellipse cx="60" cy="112" rx="50" ry="10" fill="#6c4cf5" opacity=".6"/>${star(20,22,3,'#ffe27a')}${star(100,20,3,'#ffe27a')}`;
-  let back='',front='',hat='',gl='',face='';
-  if(eq.hand==='balloon')back=`<path d="M95 86Q102 70 100 46" stroke="#777" stroke-width="1.5" fill="none"/><ellipse cx="100" cy="33" rx="12" ry="14" fill="#ff5c7a"/><ellipse cx="96" cy="28" rx="3" ry="4.5" fill="#fff" opacity=".6"/><path d="M98 47h4l-2 -3z" fill="#ff5c7a"/>`;
-  if(eq.hand==='lolli')front=`<path d="M95 88L104 62" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle cx="105" cy="54" r="10" fill="#ff8fc2"/><path d="M105 54m-6 0a6 6 0 1 0 6 -6a3.5 3.5 0 1 1 -3 4" fill="none" stroke="#fff" stroke-width="2"/>`;
-  if(eq.hand==='wand')front=`<path d="M95 88L106 58" stroke="#6c4cf5" stroke-width="3.5" stroke-linecap="round"/>${star(107,53,9,'#ffd23f')}`;
-  if(eq.hand==='mic')front=`<path d="M95 90L103 70" stroke="#555" stroke-width="5" stroke-linecap="round"/><circle cx="105" cy="64" r="7.5" fill="#9aa0aa"/><path d="M99 62h12M99 66h12" stroke="#777" stroke-width="1"/>`;
-  if(eq.hand==='trophy')front=`<path d="M96 70h18v6q0 10-9 10t-9-10z" fill="#ffc83d" stroke="#d99a00" stroke-width="1.5"/><path d="M96 72q-6 0-5 5t6 3M114 72q6 0 5 5t-6 3" fill="none" stroke="#d99a00" stroke-width="2"/><rect x="102" y="86" width="6" height="5" fill="#d99a00"/><rect x="98" y="91" width="14" height="4" rx="1.5" fill="#a86f00"/>`;
-  if(eq.hat==='ribbon')hat=`<g transform="translate(80 32) rotate(18)"><path d="M0 0L-15 -9L-15 9Z" fill="#ff4d8d"/><path d="M0 0L15 -9L15 9Z" fill="#ff4d8d"/><circle r="4.5" fill="#e0306f"/></g>`;
-  if(eq.hat==='cap')hat=`<path d="M30 40Q34 12 60 12Q86 12 90 40Z" fill="#2f9bff"/><path d="M60 38Q94 33 104 43Q84 47 62 43Z" fill="#1c7ad6"/><circle cx="60" cy="13" r="3" fill="#1c7ad6"/>`;
-  if(eq.hat==='flower')hat=`<g transform="translate(82 30)">${[0,72,144,216,288].map(a=>`<circle cx="${(7*Math.cos(a*Math.PI/180)).toFixed(1)}" cy="${(7*Math.sin(a*Math.PI/180)).toFixed(1)}" r="6" fill="#ff9ec4"/>`).join('')}<circle r="4.5" fill="#ffd23f"/></g>`;
-  if(eq.hat==='party')hat=`<path d="M46 30L62 -2L76 30Z" fill="#9a6bff"/><path d="M50 22L70 18M54 13L67 11" stroke="#ffd23f" stroke-width="3"/><circle cx="62" cy="-1" r="5" fill="#ff4d8d"/>`;
-  if(eq.hat==='cat')hat=`<path d="M30 40L32 10L52 28Z" fill="${f}" stroke="${line}" stroke-width="3" stroke-linejoin="round"/><path d="M90 40L88 10L68 28Z" fill="${f}" stroke="${line}" stroke-width="3" stroke-linejoin="round"/><path d="M35 33L36 18L46 28Z" fill="#ffb3cc"/><path d="M85 33L84 18L74 28Z" fill="#ffb3cc"/>`;
-  if(eq.hat==='crown')hat=`<path d="M36 32L39 8L50 22L60 4L70 22L81 8L84 32Z" fill="#ffc83d" stroke="#d99a00" stroke-width="2" stroke-linejoin="round"/><circle cx="60" cy="24" r="3.5" fill="#ff4d8d"/><circle cx="47" cy="26" r="2.5" fill="#2f9bff"/><circle cx="73" cy="26" r="2.5" fill="#14b789"/>`;
-  if(eq.hat==='bunny')hat=`<ellipse cx="46" cy="10" rx="8" ry="22" fill="#fff" stroke="#e7dff2" stroke-width="2" transform="rotate(-12 46 10)"/><ellipse cx="74" cy="10" rx="8" ry="22" fill="#fff" stroke="#e7dff2" stroke-width="2" transform="rotate(12 74 10)"/><ellipse cx="46" cy="12" rx="3.5" ry="15" fill="#ffc2d8" transform="rotate(-12 46 12)"/><ellipse cx="74" cy="12" rx="3.5" ry="15" fill="#ffc2d8" transform="rotate(12 74 12)"/>`;
-  if(eq.hat==='phones')hat=`<path d="M24 64Q22 16 60 16Q98 16 96 64" fill="none" stroke="#3b3550" stroke-width="6"/><rect x="16" y="54" width="14" height="22" rx="6" fill="#ff4d8d"/><rect x="90" y="54" width="14" height="22" rx="6" fill="#ff4d8d"/>`;
-  if(eq.hat==='wizard')hat=`<path d="M38 32L66 -6L84 32Z" fill="#5b3fd1"/><ellipse cx="60" cy="32" rx="34" ry="7" fill="#4a30b8"/>${star(64,14,5,'#ffd23f')}${star(54,24,3,'#fff')}`;
-  const E='#2a2340';
-  if(eq.glasses==='round')gl=`<g fill="#fff" fill-opacity=".25" stroke="#3b3550" stroke-width="2.6"><circle cx="47" cy="64" r="9.5"/><circle cx="73" cy="64" r="9.5"/></g><path d="M56.5 63h7" stroke="#3b3550" stroke-width="2.6"/>`;
-  if(eq.glasses==='sun')gl=`<path d="M35 58h22v6q0 9-11 9t-11-9zM63 58h22v6q0 9-11 9t-11-9z" fill="#22202c"/><path d="M57 60h6" stroke="#22202c" stroke-width="3"/><path d="M39 61l6 0M67 61l6 0" stroke="#fff" stroke-width="2" opacity=".6"/>`;
-  if(eq.glasses==='heartg')gl=`${heart(47,64,8,'#ff4d8d')}${heart(73,64,8,'#ff4d8d')}<path d="M55 62h10" stroke="#ff4d8d" stroke-width="2.5"/>`;
-  if(eq.glasses==='starg')gl=`${star(47,64,11,'#ffd23f')}${star(73,64,11,'#ffd23f')}<path d="M56 63h8" stroke="#e0a100" stroke-width="2.5"/>`;
-  if(eq.face==='blush')face=`<ellipse cx="38" cy="78" rx="7" ry="4.5" fill="#ff7aa8" opacity=".75"/><ellipse cx="82" cy="78" rx="7" ry="4.5" fill="#ff7aa8" opacity=".75"/>`;
-  if(eq.face==='sparkle')face=`${star(30,48,6,'#fff')}${star(92,46,5,'#fff')}${star(88,90,4,'#ffe27a')}`;
-  if(eq.face==='band')face=`<g transform="rotate(-25 82 80)"><rect x="72" y="76" width="20" height="8" rx="3" fill="#f3c9a0"/><rect x="79" y="76" width="6" height="8" fill="#e8b384"/></g>`;
-  if(eq.face==='stache')face=`<path d="M60 76Q52 70 46 75Q50 80 60 77Q70 80 74 75Q68 70 60 76Z" fill="#3b2a22"/>`;
-  const eyes=eq.glasses==='sun'?'':`<ellipse cx="47" cy="64" rx="4.3" ry="5.6" fill="${E}"/><ellipse cx="73" cy="64" rx="4.3" ry="5.6" fill="${E}"/><circle cx="48.6" cy="61.8" r="1.6" fill="#fff"/><circle cx="74.6" cy="61.8" r="1.6" fill="#fff"/>`;
-  return `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="${id('rbw')}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fb1"/><stop offset=".35" stop-color="#ffd968"/><stop offset=".65" stop-color="#7ee6c8"/><stop offset="1" stop-color="#9a8bff"/></linearGradient><linearGradient id="${id('gld')}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a8"/><stop offset=".5" stop-color="#ffc83d"/><stop offset="1" stop-color="#e09a12"/></linearGradient><radialGradient id="${id('spot')}"><stop offset="0" stop-color="#fff6c8" stop-opacity=".95"/><stop offset=".7" stop-color="#ffd2f0" stop-opacity=".35"/><stop offset="1" stop-color="#ffd2f0" stop-opacity="0"/></radialGradient><clipPath id="${id('cl')}"><circle cx="60" cy="60" r="58"/></clipPath></defs>
-  <g clip-path="url(#${id('cl')})">${bg}</g><g transform="translate(6 11) scale(.9)">${back}
-  <ellipse cx="47" cy="111" rx="10" ry="5.5" fill="${line}"/><ellipse cx="73" cy="111" rx="10" ry="5.5" fill="${line}"/>
-  <ellipse cx="25" cy="82" rx="7" ry="10" fill="${f}" stroke="${line}" stroke-width="3" transform="rotate(25 25 82)"/><ellipse cx="95" cy="82" rx="7" ry="10" fill="${f}" stroke="${line}" stroke-width="3" transform="rotate(-25 95 82)"/>
-  <path d="M60 24C86 24 95 46 94 70C93 96 79 109 60 109C41 109 27 96 26 70C25 46 34 24 60 24Z" fill="${f}" stroke="${line}" stroke-width="3.2"/>
-  <ellipse cx="45" cy="42" rx="9" ry="6" fill="#fff" opacity=".35" transform="rotate(-25 45 42)"/>
-  ${eyes}<path d="M53 77Q60 84 67 77" fill="none" stroke="${E}" stroke-width="2.8" stroke-linecap="round"/>
-  <ellipse cx="38" cy="78" rx="5.5" ry="3.5" fill="#ff8fb1" opacity=".35"/><ellipse cx="82" cy="78" rx="5.5" ry="3.5" fill="#ff8fb1" opacity=".35"/>
-  ${face}${gl}${hat}${front}</g></svg>`}
-function renderHud(){const h=$('#hud');if(!h)return;const li=lvInfo();h.innerHTML=`${avatarSVG()}<span class="hl"><b>Lv.${li.l}</b><i><s style="width:${Math.round(li.cur/li.need*100)}%"></s></i></span>`;h.setAttribute('aria-label',t('myChar')+' Lv.'+li.l)}
-/* 옷장 화면 */
-let CLOSET_SLOT='body';
-function closet(){const sc=$('#lobby');sc.innerHTML='';sc.appendChild(topBar(t('closet'),'👕'));const li=lvInfo(),wrap=el('div','closet');
-  const top=el('div','card cltop',`<div class="big">${avatarSVG(PR.eq,'av xl')}</div><div class="clinfo"><h1>Lv.${li.l}</h1><div class="xpb"><s style="width:${Math.round(li.cur/li.need*100)}%"></s></div><p class="muted">${esc(t('xpNext',li.need-li.cur))}</p><p class="muted">${esc(t('totalWins',Object.values(PR.wins).reduce((a,b)=>a+b,0)))}</p></div>`);wrap.appendChild(top);
-  const tabs=el('div','row cltabs');SLOTS.forEach(([s,need])=>{const lock=li.l<need;const b=el('button','pill'+(s===CLOSET_SLOT?' sel':'')+(lock?' lock':''),lock?`🔒 ${esc(t('slot_'+s))} · Lv.${need}`:esc(t('slot_'+s)));b.onclick=()=>{pop();if(lock)return toast(t('slotLocked',need));CLOSET_SLOT=s;closet()};tabs.appendChild(b)});wrap.appendChild(tabs);
-  const grid=el('div','clgrid');const list=ITEMS.filter(i=>i[1]===CLOSET_SLOT);
-  if(CLOSET_SLOT!=='body'){const b=el('button','clit'+(!PR.eq[CLOSET_SLOT]?' on':''),`<div class="none">✕</div><span>${esc(t('noItem'))}</span>`);b.onclick=()=>{pop();PR.eq[CLOSET_SLOT]='';savePR();renderHud();closet()};grid.appendChild(b)}
-  list.forEach(it=>{const lock=li.l<it[2],on=PR.eq[it[1]]===it[0];const prev=Object.assign({},PR.eq,{[it[1]]:it[0]});
-    const b=el('button','clit'+(on?' on':'')+(lock?' lock':''),`${avatarSVG(prev,'av md')}<span>${lock?'🔒 Lv.'+it[2]:esc(isEN()?it[4]:it[3])}</span>`);
-    b.onclick=()=>{pop();if(lock)return toast(t('itemLocked',it[2]));PR.eq[it[1]]=it[0];savePR();renderHud();closet()};grid.appendChild(b)});
-  wrap.appendChild(grid);
-  const recs=el('div','card opt');recs.appendChild(el('h3','',esc(t('myRecords'))));const rl=el('div','recs');SOLO_IDS.forEach(id=>{const g=GBY[id];if(!g)return;rl.appendChild(el('div','rec',`<span>${g.ic}</span><b>${esc(gname(g))}</b><em>Lv.${glv(id)}</em><small>${esc(t('winsN',PR.wins[id]||0))}</small>`))});recs.appendChild(rl);wrap.appendChild(recs);
-  sc.appendChild(wrap);show('lobby')}
+const SOLO_IDS=['chess','omok','janggi','sudoku','tile','hockey','worm','line','water','flow','tangram','spot'];
 /* 개인 모드 대기 화면 */
 function soloLobby(g,wrap,redo){const L=glv(g.id);
   wrap.appendChild(el('div','card sololv',`<div class="lvbig">Lv.${L}</div><p>${esc(t('soloInfo'))}</p><p class="muted">${esc(t('soloReward',15+10*L))}</p>`));
@@ -1134,7 +1088,7 @@ function soloLobby(g,wrap,redo){const L=glv(g.id);
 function soloEnd(outcome){if(!SES||!SES.solo||SES.ended)return;SES.ended=true;const g=SES.g,id=g.id,L=SES.lv||glv(id),before=lvInfo().l;
   const gain=outcome==='win'?15+10*L:outcome==='draw'?6+2*L:3;PR.xp+=gain;
   if(outcome==='win'){PR.gl[id]=Math.max(glv(id),L+1);PR.wins[id]=(PR.wins[id]||0)+1}savePR();renderHud();
-  const after=lvInfo().l,news=ITEMS.filter(it=>it[2]>before&&it[2]<=after),slots=SLOTS.filter(s=>s[1]>before&&s[1]<=after&&s[1]>1);
+  const after=lvInfo().l,news=ITEMS.filter(it=>it[2]>before&&it[2]<=after&&fitsG(it)),slots=SLOTS.filter(s=>s[1]>before&&s[1]<=after&&s[1]>1);
   if(outcome==='win'){fanfare();confetti(after>before?240:120)}else if(outcome==='lose')buzz();
   const title=outcome==='win'?t('soloWin'):outcome==='draw'?t('soloDraw'):t('soloLose');
   const html=`<div class="soloend"><div class="sav">${avatarSVG()}</div><h2>${esc(title)}</h2><p class="xpgain">+${gain} XP</p>
@@ -1150,6 +1104,154 @@ function lvPills(g,wrap,redo,ten){const k=g.id;if(ten){wrap.appendChild(optBox(t
   else wrap.appendChild(optBox(t('level'),pills([2,5,8],S.lv[k]||5,v=>t({2:'easy',5:'normal',8:'hard'}[v]),v=>{S.lv[k]=v;saveS();redo()})))}
 function gameBar(right){const sc=$('#play');sc.innerHTML='';sc.appendChild(topBar(gname(SES.g),SES.g.ic,right!==undefined?right:(SES.solo?`<span class="lvchip">Lv.${SES.lv}</span>`:'')));return sc}
 const onPlay=type=>SES&&SES.type===type&&$('#play').classList.contains('on');
+
+/* ===== 콩 캐릭터: 칸, 아이템, 그리기 ===== */
+PR.name=PR.name||'';PR.gender=PR.gender||'girl';
+PR.eq=Object.assign({body:'green',eyes:'',brows:'',mouth:'smile',outfit:'',hat:'',shoes:'',glasses:'',acc:'',hand:'',face:'',bg:''},PR.eq||{});
+const SLOTS=[['body',1],['eyes',1],['mouth',1],['outfit',1],['hat',1],['shoes',2],['brows',3],['glasses',4],['acc',5],['hand',6],['face',8],['bg',10]];
+/* [아이디, 칸, 열리는 레벨, 한국어, 영어, 성별(g=여자, b=남자, 빈칸=모두)] */
+const ITEMS=[
+ ['green','body',1,'초록 콩','Green',''],['pink','body',2,'분홍 콩','Pink',''],['sky','body',4,'하늘 콩','Sky',''],['yellow','body',6,'노랑 콩','Yellow',''],['peach','body',7,'복숭아 콩','Peach',''],['purple','body',9,'보라 콩','Purple',''],['mint','body',12,'민트 콩','Mint',''],['rainbow','body',20,'무지개 콩','Rainbow',''],['gold','body',30,'황금 콩','Gold',''],
+ ['dot','eyes',1,'동글 눈','Round eyes',''],['lash','eyes',1,'속눈썹 눈','Lashes','g'],['happy','eyes',2,'웃는 눈','Happy eyes',''],['sparkle','eyes',3,'반짝 눈','Sparkly eyes','g'],['cool','eyes',4,'멋진 눈','Cool eyes','b'],['wink','eyes',5,'윙크','Wink',''],['sleepy','eyes',7,'졸린 눈','Sleepy eyes',''],['star','eyes',8,'별 눈','Star eyes',''],['heart','eyes',11,'하트 눈','Heart eyes','g'],
+ ['soft','brows',3,'아치 눈썹','Arched brows','g'],['thick','brows',3,'굵은 눈썹','Bold brows','b'],['round','brows',6,'동글 눈썹','Round brows',''],['angry','brows',9,'씩씩 눈썹','Brave brows','b'],['worried','brows',12,'걱정 눈썹','Worried brows',''],
+ ['smile','mouth',1,'미소','Smile',''],['grin','mouth',2,'활짝 웃음','Big smile',''],['tongue','mouth',4,'메롱','Tongue out',''],['oh','mouth',6,'깜짝','Surprised',''],['cat','mouth',8,'고양이 입','Cat mouth',''],['teeth','mouth',10,'이빨 웃음','Toothy grin','b'],['kiss','mouth',12,'뽀뽀','Kiss','g'],
+ ['dress','outfit',1,'분홍 원피스','Pink dress','g'],['tee','outfit',1,'티셔츠와 반바지','T-shirt and shorts','b'],['skirt','outfit',3,'티셔츠와 치마','Top and skirt','g'],['overalls','outfit',3,'멜빵바지','Overalls','b'],['tutu','outfit',5,'발레복','Ballet tutu','g'],['soccer','outfit',6,'축구 유니폼','Soccer kit','b'],['leotard','outfit',7,'체조복','Gymnastics leotard','g'],['hoodie','outfit',8,'후드티','Hoodie',''],['suit','outfit',11,'정장','Suit','b'],['hanbokg','outfit',12,'한복 (치마저고리)','Hanbok dress','g'],['taekwondo','outfit',14,'태권도복','Taekwondo uniform',''],['hanbokb','outfit',16,'한복 (바지저고리)','Hanbok','b'],['princess','outfit',18,'공주 드레스','Princess gown','g'],['astronaut','outfit',22,'우주복','Space suit',''],['idol','outfit',24,'아이돌 무대 의상','Idol stage outfit',''],
+ ['ribbon','hat',1,'리본','Bow','g'],['spiky','hat',1,'뾰족 머리','Spiky hair','b'],['pigtails','hat',2,'양갈래 머리','Pigtails','g'],['cap','hat',2,'야구 모자','Cap','b'],['flower','hat',3,'꽃 핀','Flower pin','g'],['party','hat',4,'파티 모자','Party hat',''],['cat','hat',6,'고양이 귀','Cat ears',''],['crown','hat',8,'왕관','Crown',''],['beanie','hat',9,'털모자','Beanie','b'],['tiara','hat',10,'티아라','Tiara','g'],['bunny','hat',11,'토끼 귀','Bunny ears','g'],['phones','hat',13,'헤드폰','Headphones',''],['wizard','hat',15,'마법사 모자','Wizard hat',''],['helmet','hat',17,'우주 헬멧','Space helmet','b'],['flowercrown','hat',19,'꽃 화관','Flower crown','g'],
+ ['sneakers','shoes',2,'빨간 운동화','Red sneakers',''],['maryjane','shoes',3,'구두','Mary Janes','g'],['boots','shoes',5,'장화','Rain boots',''],['ballet','shoes',7,'발레 슈즈','Ballet shoes','g'],['cleats','shoes',7,'축구화','Soccer cleats','b'],['slippers','shoes',10,'털 슬리퍼','Fluffy slippers',''],['glitter','shoes',15,'반짝 구두','Glitter shoes','g'],['robot','shoes',20,'로봇 부츠','Robot boots','b'],
+ ['round','glasses',4,'동그란 안경','Round glasses',''],['sun','glasses',5,'선글라스','Sunglasses',''],['heartg','glasses',9,'하트 안경','Heart glasses','g'],['goggles','glasses',12,'수영 고글','Goggles','b'],['starg','glasses',14,'별 안경','Star glasses',''],
+ ['bowtie','acc',5,'나비넥타이','Bow tie','b'],['necklace','acc',5,'진주 목걸이','Pearl necklace','g'],['scarf','acc',7,'목도리','Scarf',''],['earrings','acc',9,'별 귀걸이','Star earrings','g'],['backpack','acc',11,'책가방','Backpack',''],['medal','acc',12,'금메달','Gold medal',''],
+ ['balloon','hand',6,'풍선','Balloon',''],['lolli','hand',6,'막대사탕','Lollipop',''],['wand','hand',7,'요술봉','Magic wand','g'],['ball','hand',8,'축구공','Soccer ball','b'],['mic','hand',10,'마이크','Microphone',''],['teddy','hand',13,'곰 인형','Teddy bear','g'],['trophy','hand',18,'트로피','Trophy',''],
+ ['blush','face',8,'볼터치','Blush',''],['sparkles','face',8,'반짝이','Sparkles',''],['freckles','face',10,'주근깨','Freckles',''],['heartcheek','face',11,'하트 스티커','Heart stickers','g'],['band','face',12,'반창고','Bandage',''],['stache','face',16,'콧수염','Mustache','b'],
+ ['stars','bg',10,'별빛','Starlight',''],['rainbowbg','bg',14,'무지개','Rainbow',''],['field','bg',15,'축구장','Soccer field','b'],['hearts','bg',17,'하트','Hearts','g'],['ocean','bg',19,'바다','Ocean',''],['stage','bg',22,'무대 조명','Spotlight','']];
+const ITEM=Object.fromEntries(ITEMS.map(i=>[i[1]+':'+i[0],i]));
+const fitsG=it=>!it[5]||it[5]===(PR.gender==='boy'?'b':'g');
+const BODY={green:['#8fd46a','#5aa63c'],pink:['#ffa9cc','#e2709f'],sky:['#8fd2ff','#4fa2dc'],yellow:['#ffd968','#e0a92a'],peach:['#ffc29a','#e98d5a'],purple:['#bba4ff','#8466e0'],mint:['#7ee6c8','#3cb592'],rainbow:['url(#rbw)','#9a6bff'],gold:['url(#gld)','#c58f12']};
+let AVN=0;
+function avatarSVG(eq=PR.eq,cls='av',gender=PR.gender){const n=++AVN,id=s=>s+n;const [fill0,line]=BODY[eq.body]||BODY.green;const f=fill0.replace(/url\(#(\w+)\)/,(m,x)=>`url(#${id(x)})`);const D='#2a2340';
+  const star=(x,y,r,c,o='')=>{let p='';for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.45:r;p+=(k?'L':'M')+(x+rr*Math.cos(a)).toFixed(1)+' '+(y+rr*Math.sin(a)).toFixed(1)}return `<path d="${p}Z" fill="${c}" ${o}/>`};
+  const heart=(x,y,s,c)=>`<path d="M${x} ${y+s*.9}C${x-s*1.4} ${y} ${x-s*.9} ${y-s} ${x} ${y-s*.3}C${x+s*.9} ${y-s} ${x+s*1.4} ${y} ${x} ${y+s*.9}Z" fill="${c}"/>`;
+  const BODYP='M60 24C86 24 95 46 94 70C93 96 79 109 60 109C41 109 27 96 26 70C25 46 34 24 60 24Z';const clip=`clip-path="url(#${id('bc')})"`;
+  /* 배경 */
+  let bg='<circle cx="60" cy="60" r="58" fill="#efeafe"/>';
+  if(eq.bg==='stars')bg=`<circle cx="60" cy="60" r="58" fill="#24205a"/>${star(22,28,5,'#ffe27a')}${star(98,24,4,'#fff')}${star(100,92,5,'#ffe27a')}${star(18,92,3.5,'#fff')}${star(60,10,3,'#fff')}`;
+  if(eq.bg==='rainbowbg')bg=`<circle cx="60" cy="60" r="58" fill="#e6f6ff"/>${['#ff5c5c','#ffad42','#ffe14d','#5fd36a','#4aa8ff','#9a6bff'].map((c,k)=>`<path d="M${8+k*5} 74A${52-k*5} ${52-k*5} 0 0 1 ${112-k*5} 74" fill="none" stroke="${c}" stroke-width="5"/>`).join('')}`;
+  if(eq.bg==='hearts')bg=`<circle cx="60" cy="60" r="58" fill="#ffe3ef"/>${heart(20,30,7,'#ff7aa8')}${heart(100,30,6,'#ff9cc0')}${heart(16,90,6,'#ff9cc0')}${heart(104,88,7,'#ff7aa8')}`;
+  if(eq.bg==='stage')bg=`<circle cx="60" cy="60" r="58" fill="#1d1830"/><ellipse cx="60" cy="64" rx="50" ry="56" fill="url(#${id('spot')})"/><ellipse cx="60" cy="112" rx="50" ry="10" fill="#6c4cf5" opacity=".6"/>${star(20,22,3,'#ffe27a')}${star(100,20,3,'#ffe27a')}`;
+  if(eq.bg==='field')bg=`<circle cx="60" cy="60" r="58" fill="#5cc46a"/>${[0,1,2,3].map(k=>`<rect x="0" y="${k*30}" width="120" height="15" fill="#4fb35d"/>`).join('')}<circle cx="60" cy="60" r="22" fill="none" stroke="#fff" stroke-width="2.5" opacity=".8"/><path d="M0 60H120" stroke="#fff" stroke-width="2.5" opacity=".8"/>`;
+  if(eq.bg==='ocean')bg=`<circle cx="60" cy="60" r="58" fill="#bfe9ff"/><path d="M0 78q15-8 30 0t30 0t30 0t30 0V120H0Z" fill="#4fb0ff"/><path d="M0 92q15-8 30 0t30 0t30 0t30 0V120H0Z" fill="#2f8fe6"/><circle cx="92" cy="26" r="10" fill="#ffd23f"/>`;
+  /* 몸 뒤쪽 */
+  let back='',front='',hat='',hatBack='',gl='',face='',outfit='',outer='',acc='',accBack='';
+  if(eq.acc==='backpack')accBack=`<rect x="16" y="66" width="22" height="34" rx="8" fill="#ff7a59"/><rect x="82" y="66" width="22" height="34" rx="8" fill="#ff7a59"/>`;
+  if(eq.hand==='balloon')back=`<path d="M95 86Q102 70 100 46" stroke="#777" stroke-width="1.5" fill="none"/><ellipse cx="100" cy="33" rx="12" ry="14" fill="#ff5c7a"/><ellipse cx="96" cy="28" rx="3" ry="4.5" fill="#fff" opacity=".6"/>`;
+  /* 신발 */
+  const shoe=(x,body)=>body.replace(/X/g,x);let feet=`<ellipse cx="47" cy="111" rx="10" ry="5.5" fill="${line}"/><ellipse cx="73" cy="111" rx="10" ry="5.5" fill="${line}"/>`;
+  const S={sneakers:'<path d="M{X-11} 114q0-9 11-9q12 0 12 9z" fill="#ff4d5e"/><rect x="{X-11}" y="112" width="23" height="3.5" rx="1.7" fill="#fff"/><path d="M{X-3} 107l5 0M{X-4} 109.5l6 0" stroke="#fff" stroke-width="1.3"/>',
+    maryjane:'<path d="M{X-11} 114q0-8 11-8q12 0 12 8z" fill="#2a2340"/><path d="M{X-7} 107.5h14" stroke="#2a2340" stroke-width="2.2"/><circle cx="{X+5}" cy="110" r="1.2" fill="#fff"/>',
+    boots:'<rect x="{X-10}" y="99" width="20" height="15" rx="5" fill="#ffd23f"/><rect x="{X-11}" y="111" width="23" height="4" rx="2" fill="#e0a100"/>',
+    ballet:'<path d="M{X-11} 114q0-8 11-8q12 0 12 8z" fill="#ffb3d0"/><path d="M{X-2} 106l-5-5M{X+2} 106l5-5" stroke="#ff7aa8" stroke-width="1.4"/>',
+    cleats:'<path d="M{X-11} 113q0-8 11-8q12 0 12 8z" fill="#1d1d26"/><path d="M{X-6} 106l3 4M{X} 105.5l3 4.5" stroke="#fff" stroke-width="1.6"/><path d="M{X-9} 115v-2M{X-3} 115v-2M{X+3} 115v-2M{X+9} 115v-2" stroke="#999" stroke-width="2"/>',
+    slippers:'<ellipse cx="{X}" cy="110" rx="12" ry="6.5" fill="#f4e3ff"/><circle cx="{X-4}" cy="107" r="2.5" fill="#fff"/><circle cx="{X+3}" cy="106" r="3" fill="#fff"/><circle cx="{X+7}" cy="108" r="2.5" fill="#fff"/>',
+    glitter:'<path d="M{X-11} 114q0-8 11-8q12 0 12 8z" fill="#ffc83d"/><circle cx="{X-5}" cy="110" r="1" fill="#fff"/><circle cx="{X+1}" cy="108" r="1" fill="#fff"/><circle cx="{X+6}" cy="111" r="1" fill="#fff"/>',
+    robot:'<rect x="{X-11}" y="102" width="22" height="13" rx="3" fill="#a6b0c0" stroke="#6b7586" stroke-width="1.5"/><circle cx="{X}" cy="108" r="2" fill="#4fd1ff"/>'};
+  if(S[eq.shoes]){const tpl=S[eq.shoes].replace(/\{X([+-]\d+)?\}/g,(m,o)=>'X'+(o||''));feet=[47,73].map(x=>tpl.replace(/X([+-]\d+)?/g,(m,o)=>String(x+(o?+o:0)))).join('')}
+  /* 옷 (몸 모양으로 잘라서) */
+  const band=(y1,y2,c,extra='')=>`<rect x="20" y="${y1}" width="80" height="${y2-y1}" fill="${c}" ${extra}/>`;
+  const O={dress:()=>{outfit=band(82,112,'#ff8fc2')+`<path d="M52 82q8 6 16 0" fill="#fff"/>${heart(60,93,3.5,'#fff')}`;outer=`<path d="M33 98Q60 108 87 98L95 112Q60 120 25 112Z" fill="#ff8fc2"/><path d="M25 112Q60 120 95 112" stroke="#fff" stroke-width="2" fill="none" stroke-dasharray="3 3"/>`},
+    tee:()=>{outfit=band(82,100,'#4fa8ff')+band(100,112,'#2b3a67')+`<path d="M60 100V112" stroke="#1b2647" stroke-width="2"/>${star(60,90,4,'#fff')}`},
+    skirt:()=>{outfit=band(82,99,'#ffe066')+`<circle cx="60" cy="90" r="3" fill="#ff8fc2"/>`;outer=`<path d="M34 97H86L94 111Q60 117 26 111Z" fill="#5b8cff"/><path d="M44 97L40 112M60 97V114M76 97L80 112" stroke="#3d6be0" stroke-width="1.5"/>`},
+    overalls:()=>{outfit=band(82,112,'#ff6b6b')+`<path d="M24 87h72M24 93h72" stroke="#fff" stroke-width="2.5" opacity=".7"/>`+band(96,112,'#3d6fd6')+`<rect x="46" y="86" width="28" height="14" rx="3" fill="#3d6fd6"/><path d="M40 82L48 88M80 82L72 88" stroke="#3d6fd6" stroke-width="4"/><circle cx="49" cy="89" r="1.8" fill="#ffd23f"/><circle cx="71" cy="89" r="1.8" fill="#ffd23f"/>`},
+    tutu:()=>{outfit=band(82,112,'#ffb3d0');outer=`<ellipse cx="60" cy="100" rx="42" ry="8" fill="#ffd6e7" opacity=".95"/><path d="M18 100q6 7 12 0q6 7 12 0q6 7 12 0q6 7 12 0q6 7 12 0q6 7 12 0q6 7 12 0" fill="none" stroke="#ff9cc0" stroke-width="2"/>`},
+    soccer:()=>{outfit=band(82,101,'#e63946')+band(101,112,'#fff')+`<text x="60" y="97" text-anchor="middle" font-size="11" font-weight="900" fill="#fff" font-family="sans-serif">10</text><path d="M60 101V112" stroke="#ccc" stroke-width="1.5"/>`},
+    leotard:()=>{outfit=band(82,112,'#9b5cff')+`<path d="M24 84L96 106" stroke="#ff7ad9" stroke-width="5"/>${star(48,92,2.5,'#fff')}${star(74,98,2,'#fff')}${star(62,88,1.8,'#ffe27a')}`},
+    hoodie:()=>{outfit=band(80,112,'#8c7ae6')+`<path d="M44 80q16 9 32 0" fill="none" stroke="#6c5ce7" stroke-width="3"/><path d="M54 84v8M66 84v8" stroke="#fff" stroke-width="1.6"/><rect x="47" y="97" width="26" height="9" rx="4" fill="#6c5ce7"/>`},
+    suit:()=>{outfit=band(82,112,'#2d3142')+`<path d="M52 82L60 100L68 82Z" fill="#fff"/><path d="M58 84h4l1 3-1 13h-4l-1-13z" fill="#e63946"/><circle cx="60" cy="104" r="1.3" fill="#888"/>`},
+    hanbokg:()=>{outfit=band(82,95,'#ffd23f')+`<path d="M52 82L60 90L68 82" fill="none" stroke="#fff" stroke-width="2"/><path d="M60 90l-6 8M60 90l5 9" stroke="#e63946" stroke-width="2.6"/>`;outer=`<path d="M30 94H90L97 113Q60 120 23 113Z" fill="#ff5c8a"/><path d="M30 94H90" stroke="#fff" stroke-width="2"/>`},
+    taekwondo:()=>{outfit=band(82,112,'#fbfbfb')+`<path d="M48 82L64 100M72 82L56 100" stroke="#ddd" stroke-width="2.5"/><rect x="22" y="99" width="76" height="4.5" fill="#1d1d26"/><path d="M58 103l-4 7M62 103l4 7" stroke="#1d1d26" stroke-width="3"/>`},
+    hanbokb:()=>{outfit=band(82,97,'#4f86f7')+band(97,112,'#9aa5b1')+`<path d="M50 82L60 92L70 82" fill="none" stroke="#fff" stroke-width="2"/><path d="M60 92v5" stroke="#fff" stroke-width="2"/><rect x="22" y="95" width="76" height="3" fill="#2b3a67"/><path d="M60 98V112" stroke="#7d8793" stroke-width="1.5"/>`},
+    princess:()=>{outfit=band(80,112,'#c7a6ff')+`<path d="M48 80Q60 88 72 80" fill="none" stroke="#ffd23f" stroke-width="2.5"/>${star(60,90,3,'#ffd23f')}`;outer=`<path d="M32 94Q60 104 88 94L100 114Q60 122 20 114Z" fill="#c7a6ff"/><path d="M20 114Q60 122 100 114" stroke="#ffd23f" stroke-width="2.5" fill="none"/><path d="M40 100l-4 14M60 102v16M80 100l4 14" stroke="#b08cff" stroke-width="1.5"/>`},
+    astronaut:()=>{outfit=band(80,112,'#f2f4f7')+`<rect x="48" y="88" width="24" height="14" rx="3" fill="#cfd6e0"/><circle cx="54" cy="95" r="2" fill="#e63946"/><circle cx="60" cy="95" r="2" fill="#4fd1ff"/><circle cx="66" cy="95" r="2" fill="#ffd23f"/><path d="M24 104h72" stroke="#ff7a59" stroke-width="3"/>`},
+    idol:()=>{outfit=band(82,112,'#dfe6f2')+`<path d="M52 82L60 98L68 82Z" fill="#2a2340"/>${[[40,90],[78,92],[46,104],[74,106],[60,108]].map(([x,y])=>star(x,y,2.4,'#ffd23f')).join('')}<path d="M24 86l10 6M96 86l-10 6" stroke="#b8c2d6" stroke-width="2"/>`}};
+  if(O[eq.outfit])O[eq.outfit]();
+  /* 액세서리 */
+  if(eq.acc==='bowtie')acc=`<path d="M60 84l-9-5v10zM60 84l9-5v10z" fill="#e63946"/><circle cx="60" cy="84" r="2.6" fill="#b5172a"/>`;
+  if(eq.acc==='necklace')acc=[42,47,53,60,67,73,78].map((x,k)=>`<circle cx="${x}" cy="${82+Math.sin(k/6*Math.PI)*5}" r="2.3" fill="#fffaf0" stroke="#e3d8c8" stroke-width=".8"/>`).join('');
+  if(eq.acc==='scarf')acc=`<path d="M32 80Q60 90 88 80L88 86Q60 96 32 86Z" fill="#ff5c5c"/><path d="M74 86l4 16h7l-3-17z" fill="#ff5c5c"/><path d="M76 92h6M77 97h6" stroke="#fff" stroke-width="1.5"/>`;
+  if(eq.acc==='earrings')acc=`${star(27,74,4,'#ffd23f')}${star(93,74,4,'#ffd23f')}`;
+  if(eq.acc==='backpack')acc=`<path d="M34 78L40 102M86 78L80 102" stroke="#e85d3f" stroke-width="4"/>`;
+  if(eq.acc==='medal')acc=`<path d="M52 80L58 92M68 80L62 92" stroke="#4f86f7" stroke-width="4"/><circle cx="60" cy="96" r="6" fill="#ffc83d" stroke="#d99a00" stroke-width="1.5"/>${star(60,96,3,'#fff6c8')}`;
+  /* 손 아이템 */
+  if(eq.hand==='lolli')front=`<path d="M95 88L104 62" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><circle cx="105" cy="54" r="10" fill="#ff8fc2"/><path d="M105 54m-6 0a6 6 0 1 0 6 -6a3.5 3.5 0 1 1 -3 4" fill="none" stroke="#fff" stroke-width="2"/>`;
+  if(eq.hand==='wand')front=`<path d="M95 88L106 58" stroke="#6c4cf5" stroke-width="3.5" stroke-linecap="round"/>${star(107,53,9,'#ffd23f')}`;
+  if(eq.hand==='mic')front=`<path d="M95 90L103 70" stroke="#555" stroke-width="5" stroke-linecap="round"/><circle cx="105" cy="64" r="7.5" fill="#9aa0aa"/>`;
+  if(eq.hand==='trophy')front=`<path d="M96 70h18v6q0 10-9 10t-9-10z" fill="#ffc83d" stroke="#d99a00" stroke-width="1.5"/><path d="M96 72q-6 0-5 5t6 3M114 72q6 0 5 5t-6 3" fill="none" stroke="#d99a00" stroke-width="2"/><rect x="102" y="86" width="6" height="5" fill="#d99a00"/><rect x="98" y="91" width="14" height="4" rx="1.5" fill="#a86f00"/>`;
+  if(eq.hand==='ball')front=`<circle cx="104" cy="88" r="10" fill="#fff" stroke="#2a2340" stroke-width="1.5"/><path d="M104 83l4 3-1.5 5h-5l-1.5-5z" fill="#2a2340"/>`;
+  if(eq.hand==='teddy')front=`<circle cx="98" cy="74" r="4" fill="#b07a4f"/><circle cx="110" cy="74" r="4" fill="#b07a4f"/><circle cx="104" cy="80" r="8" fill="#c98d5f"/><ellipse cx="104" cy="94" rx="8" ry="9" fill="#c98d5f"/><circle cx="101" cy="79" r="1.2" fill="#2a2340"/><circle cx="107" cy="79" r="1.2" fill="#2a2340"/><ellipse cx="104" cy="83" rx="2.5" ry="1.8" fill="#f1d3b5"/>`;
+  /* 머리, 모자 */
+  const H={ribbon:`<g transform="translate(80 32) rotate(18)"><path d="M0 0L-15 -9L-15 9Z" fill="#ff4d8d"/><path d="M0 0L15 -9L15 9Z" fill="#ff4d8d"/><circle r="4.5" fill="#e0306f"/></g>`,
+    spiky:`<path d="M36 36L40 18L48 30L52 12L60 28L66 10L71 28L79 16L82 34Q60 26 36 36Z" fill="#3b2a22"/>`,
+    pigtails:`<circle cx="27" cy="42" r="11" fill="#4a3428"/><circle cx="93" cy="42" r="11" fill="#4a3428"/><path d="M38 34Q60 18 82 34Q72 28 60 30Q48 28 38 34Z" fill="#4a3428"/><g fill="#ff4d8d"><path d="M33 33l-6-5v10z"/><path d="M33 33l6-5v10z"/><path d="M87 33l-6-5v10z"/><path d="M87 33l6-5v10z"/></g>`,
+    cap:`<path d="M30 40Q34 12 60 12Q86 12 90 40Z" fill="#2f9bff"/><path d="M60 38Q94 33 104 43Q84 47 62 43Z" fill="#1c7ad6"/><circle cx="60" cy="13" r="3" fill="#1c7ad6"/>`,
+    flower:`<g transform="translate(82 30)">${[0,72,144,216,288].map(a=>`<circle cx="${(7*Math.cos(a*Math.PI/180)).toFixed(1)}" cy="${(7*Math.sin(a*Math.PI/180)).toFixed(1)}" r="6" fill="#ff9ec4"/>`).join('')}<circle r="4.5" fill="#ffd23f"/></g>`,
+    party:`<path d="M46 30L62 -2L76 30Z" fill="#9a6bff"/><path d="M50 22L70 18M54 13L67 11" stroke="#ffd23f" stroke-width="3"/><circle cx="62" cy="-1" r="5" fill="#ff4d8d"/>`,
+    cat:`<path d="M30 40L32 10L52 28Z" fill="${f}" stroke="${line}" stroke-width="3" stroke-linejoin="round"/><path d="M90 40L88 10L68 28Z" fill="${f}" stroke="${line}" stroke-width="3" stroke-linejoin="round"/><path d="M35 33L36 18L46 28Z" fill="#ffb3cc"/><path d="M85 33L84 18L74 28Z" fill="#ffb3cc"/>`,
+    crown:`<path d="M36 32L39 8L50 22L60 4L70 22L81 8L84 32Z" fill="#ffc83d" stroke="#d99a00" stroke-width="2" stroke-linejoin="round"/><circle cx="60" cy="24" r="3.5" fill="#ff4d8d"/><circle cx="47" cy="26" r="2.5" fill="#2f9bff"/><circle cx="73" cy="26" r="2.5" fill="#14b789"/>`,
+    beanie:`<path d="M30 40Q30 10 60 10Q90 10 90 40Z" fill="#e63946"/><rect x="28" y="34" width="64" height="9" rx="4.5" fill="#b5172a"/><circle cx="60" cy="8" r="6" fill="#fff"/><path d="M40 22v10M50 16v16M60 14v18M70 16v16M80 22v10" stroke="#ff6b78" stroke-width="2"/>`,
+    tiara:`<path d="M40 32Q60 22 80 32L77 18L69 26L60 12L51 26L43 18Z" fill="#e8ecf5" stroke="#aab4c8" stroke-width="1.5" stroke-linejoin="round"/><circle cx="60" cy="20" r="3" fill="#ff4d8d"/><circle cx="48" cy="26" r="1.8" fill="#4fd1ff"/><circle cx="72" cy="26" r="1.8" fill="#4fd1ff"/>`,
+    bunny:`<ellipse cx="46" cy="10" rx="8" ry="22" fill="#fff" stroke="#e7dff2" stroke-width="2" transform="rotate(-12 46 10)"/><ellipse cx="74" cy="10" rx="8" ry="22" fill="#fff" stroke="#e7dff2" stroke-width="2" transform="rotate(12 74 10)"/><ellipse cx="46" cy="12" rx="3.5" ry="15" fill="#ffc2d8" transform="rotate(-12 46 12)"/><ellipse cx="74" cy="12" rx="3.5" ry="15" fill="#ffc2d8" transform="rotate(12 74 12)"/>`,
+    phones:`<path d="M24 64Q22 16 60 16Q98 16 96 64" fill="none" stroke="#3b3550" stroke-width="6"/><rect x="16" y="54" width="14" height="22" rx="6" fill="#ff4d8d"/><rect x="90" y="54" width="14" height="22" rx="6" fill="#ff4d8d"/>`,
+    wizard:`<path d="M38 32L66 -6L84 32Z" fill="#5b3fd1"/><ellipse cx="60" cy="32" rx="34" ry="7" fill="#4a30b8"/>${star(64,14,5,'#ffd23f')}${star(54,24,3,'#fff')}`,
+    helmet:`<circle cx="60" cy="62" r="45" fill="#bfe9ff" fill-opacity=".28" stroke="#dfe6ef" stroke-width="5"/><path d="M30 34Q44 22 58 22" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>`,
+    flowercrown:[34,44,54,66,76,86].map((x,k)=>`<g transform="translate(${x} ${32-Math.sin(k/5*Math.PI)*6})">${[0,90,180,270].map(a=>`<circle cx="${(3.5*Math.cos(a*Math.PI/180)).toFixed(1)}" cy="${(3.5*Math.sin(a*Math.PI/180)).toFixed(1)}" r="3.2" fill="${['#ff9ec4','#ffd23f','#b59cff','#7ee6c8'][k%4]}"/>`).join('')}<circle r="2" fill="#fff"/></g>`).join('')};
+  hat=H[eq.hat]||'';
+  /* 얼굴 */
+  const eyes=eq.eyes||(gender==='boy'?'dot':'lash'),brows=eq.brows,mouth=eq.mouth||'smile';
+  const oval=(x,rx=4.3,ry=5.6)=>`<ellipse cx="${x}" cy="64" rx="${rx}" ry="${ry}" fill="${D}"/><circle cx="${x+1.6}" cy="61.8" r="1.6" fill="#fff"/>`;
+  const arc=x=>`<path d="M${x-5} 66Q${x} 59 ${x+5} 66" fill="none" stroke="${D}" stroke-width="2.8" stroke-linecap="round"/>`;
+  const E={dot:()=>oval(47)+oval(73),lash:()=>oval(47)+oval(73)+`<path d="M42 60l-3-3M43.5 58.5l-1.5-4M78 60l3-3M76.5 58.5l1.5-4" stroke="${D}" stroke-width="1.6" stroke-linecap="round"/>`,
+    happy:()=>arc(47)+arc(73),sparkle:()=>[47,73].map(x=>`<ellipse cx="${x}" cy="64" rx="5.6" ry="7" fill="${D}"/><circle cx="${x+2}" cy="61" r="2.3" fill="#fff"/><circle cx="${x-1.8}" cy="67" r="1.2" fill="#fff"/>`).join('')+`<path d="M41 59l-3-3M79 59l3-3" stroke="${D}" stroke-width="1.6" stroke-linecap="round"/>`,
+    cool:()=>[47,73].map(x=>`<path d="M${x-5} 62h10a5 5 0 0 1 -10 0z" fill="${D}"/>`).join(''),wink:()=>oval(47)+arc(73),
+    sleepy:()=>[47,73].map(x=>`<path d="M${x-5} 64q5 4 10 0" fill="none" stroke="${D}" stroke-width="2.6" stroke-linecap="round"/>`).join(''),star:()=>star(47,64,6.5,D)+star(73,64,6.5,D),heart:()=>heart(47,64,5.5,'#ff3d7f')+heart(73,64,5.5,'#ff3d7f')};
+  const B={soft:`<path d="M41 55q6-4 12 0M67 55q6-4 12 0" fill="none" stroke="${D}" stroke-width="1.8" stroke-linecap="round"/>`,thick:`<path d="M41 55l12-2M67 53l12 2" stroke="${D}" stroke-width="3.8" stroke-linecap="round"/>`,
+    round:`<path d="M43 55q4-3 8 0M69 55q4-3 8 0" fill="none" stroke="${D}" stroke-width="3" stroke-linecap="round"/>`,angry:`<path d="M41 52l12 4M79 52l-12 4" stroke="${D}" stroke-width="3.2" stroke-linecap="round"/>`,worried:`<path d="M41 56l12-4M79 56l-12-4" stroke="${D}" stroke-width="2.6" stroke-linecap="round"/>`};
+  const M={smile:`<path d="M53 77Q60 84 67 77" fill="none" stroke="${D}" stroke-width="2.8" stroke-linecap="round"/>`,grin:`<path d="M51 76Q60 89 69 76Z" fill="${D}"/><path d="M55 82Q60 86 65 82Q60 79 55 82Z" fill="#ff7a8a"/>`,
+    tongue:`<path d="M53 77Q60 83 67 77" fill="none" stroke="${D}" stroke-width="2.8" stroke-linecap="round"/><path d="M57 80q3 7 6 0z" fill="#ff7a8a"/>`,oh:`<ellipse cx="60" cy="79" rx="4" ry="5" fill="${D}"/>`,
+    cat:`<path d="M52 77q4 5 8 0q4 5 8 0" fill="none" stroke="${D}" stroke-width="2.6" stroke-linecap="round"/>`,teeth:`<path d="M50 76Q60 90 70 76Z" fill="${D}"/><path d="M51.5 77.5h17l-1.5 3h-14z" fill="#fff"/>`,kiss:heart(60,79,4.5,'#ff4d6d')};
+  face=(B[brows]||'')+((eq.glasses==='sun'||eq.glasses==='goggles')?'':E[eyes]?E[eyes]():E.dot())+(M[mouth]||M.smile);
+  let deco='';
+  if(eq.face==='blush')deco=`<ellipse cx="38" cy="78" rx="7" ry="4.5" fill="#ff7aa8" opacity=".75"/><ellipse cx="82" cy="78" rx="7" ry="4.5" fill="#ff7aa8" opacity=".75"/>`;
+  if(eq.face==='sparkles')deco=`${star(30,48,6,'#fff')}${star(92,46,5,'#fff')}${star(88,90,4,'#ffe27a')}`;
+  if(eq.face==='band')deco=`<g transform="rotate(-25 82 80)"><rect x="72" y="76" width="20" height="8" rx="3" fill="#f3c9a0"/><rect x="79" y="76" width="6" height="8" fill="#e8b384"/></g>`;
+  if(eq.face==='stache')deco=`<path d="M60 75Q52 69 46 74Q50 79 60 76Q70 79 74 74Q68 69 60 75Z" fill="#3b2a22"/>`;
+  if(eq.face==='freckles')deco=[[36,74],[40,77],[35,79],[84,74],[80,77],[85,79]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.2" fill="#b0704a"/>`).join('');
+  if(eq.face==='heartcheek')deco=heart(37,77,4,'#ff4d8d')+heart(83,77,4,'#ff4d8d');
+  if(eq.glasses==='round')gl=`<g fill="#fff" fill-opacity=".25" stroke="#3b3550" stroke-width="2.6"><circle cx="47" cy="64" r="9.5"/><circle cx="73" cy="64" r="9.5"/></g><path d="M56.5 63h7" stroke="#3b3550" stroke-width="2.6"/>`;
+  if(eq.glasses==='sun')gl=`<path d="M35 58h22v6q0 9-11 9t-11-9zM63 58h22v6q0 9-11 9t-11-9z" fill="#22202c"/><path d="M57 60h6" stroke="#22202c" stroke-width="3"/><path d="M39 61l6 0M67 61l6 0" stroke="#fff" stroke-width="2" opacity=".6"/>`;
+  if(eq.glasses==='heartg')gl=`${heart(47,64,8,'#ff4d8d')}${heart(73,64,8,'#ff4d8d')}<path d="M55 62h10" stroke="#ff4d8d" stroke-width="2.5"/>`;
+  if(eq.glasses==='starg')gl=`${star(47,64,11,'#ffd23f')}${star(73,64,11,'#ffd23f')}<path d="M56 63h8" stroke="#e0a100" stroke-width="2.5"/>`;
+  if(eq.glasses==='goggles')gl=`<path d="M26 62h68" stroke="#2f9bff" stroke-width="4"/><rect x="37" y="56" width="20" height="15" rx="7" fill="#7fd3ff" stroke="#1c7ad6" stroke-width="2.5"/><rect x="63" y="56" width="20" height="15" rx="7" fill="#7fd3ff" stroke="#1c7ad6" stroke-width="2.5"/><path d="M41 60l4 0M67 60l4 0" stroke="#fff" stroke-width="2"/>`;
+  return `<svg class="${cls}" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="${id('rbw')}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8fb1"/><stop offset=".35" stop-color="#ffd968"/><stop offset=".65" stop-color="#7ee6c8"/><stop offset="1" stop-color="#9a8bff"/></linearGradient><linearGradient id="${id('gld')}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff1a8"/><stop offset=".5" stop-color="#ffc83d"/><stop offset="1" stop-color="#e09a12"/></linearGradient><radialGradient id="${id('spot')}"><stop offset="0" stop-color="#fff6c8" stop-opacity=".95"/><stop offset=".7" stop-color="#ffd2f0" stop-opacity=".35"/><stop offset="1" stop-color="#ffd2f0" stop-opacity="0"/></radialGradient><clipPath id="${id('cl')}"><circle cx="60" cy="60" r="58"/></clipPath><clipPath id="${id('bc')}"><path d="${BODYP}"/></clipPath></defs>
+  <g clip-path="url(#${id('cl')})">${bg}</g><g transform="translate(6 11) scale(.9)">${accBack}${back}${feet}
+  <ellipse cx="25" cy="82" rx="7" ry="10" fill="${f}" stroke="${line}" stroke-width="3" transform="rotate(25 25 82)"/><ellipse cx="95" cy="82" rx="7" ry="10" fill="${f}" stroke="${line}" stroke-width="3" transform="rotate(-25 95 82)"/>
+  <path d="${BODYP}" fill="${f}"/><g ${clip}>${outfit}</g><path d="${BODYP}" fill="none" stroke="${line}" stroke-width="3.2"/>${outer}
+  <ellipse cx="45" cy="42" rx="9" ry="6" fill="#fff" opacity=".35" transform="rotate(-25 45 42)"/>
+  <ellipse cx="38" cy="77" rx="5.5" ry="3.5" fill="#ff8fb1" opacity=".35"/><ellipse cx="82" cy="77" rx="5.5" ry="3.5" fill="#ff8fb1" opacity=".35"/>${acc}
+  ${face}${deco}${gl}${hat}${front}</g></svg>`}
+function renderHud(){const h=$('#hud');if(!h)return;const li=lvInfo();h.innerHTML=`${avatarSVG()}<span class="hl"><b>${PR.name?esc(PR.name)+' ':''}Lv.${li.l}</b><i><s style="width:${Math.round(li.cur/li.need*100)}%"></s></i></span>`;h.setAttribute('aria-label',t('myChar')+' Lv.'+li.l)}
+/* 꾸미기 화면 */
+let CLOSET_SLOT='body';
+function closet(){const sc=$('#lobby');sc.innerHTML='';sc.appendChild(topBar(t('closet'),'👕'));const li=lvInfo(),wrap=el('div','closet');
+  const top=el('div','card cltop',`<div class="big">${avatarSVG(PR.eq,'av xl')}</div><div class="clinfo"><input id="clName" class="clname" maxlength="10" placeholder="${esc(t('namePh'))}" value="${esc(PR.name)}"><div class="seg clg"><button data-g="girl" class="${PR.gender==='girl'?'on':''}">👧 ${esc(t('girlBean'))}</button><button data-g="boy" class="${PR.gender==='boy'?'on':''}">👦 ${esc(t('boyBean'))}</button></div><h1>Lv.${li.l}</h1><div class="xpb"><s style="width:${Math.round(li.cur/li.need*100)}%"></s></div><p class="muted">${esc(t('xpNext',li.need-li.cur))} · ${esc(t('totalWins',Object.values(PR.wins).reduce((a,b)=>a+b,0)))}</p></div>`);wrap.appendChild(top);
+  const tabs=el('div','row cltabs');SLOTS.forEach(([s,need])=>{const lock=li.l<need;const b=el('button','pill'+(s===CLOSET_SLOT?' sel':'')+(lock?' lock':''),lock?`🔒 ${esc(t('slot_'+s))} · Lv.${need}`:esc(t('slot_'+s)));b.onclick=()=>{pop();if(lock)return toast(t('slotLocked',need));CLOSET_SLOT=s;closet()};tabs.appendChild(b)});wrap.appendChild(tabs);
+  const grid=el('div','clgrid');const list=ITEMS.filter(i=>i[1]===CLOSET_SLOT&&fitsG(i)).sort((a,b)=>a[2]-b[2]);
+  if(!['body','mouth'].includes(CLOSET_SLOT)){const b=el('button','clit'+(!PR.eq[CLOSET_SLOT]?' on':''),`<div class="none">${CLOSET_SLOT==='eyes'||CLOSET_SLOT==='brows'?'🙂':'✕'}</div><span>${esc(CLOSET_SLOT==='eyes'?t('basicItem'):t('noItem'))}</span>`);b.onclick=()=>{pop();PR.eq[CLOSET_SLOT]='';savePR();renderHud();closet()};grid.appendChild(b)}
+  list.forEach(it=>{const lock=li.l<it[2],on=PR.eq[it[1]]===it[0];const prev=Object.assign({},PR.eq,{[it[1]]:it[0]});
+    const b=el('button','clit'+(on?' on':'')+(lock?' lock':''),`${avatarSVG(prev,'av md')}<span>${lock?'🔒 Lv.'+it[2]:esc(isEN()?it[4]:it[3])}</span>`);
+    b.onclick=()=>{pop();if(lock)return toast(t('itemLocked',it[2]));PR.eq[it[1]]=it[0];savePR();renderHud();closet()};grid.appendChild(b)});
+  wrap.appendChild(grid);
+  const recs=el('div','card opt');recs.appendChild(el('h3','',esc(t('myRecords'))));const rl=el('div','recs');SOLO_IDS.forEach(id=>{const g=GBY[id];if(!g)return;rl.appendChild(el('div','rec',`<span>${g.ic}</span><b>${esc(gname(g))}</b><em>Lv.${glv(id)}</em><small>${esc(t('winsN',PR.wins[id]||0))}</small>`))});recs.appendChild(rl);wrap.appendChild(recs);
+  sc.appendChild(wrap);show('lobby');
+  const nm=$('#clName');nm.oninput=()=>{PR.name=nm.value.trim().slice(0,10);savePR();renderHud()};
+  sc.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{if(PR.gender===b.dataset.g)return;PR.gender=b.dataset.g;for(const k of Object.keys(PR.eq)){const it=ITEM[k+':'+PR.eq[k]];if(it&&!fitsG(it))PR.eq[k]=k==='body'?'green':k==='mouth'?'smile':''}savePR();renderHud();pop();closet()})}
 
 function JANGGI(){
 /* 칸 번호 = 줄*9+칸 (0줄=위쪽 한나라, 9줄=아래쪽 초나라). 초=+, 한=− . 1궁 2사 3상 4마 5차 6포 7졸 */
@@ -1462,7 +1564,7 @@ function ldVisit(n,tap){if(LD.done)return;const p=LD.path;if(!p.length){p.push(n
   const left=LD.edges.filter(([a,b])=>(a===n||b===n)&&!ldUsed().has(ldKey(a,b)));ldPaint();if(!left.length)toast(t('ldStuck'))}
 
 /* ================= 명화 다른 그림 찾기 ================= */
-const PAINT=[["모나리자","Mona Lisa","레오나르도 다빈치","Leonardo da Vinci","e/ec","Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"],["별이 빛나는 밤","The Starry Night","빈센트 반 고흐","Vincent van Gogh","e/ea","Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"],["가나가와 해변의 높은 파도","The Great Wave off Kanagawa","가쓰시카 호쿠사이","Katsushika Hokusai","0/0a","The_Great_Wave_off_Kanagawa.jpg"],["진주 귀걸이를 한 소녀","Girl with a Pearl Earring","요하네스 페르메이르","Johannes Vermeer","0/0f","1665_Girl_with_a_Pearl_Earring.jpg"],["눈 속의 사냥꾼","Hunters in the Snow","피터르 브뤼헐","Pieter Bruegel the Elder","d/d8","Pieter_Bruegel_the_Elder_-_Hunters_in_the_Snow_%28Winter%29_-_Google_Art_Project.jpg"],["아이들의 놀이","Children's Games","피터르 브뤼헐","Pieter Bruegel the Elder","1/1e","Pieter_Bruegel_the_Elder_-_Children%E2%80%99s_Games_-_Google_Art_Project.jpg"],["그랑드 자트섬의 일요일 오후","A Sunday on La Grande Jatte","조르주 쇠라","Georges Seurat","7/7d","A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg"],["물랭 드 라 갈레트의 무도회","Dance at Le Moulin de la Galette","오귀스트 르누아르","Pierre-Auguste Renoir","2/21","Pierre-Auguste_Renoir%2C_Le_Moulin_de_la_Galette.jpg"],["뱃놀이 일행의 점심","Luncheon of the Boating Party","오귀스트 르누아르","Pierre-Auguste Renoir","8/8d","Pierre-Auguste_Renoir_-_Luncheon_of_the_Boating_Party_-_Google_Art_Project.jpg"],["밤의 카페 테라스","Café Terrace at Night","빈센트 반 고흐","Vincent van Gogh","0/09","Van_Gogh_-_Terrasse_des_Caf%C3%A9s_an_der_Place_du_Forum_in_Arles_am_Abend1.jpeg"],["아를의 침실","The Bedroom","빈센트 반 고흐","Vincent van Gogh","7/76","Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg"],["인상, 해돋이","Impression, Sunrise","클로드 모네","Claude Monet","5/59","Monet_-_Impression%2C_Sunrise.jpg"],["야경","The Night Watch","렘브란트","Rembrandt","5/5a","The_Night_Watch_-_HD.jpg"],["우유를 따르는 여인","The Milkmaid","요하네스 페르메이르","Johannes Vermeer","2/20","Johannes_Vermeer_-_Het_melkmeisje_-_Google_Art_Project.jpg"],["이삭 줍는 여인들","The Gleaners","장프랑수아 밀레","Jean-François Millet","1/1f","Jean-Fran%C3%A7ois_Millet_-_Gleaners_-_Google_Art_Project_2.jpg"],["바벨탑","The Tower of Babel","피터르 브뤼헐","Pieter Bruegel the Elder","f/fc","Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project_-_edited.jpg"],["키스","The Kiss","구스타프 클림트","Gustav Klimt","4/40","The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg"],["해바라기","Sunflowers","빈센트 반 고흐","Vincent van Gogh","4/46","Vincent_Willem_van_Gogh_127.jpg"],["네덜란드 속담","Netherlandish Proverbs","피터르 브뤼헐","Pieter Bruegel the Elder","7/7e","Pieter_Brueghel_the_Elder_-_The_Dutch_Proverbs_-_Google_Art_Project.jpg"],["수련","Water Lilies","클로드 모네","Claude Monet","a/aa","Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg"],["사이프러스가 있는 밀밭","Wheat Field with Cypresses","빈센트 반 고흐","Vincent van Gogh","c/ce","Wheat-Field-with-Cypresses-%281889%29-Vincent-van-Gogh-Met.jpg"],["양산을 쓴 여인","Woman with a Parasol","클로드 모네","Claude Monet","1/1b","Claude_Monet_-_Woman_with_a_Parasol_-_Madame_Monet_and_Her_Son_-_Google_Art_Project.jpg"],["인왕제색도","Inwangjesaekdo","겸재 정선","Jeong Seon","a/a7","Inwangjesaekdo.jpg"],["씨름","Ssireum (Wrestling)","단원 김홍도","Kim Hong-do","d/d0","Danwon-Ssireum.jpg"],["서당","Village School","단원 김홍도","Kim Hong-do","0/03","Danwon_Seodang.jpg"],["농민의 결혼식","The Peasant Wedding","피터르 브뤼헐","Pieter Bruegel the Elder","a/af","Pieter_Bruegel_the_Elder_-_Peasant_Wedding_-_Google_Art_Project.jpg"],["꽃 피는 아몬드 나무","Almond Blossom","빈센트 반 고흐","Vincent van Gogh","6/68","Vincent_van_Gogh_-_Almond_blossom_-_Google_Art_Project.jpg"],["붉은 후지산","Red Fuji","가쓰시카 호쿠사이","Katsushika Hokusai","2/25","Katsushika_Hokusai_-_Fine_Wind%2C_Clear_Morning_%28Gaif%C5%AB_kaisei%29_-_Google_Art_Project.jpg"],["시녀들","Las Meninas","디에고 벨라스케스","Diego Velázquez","9/99","Las_Meninas_01.jpg"]];
+const PAINT=[["눈 속의 사냥꾼", "Hunters in the Snow", "피터르 브뤼헐", "Pieter Bruegel the Elder", "d/d8", "Pieter_Bruegel_the_Elder_-_Hunters_in_the_Snow_%28Winter%29_-_Google_Art_Project.jpg", "c245,453;c503,543;c774,815;r568,187;r236,72"], ["아이들의 놀이", "Children's Games", "피터르 브뤼헐", "Pieter Bruegel the Elder", "1/1e", "Pieter_Bruegel_the_Elder_-_Children%E2%80%99s_Games_-_Google_Art_Project.jpg", "c742,569;c458,685;r410,174;c335,484"], ["그랑드 자트섬의 일요일 오후", "A Sunday on La Grande Jatte", "조르주 쇠라", "Georges Seurat", "7/7d", "A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg", "c490,171;c110,485;c568,398;c710,320;r88,204;c271,466;c232,816"], ["밤의 카페 테라스", "Café Terrace at Night", "빈센트 반 고흐", "Vincent van Gogh", "0/09", "Van_Gogh_-_Terrasse_des_Caf%C3%A9s_an_der_Place_du_Forum_in_Arles_am_Abend1.jpeg", "r543,78;r735,112;r679,181;c667,621;c452,155;c860,500"], ["아를의 침실", "The Bedroom", "빈센트 반 고흐", "Vincent van Gogh", "7/76", "Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg", "c521,466;c404,414;c438,302;c315,138;c250,370;r486,129"], ["네덜란드 속담", "Netherlandish Proverbs", "피터르 브뤼헐", "Pieter Bruegel the Elder", "7/7e", "Pieter_Brueghel_the_Elder_-_The_Dutch_Proverbs_-_Google_Art_Project.jpg", "c52,416;c439,748;c97,338;c465,423"], ["농민의 결혼식", "The Peasant Wedding", "피터르 브뤼헐", "Pieter Bruegel the Elder", "a/af", "Pieter_Bruegel_the_Elder_-_Peasant_Wedding_-_Google_Art_Project.jpg", "c503,521;c800,521;c226,428;c858,335;c316,764"]];
 let SP=null;
 MODES.spot={lobby(g,wrap,redo){if(!isSolo())wrap.appendChild(optBox(t('spTime'),pills([20,30,60],S.spT,v=>v===60?t('spMin'):t('spSec',v),v=>{S.spT=v;saveS();redo()})));wrap.appendChild(el('p','muted center small',esc(t('spCredit'))))},
  init(){const L=SES.solo?SES.lv:3;let seen=store.get('kk_sp',[]);let pool=PAINT.map((_,i)=>i).filter(i=>!seen.includes(i));if(!pool.length){seen=[];pool=PAINT.map((_,i)=>i)}
@@ -1471,29 +1573,87 @@ MODES.spot={lobby(g,wrap,redo){if(!isSolo())wrap.appendChild(optBox(t('spTime'),
  show(){spShow()}};
 function spLoad(){const p=PAINT[SP.pi],tok=SP.tok,path=`${p[4]}/${p[5]}/960px-${p[5]}`;let tried=0;const im=new Image();im.crossOrigin='anonymous';
   im.onload=()=>{if(!SP||SP.tok!==tok)return;try{const A=document.createElement('canvas');A.width=im.naturalWidth;A.height=im.naturalHeight;A.getContext('2d').drawImage(im,0,0);
-      const B=document.createElement('canvas');B.width=A.width;B.height=A.height;B.getContext('2d').drawImage(A,0,0);SP.A=A;SP.B=B;SP.diffs=spMakeDiffs(A,B,SP.L);SP.phase='memo';SP.t0=Date.now()}catch(e){SP.phase='fail'}if(onPlay('spot'))spShow()};
+      const B=document.createElement('canvas');B.width=A.width;B.height=A.height;B.getContext('2d').drawImage(A,0,0);SP.A=A;SP.B=B;SP.diffs=spMakeDiffs(A,B,SP.L,spSeeds(p[6]));SP.phase='memo';SP.t0=Date.now()}catch(e){SP.phase='fail'}if(onPlay('spot'))spShow()};
   im.onerror=()=>{if(!SP||SP.tok!==tok)return;if(!tried++){im.src=IMGB2+path;return}SP.phase='fail';if(onPlay('spot'))spShow()};im.src=IMGB+path}
-function spHue(d,deg){const a=deg*Math.PI/180,c=Math.cos(a),s=Math.sin(a),m=[.213+c*.787-s*.213,.715-c*.715-s*.715,.072-c*.072+s*.928,.213-c*.213+s*.143,.715+c*.285+s*.140,.072-c*.072-s*.283,.213-c*.213-s*.787,.715-c*.715+s*.715,.072+c*.928+s*.072];
-  for(let i=0;i<d.length;i+=4){const r=d[i],g=d[i+1],b=d[i+2];d[i]=m[0]*r+m[1]*g+m[2]*b;d[i+1]=m[3]*r+m[4]*g+m[5]*b;d[i+2]=m[6]*r+m[7]*g+m[8]*b}}
-function spMakeDiffs(A,B,L){const W=A.width,H=A.height,ax=A.getContext('2d'),bx=B.getContext('2d'),R=Math.round(Math.min(W,H)*Math.max(.05,.095-L*.004));
-  const px=ax.getImageData(0,0,W,H).data,lum=(x,y)=>{const i=(y*W+x)*4;return px[i]*.3+px[i+1]*.59+px[i+2]*.11};
-  const cells=[];const st=Math.round(R*.8);for(let y=R+4;y<H-R-4;y+=st)for(let x=R+4;x<W-R-4;x+=st){let s=0,s2=0,n=0;for(let yy=y-R*.7;yy<y+R*.7;yy+=4)for(let xx=x-R*.7;xx<x+R*.7;xx+=4){const v=lum(xx|0,yy|0);s+=v;s2+=v*v;n++}cells.push({x,y,v:s2/n-(s/n)*(s/n)})}
-  cells.sort((a,b)=>b.v-a.v);const top=shuffle(cells.slice(0,Math.max(12,cells.length*.45|0)));const picks=[];
-  for(const c of top){if(picks.length>=5)break;if(picks.every(p=>Math.hypot(p.x-c.x,p.y-c.y)>R*2.6))picks.push(c)}
-  for(const c of shuffle(cells)){if(picks.length>=5)break;if(picks.every(p=>Math.hypot(p.x-c.x,p.y-c.y)>R*2.4))picks.push(c)}
-  const tc=document.createElement('canvas');tc.width=tc.height=2*R;const tx=tc.getContext('2d');const sm=document.createElement('canvas');sm.width=sm.height=6;const sx=sm.getContext('2d');
-  const effects=shuffle(['flip','hue','clone','erase','rot','swap']);const out=[];
-  const diffAmt=(x,y)=>{const a=ax.getImageData(x-R,y-R,2*R,2*R).data,b=bx.getImageData(x-R,y-R,2*R,2*R).data;let s=0,n=0;for(let i=0;i<a.length;i+=16){const dx=((i/4)%(2*R))-R,dy=(((i/4)/(2*R))|0)-R;if(dx*dx+dy*dy>R*R*.5)continue;s+=Math.abs(a[i]-b[i])+Math.abs(a[i+1]-b[i+1])+Math.abs(a[i+2]-b[i+2]);n++}return s/n/3};
-  picks.forEach((p,k)=>{const tryList=[effects[k%effects.length],...shuffle(['hue','swap','clone','flip'])];
-    for(const ef of tryList){const saved=bx.getImageData(p.x-R,p.y-R,2*R,2*R);tx.setTransform(1,0,0,1,0,0);tx.globalCompositeOperation='source-over';tx.clearRect(0,0,2*R,2*R);
-      if(ef==='flip'){tx.setTransform(-1,0,0,1,2*R,0);tx.drawImage(A,p.x-R,p.y-R,2*R,2*R,0,0,2*R,2*R)}
-      else if(ef==='rot'){tx.setTransform(-1,0,0,-1,2*R,2*R);tx.drawImage(A,p.x-R,p.y-R,2*R,2*R,0,0,2*R,2*R)}
-      else if(ef==='clone'){const o=rnd(cells.slice(0,30).filter(c=>Math.hypot(c.x-p.x,c.y-p.y)>R*3))||cells[0];tx.drawImage(A,o.x-R,o.y-R,2*R,2*R,0,0,2*R,2*R)}
-      else if(ef==='erase'){sx.clearRect(0,0,6,6);sx.drawImage(A,p.x-R,p.y-R,2*R,2*R,0,0,6,6);tx.imageSmoothingEnabled=true;tx.drawImage(sm,0,0,6,6,0,0,2*R,2*R)}
-      else{tx.drawImage(A,p.x-R,p.y-R,2*R,2*R,0,0,2*R,2*R);const id=tx.getImageData(0,0,2*R,2*R);if(ef==='hue')spHue(id.data,140+Math.random()*80);else for(let i=0;i<id.data.length;i+=4){const r=id.data[i];id.data[i]=id.data[i+2];id.data[i+2]=id.data[i+1];id.data[i+1]=r}tx.putImageData(id,0,0)}
-      tx.setTransform(1,0,0,1,0,0);tx.globalCompositeOperation='destination-in';const gr=tx.createRadialGradient(R,R,R*.55,R,R,R);gr.addColorStop(0,'#000');gr.addColorStop(1,'rgba(0,0,0,0)');tx.fillStyle=gr;tx.fillRect(0,0,2*R,2*R);
-      bx.drawImage(tc,p.x-R,p.y-R);if(diffAmt(p.x,p.y)>=Math.max(14,30-L*1.5)){out.push({x:p.x,y:p.y,r:R});break}bx.putImageData(saved,p.x-R,p.y-R)}});
-  return out}
+function spSeeds(s){return s?s.split(';').map(x=>[x[0],...x.slice(1).split(',').map(Number)]):null}
+function spHsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h=0,s=0;const l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h/=6}return [h,s,l]}
+function spRgb(h,s,l){const f=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;return t<1/6?p+(q-p)*6*t:t<1/2?q:t<2/3?p+(q-p)*(2/3-t)*6:p};if(!s)return [l*255,l*255,l*255];const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q;return [f(p,q,h+1/3)*255,f(p,q,h)*255,f(p,q,h-1/3)*255]}
+function spMakeDiffs(A,B,L,seeds,only){const W=A.width,H=A.height,ax=A.getContext('2d'),bx=B.getContext('2d');const D=ax.getImageData(0,0,W,H).data,out=bx.getImageData(0,0,W,H),O=out.data;
+  const N=W*H,VIS=new Int32Array(N),tried=new Uint8Array(N);let stamp=0;const area=N,minSep=W*.09;
+  const DB=new Uint8ClampedArray(N*4);{const tmp=new Float32Array(N*3),rad=Math.max(2,Math.round(W/320)),k=2*rad+1;for(let c=0;c<3;c++){for(let y=0;y<H;y++){const row=y*W;let acc=0;for(let x=-rad;x<=rad;x++)acc+=D[(row+Math.min(W-1,Math.max(0,x)))*4+c];for(let x=0;x<W;x++){tmp[(row+x)*3+c]=acc/k;acc+=D[(row+Math.min(W-1,x+rad+1))*4+c]-D[(row+Math.max(0,x-rad))*4+c]}}for(let x=0;x<W;x++){let acc=0;for(let y=-rad;y<=rad;y++)acc+=tmp[(Math.min(H-1,Math.max(0,y))*W+x)*3+c];for(let y=0;y<H;y++){DB[(y*W+x)*4+c]=acc/k;acc+=tmp[(Math.min(H-1,y+rad+1)*W+x)*3+c]-tmp[(Math.max(0,y-rad)*W+x)*3+c]}}}}
+  function seg(sx,sy,tol,maxA){const i0=sy*W+sx,r0=DB[i0*4],g0=DB[i0*4+1],b0=DB[i0*4+2],t2=tol*tol;stamp++;const q=[i0];VIS[i0]=stamp;const pix=[];let x0=sx,x1=sx,y0=sy,y1=sy;
+    while(q.length){const i=q.pop();pix.push(i);tried[i]=1;if(pix.length>maxA)return null;const x=i%W,y=(i/W)|0;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;
+      for(const j of [i-1,i+1,i-W,i+W]){if(j<0||j>=N||VIS[j]===stamp)continue;if((j===i-1&&x===0)||(j===i+1&&x===W-1))continue;const dr=DB[j*4]-r0,dg=DB[j*4+1]-g0,db=DB[j*4+2]-b0;if(dr*dr+dg*dg+db*db<t2){VIS[j]=stamp;q.push(j)}}}
+    return {pix,x0,x1,y0,y1}}
+  function maskOf(r,grow){const pad=grow+3,bx0=Math.max(0,r.x0-pad),by0=Math.max(0,r.y0-pad),bw=Math.min(W-1,r.x1+pad)-bx0+1,bh=Math.min(H-1,r.y1+pad)-by0+1;let m=new Uint8Array(bw*bh);
+    for(const i of r.pix)m[((i/W|0)-by0)*bw+(i%W-bx0)]=1;
+    const morph=(m,dil)=>{const o=new Uint8Array(bw*bh);for(let y=0;y<bh;y++)for(let x=0;x<bw;x++){let v=dil?0:1;for(let dy=-1;dy<=1&&(dil?!v:v);dy++)for(let dx=-1;dx<=1;dx++){const X=x+dx,Y=y+dy;const u=X<0||Y<0||X>=bw||Y>=bh?0:m[Y*bw+X];if(dil&&u){v=1;break}if(!dil&&!u){v=0;break}}o[y*bw+x]=v}return o};
+    m=morph(morph(m,1),0);for(let k=0;k<grow;k++)m=morph(m,1);const list=[];for(let y=0;y<bh;y++)for(let x=0;x<bw;x++)if(m[y*bw+x])list.push((y+by0)*W+x+bx0);return {list,bx0,by0,bw,bh,m}}
+  const ringMean=(mk,S=D)=>{let s=[0,0,0],n=0,v=0;const vals=[];for(let y=0;y<mk.bh;y++)for(let x=0;x<mk.bw;x++){if(mk.m[y*mk.bw+x])continue;let near=false;for(let d=1;d<=3&&!near;d++)for(const [dx,dy] of [[d,0],[-d,0],[0,d],[0,-d]]){const X=x+dx,Y=y+dy;if(X>=0&&Y>=0&&X<mk.bw&&Y<mk.bh&&mk.m[Y*mk.bw+X]){near=true;break}}if(!near)continue;const j=(y+mk.by0)*W+x+mk.bx0;vals.push([S[j*4],S[j*4+1],S[j*4+2]]);s[0]+=S[j*4];s[1]+=S[j*4+1];s[2]+=S[j*4+2];n++}
+    if(!n)return null;s=s.map(v=>v/n);for(const c of vals)v+=Math.abs(c[0]-s[0])+Math.abs(c[1]-s[1])+Math.abs(c[2]-s[2]);return {mean:s,varr:v/n/3}};
+  const meanOf=(list,S=D)=>{let s=[0,0,0];for(const i of list){s[0]+=S[i*4];s[1]+=S[i*4+1];s[2]+=S[i*4+2]}return s.map(v=>v/list.length)};
+  const setPx=(i,r,g,b)=>{O[i*4]=r;O[i*4+1]=g;O[i*4+2]=b};
+  function inpaint(mk,mv){const rb=ringMean(mk,DB);if(!rb||rb.varr>mv)return false;const rm=ringMean(mk),LS=mk.list;
+    {const bw=mk.bw,bh=mk.bh,acc=new Float32Array(bw*bh*3),cnt=new Float32Array(bw*bh);const px=(gx,gy)=>{const j=gy*W+gx;return [O[j*4],O[j*4+1],O[j*4+2]]};
+      const run=(len,isM,at,put)=>{let a=0;while(a<len){if(!isM(a)){a++;continue}let b=a;while(b<len&&isM(b))b++;const cl=at(a-1),cr=at(b);for(let k=a;k<b;k++){const t=(k-a+1)/(b-a+1),v=cl&&cr?cl.map((c,n)=>c*(1-t)+cr[n]*t):(cl||cr||rm.mean);put(k,v,1/(b-a))}a=b}};
+      for(let y=0;y<bh;y++)run(bw,x=>mk.m[y*bw+x],x=>{const gx=x+mk.bx0,gy=y+mk.by0;return x<0||x>=bw?(gx>=0&&gx<W?px(gx,gy):null):px(gx,gy)},(x,v,w)=>{const q=y*bw+x;acc[q*3]+=v[0]*w;acc[q*3+1]+=v[1]*w;acc[q*3+2]+=v[2]*w;cnt[q]+=w});
+      for(let x=0;x<bw;x++)run(bh,y=>mk.m[y*bw+x],y=>{const gx=x+mk.bx0,gy=y+mk.by0;return y<0||y>=bh?(gy>=0&&gy<H?px(gx,gy):null):px(gx,gy)},(y,v,w)=>{const q=y*bw+x;acc[q*3]+=v[0]*w;acc[q*3+1]+=v[1]*w;acc[q*3+2]+=v[2]*w;cnt[q]+=w});
+      for(let q=0;q<bw*bh;q++)if(mk.m[q]&&cnt[q])setPx((((q/bw)|0)+mk.by0)*W+q%bw+mk.bx0,acc[q*3]/cnt[q],acc[q*3+1]/cnt[q],acc[q*3+2]/cnt[q])}
+    const it=Math.min(60,Math.max(mk.bw,mk.bh));
+    for(let k=0;k<it;k++)for(const i of LS){let r=0,g=0,b=0;for(const j of [i-1,i+1,i-W,i+W]){r+=O[j*4];g+=O[j*4+1];b+=O[j*4+2]}setPx(i,r/4,g/4,b/4)}
+    const ex=mk.bw+4,ey=mk.bh+4;let best=null;
+    for(const [dx,dy] of [[ex,0],[-ex,0],[0,ey],[0,-ey],[ex,ey],[-ex,-ey],[ex,-ey],[-ex,ey]]){let sm=[0,0,0],ok=true;
+      for(const i of LS){const x=i%W+dx,y=(i/W|0)+dy;if(x<0||y<0||x>=W||y>=H){ok=false;break}const j=y*W+x;sm[0]+=D[j*4];sm[1]+=D[j*4+1];sm[2]+=D[j*4+2]}
+      if(!ok)continue;sm=sm.map(v=>v/LS.length);let v=0;for(const i of LS){const j=((i/W|0)+dy)*W+i%W+dx;v+=Math.abs(D[j*4]-sm[0])+Math.abs(D[j*4+1]-sm[1])+Math.abs(D[j*4+2]-sm[2])}v/=LS.length*3;
+      const cost=(Math.abs(sm[0]-rm.mean[0])+Math.abs(sm[1]-rm.mean[1])+Math.abs(sm[2]-rm.mean[2]))/3+Math.max(0,v-rm.varr*1.3);if(!best||cost<best.cost)best={dx,dy,sm,cost,v}}
+    if(best&&best.cost<15){const amp=Math.min(.7,rm.varr/(best.v+1));for(const i of LS){const j=((i/W|0)+best.dy)*W+i%W+best.dx;const c=[0,1,2].map(k=>Math.max(-24,Math.min(24,D[j*4+k]-best.sm[k]))*amp);setPx(i,O[i*4]+c[0],O[i*4+1]+c[1],O[i*4+2]+c[2])}}
+    return true}
+  const HUES=[0,.08,.14,.33,.6],HUES2=[0,.33,.6,.08];
+  function recolor(mk,r){const [h0,s0]=r.hsl;const pool=(s0>=.2?HUES:HUES2).filter(h=>!(h===.6&&r.hsl[2]>.5));let nh,g=0;do{nh=rnd(pool)}while(Math.min(Math.abs(nh-h0),1-Math.abs(nh-h0))<.18&&s0>=.2&&g++<30);
+    for(const i of mk.list){const [h,s,l]=spHsl(D[i*4],D[i*4+1],D[i*4+2]);const hh=s0>=.2?(h+(nh-h0)+1)%1:nh;const ss=s0>=.2?s:Math.max(s,.3);const [R,G,B2]=spRgb(hh,ss,l);setPx(i,R,G,B2)}}
+  function refine(r){const mk1=maskOf(r,1),rm0=ringMean(mk1);if(!rm0)return r;const om=meanOf(r.pix),pad=Math.max(6,Math.round(Math.max(r.x1-r.x0,r.y1-r.y0)*.5));
+    const X0=Math.max(0,r.x0-pad),X1=Math.min(W-1,r.x1+pad),Y0=Math.max(0,r.y0-pad),Y1=Math.min(H-1,r.y1+pad),d2=(i,m)=>Math.abs(D[i*4]-m[0])+Math.abs(D[i*4+1]-m[1])+Math.abs(D[i*4+2]-m[2]);
+    stamp++;const q=r.pix.slice();for(const i of q)VIS[i]=stamp;const pix=[];let x0=W,x1=0,y0=H,y1=0;
+    while(q.length){const i=q.pop();pix.push(i);const x=i%W,y=i/W|0;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;
+      for(const j of [i-1,i+1,i-W,i+W]){const jx=j%W,jy=j/W|0;if(jx<X0||jx>X1||jy<Y0||jy>Y1||VIS[j]===stamp||Math.abs(jx-x)>1)continue;if(d2(j,om)<d2(j,rm0.mean)*.8){VIS[j]=stamp;q.push(j)}}}
+    return pix.length>r.pix.length*4?r:{pix,x0,x1,y0,y1}}
+  function mkCand(x,y,minA,maxA,tol=30,rf){if(x<0||y<0||x>=W||y>=H)return null;let r=seg(x,y,tol,maxA);if(!r||r.pix.length<minA)return null;if(rf)r=refine(r);const w=r.x1-r.x0+1,h=r.y1-r.y0+1;r.fill=r.pix.length/(w*h);
+    r.mk=maskOf(r,2);const rm=ringMean(r.mk,DB);if(!rm)return null;r.mc=meanOf(r.pix);const mb=meanOf(r.pix,DB);r.ctr=(Math.abs(mb[0]-rm.mean[0])+Math.abs(mb[1]-rm.mean[1])+Math.abs(mb[2]-rm.mean[2]))/3;r.varr=rm.varr;r.vD=ringMean(r.mk).varr;
+    {const inR=new Set(r.pix),ex=Math.max(w,h);let cnt=0;for(let yy=Math.max(0,r.y0-ex);yy<=Math.min(H-1,r.y1+ex);yy+=2)for(let xx=Math.max(0,r.x0-ex);xx<=Math.min(W-1,r.x1+ex);xx+=2){const i=yy*W+xx;if(inR.has(i))continue;if(Math.abs(DB[i*4]-mb[0])+Math.abs(DB[i*4+1]-mb[1])+Math.abs(DB[i*4+2]-mb[2])<45)cnt++}r.uniq=cnt*4/r.pix.length}
+    r.cx=(r.x0+r.x1)/2;r.cy=(r.y0+r.y1)/2;r.hsl=spHsl(...r.mc);r.chroma=Math.max(...r.mc)-Math.min(...r.mc);r.sz=Math.max(w,h);r.sx=x;r.sy=y;return r}
+  const diffs=[];
+  const vis=list=>{let s=0;for(const i of list)s+=Math.abs(D[i*4]-O[i*4])+Math.abs(D[i*4+1]-O[i*4+1])+Math.abs(D[i*4+2]-O[i*4+2]);return s/list.length/3};
+  const nchg=list=>{let n=0;for(const i of list)if(Math.abs(D[i*4]-O[i*4])+Math.abs(D[i*4+1]-O[i*4+1])+Math.abs(D[i*4+2]-O[i*4+2])>60)n++;return n};
+  const far=r=>!diffs.some(d=>Math.hypot(d.x-r.cx,d.y-r.cy)<Math.max(minSep,d.r+r.sz/2+10));
+  const snap=list=>list.map(i=>[O[i*4],O[i*4+1],O[i*4+2]]),undo=(list,sv)=>list.forEach((i,k)=>setPx(i,...sv[k]));
+  function opColor(r,lvl){if(lvl<2){if(r.sz>W*.14||r.pix.length>area*.005||r.hsl[2]<.13||r.hsl[2]>.68)return false;
+      if(lvl?(r.hsl[1]<.12||r.chroma<22||r.ctr<22||r.uniq>3):(r.hsl[1]<.25||r.chroma<40||r.ctr<30||r.uniq>2))return false}
+    const mk=maskOf(r,0),sv=snap(mk.list);recolor(mk,r);if(vis(mk.list)>12)return true;undo(mk.list,sv);return false}
+  function opRemove(r,lvl){if(lvl<2&&(r.uniq>2||r.pix.length>area*.004||r.sz>W*.12||r.fill<.4||r.ctr<40||r.varr>12||r.vD>20))return false;
+    const sv=snap(r.mk.list);if(inpaint(r.mk,lvl<2?12:40)&&vis(r.mk.list)>12)return true;undo(r.mk.list,sv);return false}
+  function opShape(r,lvl,mode){if(lvl<2&&(r.uniq>2||r.pix.length>area*.004||r.sz>W*.12||r.fill<.45||r.ctr<40||r.varr>12||r.vD>20))return false;
+    const m0=maskOf(r,0),s=1.35,ext=Math.ceil(r.sz*s/2)+3,box=[];
+    for(let y=Math.max(0,Math.round(r.cy-ext));y<=Math.min(H-1,Math.round(r.cy+ext));y++)for(let x=Math.max(0,Math.round(r.cx-ext));x<=Math.min(W-1,Math.round(r.cx+ext));x++)box.push(y*W+x);
+    const all=[...new Set(r.mk.list.concat(box))],sv=snap(all);if(!inpaint(r.mk,lvl<2?12:40)){undo(all,sv);return false}
+    const sv2=snap(all),set=new Set(m0.list),n=m0.list.length;
+    const mirror=()=>{for(const i of m0.list){const x=i%W,y=i/W|0,t=y*W+Math.round(r.x0+r.x1-x);setPx(t,D[i*4],D[i*4+1],D[i*4+2])}r.hitR=r.sz/2};
+    const scale=()=>{for(const t of box){const x=t%W,y=t/W|0,si=Math.round(r.cy+(y-r.cy)/s)*W+Math.round(r.cx+(x-r.cx)/s);if(set.has(si))setPx(t,D[si*4],D[si*4+1],D[si*4+2])}r.hitR=r.sz*s/2};
+    const order=mode==='m'?[mirror]:mode==='s'?[scale]:Math.random()<.5?[mirror,scale]:[scale,mirror];
+    for(const f of order){f();if(nchg(all)>=n*(lvl<2?.3:.1))return true;undo(all,sv2)}
+    undo(all,sv);return false}
+  const add=(r,type)=>{r.used=true;diffs.push({x:r.cx,y:r.cy,r:Math.max(W*.035,(r.hitR||r.sz/2)+10),type})};
+  const apply=(r,t,lvl)=>t==='c'?opColor(r,lvl):t==='r'?opRemove(r,lvl):opShape(r,lvl,t);
+  if(Array.isArray(seeds))for(const [t,x,y,tol] of shuffle(seeds.slice())){if(diffs.length>=5)break;const r=mkCand(Math.round(x/1000*W),Math.round(y/1000*H),20,area*.03,tol||30,t!=='c');if(r&&far(r)&&apply(r,t,2))add(r,t)}
+  if(only||Array.isArray(seeds)){bx.putImageData(out,0,0);return diffs}
+  const cands=[];const step=Math.max(6,Math.round(W/90)),mg=Math.round(W*.04);
+  const pts=[];for(let y=mg;y<H-mg;y+=step)for(let x=mg;x<W-mg;x+=step)pts.push([x,y]);shuffle(pts);
+  const small=area*(seeds==='enum'?.0006:Math.max(.0009,.0024-L*.00015)),big=area*(seeds==='enum'?.012:.006),t0=Date.now();
+  for(const [x,y] of pts){if(cands.length>=(seeds==='enum'?400:120)||Date.now()-t0>(seeds==='enum'?4000:900))break;if(tried[y*W+x])continue;const r=mkCand(x,y,small,big);if(!r)continue;
+    if(r.x0<mg||r.y0<mg||r.x1>W-mg||r.y1>H-mg||r.fill<.35||(r.x1-r.x0)>3*(r.y1-r.y0+1)||(r.y1-r.y0)>3*(r.x1-r.x0+1)||r.ctr<(seeds==='enum'?18:25)||r.varr>30)continue;cands.push(r)}
+  if(seeds==='enum')return cands;
+  for(const type of shuffle(['r','r','c','c','s']))for(const r of shuffle(cands.slice())){if(r.used||!far(r))continue;if(apply(r,type,0)){add(r,type);break}}
+  for(const lvl of [0,1])for(const r of shuffle(cands.slice())){if(diffs.length>=5)break;if(r.used||!far(r))continue;if(opColor(r,lvl))add(r,'c')}
+  bx.putImageData(out,0,0);return diffs}
 function spShow(){const sc=gameBar(SES.solo?`<span class="lvchip">Lv.${SP.L}</span>`:'');const w=el('div','spw'),p=PAINT[SP.pi],title=isEN()?`${p[1]} · ${p[3]}`:`${p[0]} · ${p[2]}`;
   if(SP.phase==='load'){w.innerHTML=`<div class="card center sppad"><div class="spin"></div><p>${esc(t('spLoading'))}</p></div>`;sc.appendChild(w);return show('play')}
   if(SP.phase==='fail'){w.innerHTML=`<div class="card center sppad"><p>${esc(t('spFail'))}</p><div class="row center"><button class="btn pri" id="spR">${esc(t('spRetry'))}</button></div></div>`;sc.appendChild(w);show('play');$('#spR').onclick=()=>{MODES.spot.init();spShow()};return}
@@ -1520,9 +1680,144 @@ function spTap(e,cv){const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.w
   else{SP.wrong++;SP.miss=[x,y];buzz();setTimeout(()=>{if(SP&&SP.miss){SP.miss=null;if(onPlay('spot')&&SP.phase==='find')spShow()}},700)}
   spShow()}
 
+/* ================= 칠교 놀이 ================= */
+const TGF=[{"ko":"정사각형","en":"Square","rows":["####","####","####","####"],"sol":[["L","0,0,B 0,0,L 0,1,B 0,1,L 0,1,R 0,1,T 0,2,B 0,2,L 0,2,R 0,2,T 0,3,L 0,3,T 1,1,B 1,1,L 1,2,L 1,2,T"],["L","0,0,R 0,0,T 1,0,B 1,0,L 1,0,R 1,0,T 1,1,R 1,1,T 2,0,B 2,0,L 2,0,R 2,0,T 2,1,L 2,1,T 3,0,L 3,0,T"],["S","0,3,B 0,3,R 1,3,B 1,3,L"],["Q","1,2,B 1,2,R 1,3,R 1,3,T 2,2,B 2,2,L 2,3,L 2,3,T"],["S","2,1,B 2,1,R 2,2,R 2,2,T"],["M","2,3,B 2,3,R 3,2,B 3,2,R 3,3,B 3,3,L 3,3,R 3,3,T"],["P","3,0,B 3,0,R 3,1,B 3,1,L 3,1,R 3,1,T 3,2,L 3,2,T"]]},{"ko":"큰 삼각형","en":"Big triangle","rows":["...dc...","..d##c..",".d####c.","d######c"],"sol":[["L","0,3,B 0,3,R 1,2,B 1,2,R 1,3,B 1,3,L 1,3,R 1,3,T 2,2,B 2,2,L 2,3,B 2,3,L 2,3,R 2,3,T 3,3,B 3,3,L"],["L","2,1,B 2,1,R 2,2,R 2,2,T 3,0,B 3,0,R 3,1,B 3,1,L 3,1,R 3,1,T 3,2,B 3,2,L 3,2,R 3,2,T 3,3,R 3,3,T"],["S","4,0,B 4,0,L 4,1,L 4,1,T"],["Q","4,1,B 4,1,R 4,2,R 4,2,T 5,1,B 5,1,L 5,2,L 5,2,T"],["M","4,2,B 4,2,L 4,3,B 4,3,L 4,3,R 4,3,T 5,3,B 5,3,L"],["S","5,2,B 5,2,R 6,2,B 6,2,L"],["P","5,3,R 5,3,T 6,3,B 6,3,L 6,3,R 6,3,T 7,3,B 7,3,L"]]},{"ko":"집","en":"House","rows":["..dc.","d####","#####","#####","....b"],"sol":[["Q","0,1,B 0,1,R 0,2,R 0,2,T 1,1,B 1,1,L 1,2,L 1,2,T"],["M","0,2,B 0,2,L 0,3,B 0,3,L 0,3,R 0,3,T 1,3,B 1,3,L"],["L","1,1,R 1,1,T 2,1,B 2,1,L 2,1,R 2,1,T 2,2,R 2,2,T 3,1,B 3,1,L 3,1,R 3,1,T 3,2,L 3,2,T 4,1,L 4,1,T"],["S","1,2,B 1,2,R 2,2,B 2,2,L"],["P","1,3,R 1,3,T 2,3,B 2,3,L 2,3,R 2,3,T 3,3,B 3,3,L"],["S","2,0,B 2,0,R 3,0,B 3,0,L"],["L","3,2,B 3,2,R 3,3,R 3,3,T 4,1,B 4,1,R 4,2,B 4,2,L 4,2,R 4,2,T 4,3,B 4,3,L 4,3,R 4,3,T 4,4,R 4,4,T"]]},{"ko":"화살표","en":"Arrow","rows":["##cc.","####c","####a","##aa.","ba..."],"sol":[["L","0,0,B 0,0,L 0,1,B 0,1,L 0,1,R 0,1,T 0,2,B 0,2,L 0,2,R 0,2,T 0,3,L 0,3,T 1,1,B 1,1,L 1,2,L 1,2,T"],["M","0,0,R 0,0,T 1,0,B 1,0,L 1,0,R 1,0,T 1,1,R 1,1,T"],["S","0,3,B 0,3,R 0,4,R 0,4,T"],["Q","1,2,B 1,2,R 1,3,R 1,3,T 2,2,B 2,2,L 2,3,L 2,3,T"],["S","1,3,B 1,3,L 1,4,L 1,4,T"],["P","2,0,B 2,0,L 2,1,B 2,1,L 2,1,R 2,1,T 2,2,R 2,2,T"],["L","3,0,B 3,0,L 3,1,B 3,1,L 3,1,R 3,1,T 3,2,B 3,2,L 3,2,R 3,2,T 3,3,L 3,3,T 4,1,B 4,1,L 4,2,L 4,2,T"]]},{"ko":"배","en":"Boat","rows":["b####a","d####.","b####.",".b#c.."],"sol":[["L","0,0,R 0,0,T 1,0,B 1,0,L 1,0,R 1,0,T 1,1,R 1,1,T 2,0,B 2,0,L 2,0,R 2,0,T 2,1,L 2,1,T 3,0,L 3,0,T"],["Q","0,1,B 0,1,R 0,2,R 0,2,T 1,1,B 1,1,L 1,2,L 1,2,T"],["L","1,2,B 1,2,R 2,1,B 2,1,R 2,2,B 2,2,L 2,2,R 2,2,T 3,1,B 3,1,L 3,2,B 3,2,L 3,2,R 3,2,T 4,2,B 4,2,L"],["S","1,3,R 1,3,T 2,3,L 2,3,T"],["S","2,3,B 2,3,R 3,3,B 3,3,L"],["P","3,0,B 3,0,R 4,0,B 4,0,L 4,0,R 4,0,T 5,0,L 5,0,T"],["M","3,1,R 3,1,T 4,1,B 4,1,L 4,1,R 4,1,T 4,2,R 4,2,T"]]},{"ko":"고양이 얼굴","en":"Cat face","rows":[".dcdc","d####","#####","####a"],"sol":[["L","0,1,B 0,1,R 0,2,R 0,2,T 1,0,B 1,0,R 1,1,B 1,1,L 1,1,R 1,1,T 1,2,B 1,2,L 1,2,R 1,2,T 1,3,R 1,3,T"],["M","0,2,B 0,2,L 0,3,B 0,3,L 0,3,R 0,3,T 1,3,B 1,3,L"],["L","2,0,B 2,0,L 2,1,B 2,1,L 2,1,R 2,1,T 2,2,B 2,2,L 2,2,R 2,2,T 2,3,L 2,3,T 3,1,B 3,1,L 3,2,L 3,2,T"],["S","2,3,B 2,3,R 3,3,B 3,3,L"],["S","3,0,B 3,0,R 3,1,R 3,1,T"],["Q","3,2,B 3,2,R 3,3,R 3,3,T 4,2,B 4,2,L 4,3,L 4,3,T"],["P","4,0,B 4,0,L 4,1,B 4,1,L 4,1,R 4,1,T 4,2,R 4,2,T"]]},{"ko":"거북이","en":"Turtle","rows":["...dc.","d####c","b#####",".b####"],"sol":[["S","0,1,B 0,1,R 1,1,B 1,1,L"],["L","0,2,R 0,2,T 1,2,B 1,2,L 1,2,R 1,2,T 1,3,R 1,3,T 2,2,B 2,2,L 2,2,R 2,2,T 2,3,L 2,3,T 3,2,L 3,2,T"],["P","1,1,R 1,1,T 2,1,B 2,1,L 2,1,R 2,1,T 3,1,B 3,1,L"],["L","2,3,B 2,3,R 3,2,B 3,2,R 3,3,B 3,3,L 3,3,R 3,3,T 4,2,B 4,2,L 4,3,B 4,3,L 4,3,R 4,3,T 5,3,B 5,3,L"],["Q","3,0,B 3,0,R 3,1,R 3,1,T 4,0,B 4,0,L 4,1,L 4,1,T"],["S","4,1,B 4,1,R 5,1,B 5,1,L"],["M","4,2,R 4,2,T 5,2,B 5,2,L 5,2,R 5,2,T 5,3,R 5,3,T"]]},{"ko":"물고기","en":"Fish","rows":["c....","###c.","####c","####a",".d#a.",".ba.."],"sol":[["L","0,0,B 0,0,L 0,1,B 0,1,L 0,1,R 0,1,T 0,2,B 0,2,L 0,2,R 0,2,T 0,3,L 0,3,T 1,1,B 1,1,L 1,2,L 1,2,T"],["L","0,3,B 0,3,R 1,2,B 1,2,R 1,3,B 1,3,L 1,3,R 1,3,T 2,2,B 2,2,L 2,3,B 2,3,L 2,3,R 2,3,T 3,3,B 3,3,L"],["M","1,1,R 1,1,T 2,1,B 2,1,L 2,1,R 2,1,T 2,2,R 2,2,T"],["Q","1,4,B 1,4,R 1,5,R 1,5,T 2,4,B 2,4,L 2,5,L 2,5,T"],["S","2,4,R 2,4,T 3,4,L 3,4,T"],["P","3,1,B 3,1,L 3,2,B 3,2,L 3,2,R 3,2,T 3,3,R 3,3,T"],["S","4,2,B 4,2,L 4,3,L 4,3,T"]]},{"ko":"컵","en":"Cup","rows":["##cd","####","####","####","..ba"],"sol":[["L","0,0,B 0,0,L 0,1,B 0,1,L 0,1,R 0,1,T 0,2,B 0,2,L 0,2,R 0,2,T 0,3,L 0,3,T 1,1,B 1,1,L 1,2,L 1,2,T"],["M","0,0,R 0,0,T 1,0,B 1,0,L 1,0,R 1,0,T 1,1,R 1,1,T"],["P","0,3,B 0,3,R 1,3,B 1,3,L 1,3,R 1,3,T 2,3,L 2,3,T"],["S","1,2,B 1,2,R 2,2,B 2,2,L"],["S","2,0,B 2,0,L 2,1,L 2,1,T"],["L","2,1,B 2,1,R 2,2,R 2,2,T 3,0,B 3,0,R 3,1,B 3,1,L 3,1,R 3,1,T 3,2,B 3,2,L 3,2,R 3,2,T 3,3,R 3,3,T"],["Q","2,3,B 2,3,R 2,4,R 2,4,T 3,3,B 3,3,L 3,4,L 3,4,T"]]},{"ko":"방패","en":"Shield","rows":["..dc","####","####","b###",".b##","..ba"],"sol":[["M","0,1,B 0,1,L 0,1,R 0,1,T 0,2,L 0,2,T 1,1,L 1,1,T"],["L","0,2,B 0,2,R 0,3,R 0,3,T 1,1,B 1,1,R 1,2,B 1,2,L 1,2,R 1,2,T 1,3,B 1,3,L 1,3,R 1,3,T 1,4,R 1,4,T"],["S","2,0,B 2,0,R 2,1,R 2,1,T"],["L","2,1,B 2,1,L 2,2,B 2,2,L 2,2,R 2,2,T 2,3,B 2,3,L 2,3,R 2,3,T 2,4,L 2,4,T 3,2,B 3,2,L 3,3,L 3,3,T"],["Q","2,4,B 2,4,R 2,5,R 2,5,T 3,4,B 3,4,L 3,5,L 3,5,T"],["P","3,0,B 3,0,L 3,1,B 3,1,L 3,1,R 3,1,T 3,2,R 3,2,T"],["S","3,3,B 3,3,R 3,4,R 3,4,T"]]},{"ko":"새","en":"Bird","rows":["..dc.",".d##c",".####","d####","##a..","aa..."],"sol":[["P","0,3,B 0,3,R 0,4,B 0,4,L 0,4,R 0,4,T 0,5,L 0,5,T"],["L","1,1,B 1,1,R 1,2,R 1,2,T 2,0,B 2,0,R 2,1,B 2,1,L 2,1,R 2,1,T 2,2,B 2,2,L 2,2,R 2,2,T 2,3,R 2,3,T"],["L","1,2,B 1,2,L 1,3,B 1,3,L 1,3,R 1,3,T 1,4,B 1,4,L 1,4,R 1,4,T 1,5,L 1,5,T 2,3,B 2,3,L 2,4,L 2,4,T"],["S","3,0,B 3,0,L 3,1,L 3,1,T"],["Q","3,1,B 3,1,R 3,2,R 3,2,T 4,1,B 4,1,L 4,2,L 4,2,T"],["M","3,2,B 3,2,L 3,3,B 3,3,L 3,3,R 3,3,T 4,3,B 4,3,L"],["S","4,2,B 4,2,R 4,3,R 4,3,T"]]},{"ko":"보트","en":"Rowboat","rows":["....d.","b####d","d#####","b####a"],"sol":[["L","0,1,R 0,1,T 1,1,B 1,1,L 1,1,R 1,1,T 1,2,R 1,2,T 2,1,B 2,1,L 2,1,R 2,1,T 2,2,L 2,2,T 3,1,L 3,1,T"],["S","0,2,B 0,2,R 0,3,R 0,3,T"],["M","1,2,B 1,2,L 1,3,B 1,3,L 1,3,R 1,3,T 2,3,B 2,3,L"],["Q","2,2,B 2,2,R 2,3,R 2,3,T 3,2,B 3,2,L 3,3,L 3,3,T"],["L","3,1,B 3,1,R 3,2,R 3,2,T 4,0,B 4,0,R 4,1,B 4,1,L 4,1,R 4,1,T 4,2,B 4,2,L 4,2,R 4,2,T 4,3,R 4,3,T"],["S","3,3,B 3,3,R 4,3,B 4,3,L"],["P","5,1,B 5,1,R 5,2,B 5,2,L 5,2,R 5,2,T 5,3,L 5,3,T"]]},{"ko":"주전자","en":"Teapot","rows":["..dc.",".d##c","####c","####a","b##a."],"sol":[["M","0,2,B 0,2,L 0,2,R 0,2,T 0,3,L 0,3,T 1,2,L 1,2,T"],["L","0,3,B 0,3,R 1,2,B 1,2,R 1,3,B 1,3,L 1,3,R 1,3,T 2,2,B 2,2,L 2,3,B 2,3,L 2,3,R 2,3,T 3,3,B 3,3,L"],["S","0,4,R 0,4,T 1,4,L 1,4,T"],["L","1,1,B 1,1,R 2,0,B 2,0,R 2,1,B 2,1,L 2,1,R 2,1,T 3,0,B 3,0,L 3,1,B 3,1,L 3,1,R 3,1,T 4,1,B 4,1,L"],["P","1,4,B 1,4,R 2,4,B 2,4,L 2,4,R 2,4,T 3,4,L 3,4,T"],["S","2,2,R 2,2,T 3,2,L 3,2,T"],["Q","3,2,B 3,2,R 3,3,R 3,3,T 4,2,B 4,2,L 4,3,L 4,3,T"]]},{"ko":"강아지","en":"Puppy","rows":["dc...","####c","#####",".d###",".b#c."],"sol":[["S","0,0,B 0,0,R 1,0,B 1,0,L"],["M","0,1,B 0,1,L 0,2,B 0,2,L 0,2,R 0,2,T 1,2,B 1,2,L"],["L","0,1,R 0,1,T 1,1,B 1,1,L 1,1,R 1,1,T 1,2,R 1,2,T 2,1,B 2,1,L 2,1,R 2,1,T 2,2,L 2,2,T 3,1,L 3,1,T"],["L","1,3,B 1,3,R 2,2,B 2,2,R 2,3,B 2,3,L 2,3,R 2,3,T 3,2,B 3,2,L 3,3,B 3,3,L 3,3,R 3,3,T 4,3,B 4,3,L"],["P","1,4,R 1,4,T 2,4,B 2,4,L 2,4,R 2,4,T 3,4,B 3,4,L"],["Q","3,1,B 3,1,R 3,2,R 3,2,T 4,1,B 4,1,L 4,2,L 4,2,T"],["S","4,2,B 4,2,R 4,3,R 4,3,T"]]},{"ko":"구름","en":"Cloud","rows":["..d##c",".d###a","b#####","..d###"],"sol":[["S","0,2,R 0,2,T 1,2,L 1,2,T"],["L","1,1,B 1,1,R 2,0,B 2,0,R 2,1,B 2,1,L 2,1,R 2,1,T 3,0,B 3,0,L 3,1,B 3,1,L 3,1,R 3,1,T 4,1,B 4,1,L"],["P","1,2,B 1,2,R 2,2,B 2,2,L 2,2,R 2,2,T 3,2,L 3,2,T"],["L","2,3,B 2,3,R 3,2,B 3,2,R 3,3,B 3,3,L 3,3,R 3,3,T 4,2,B 4,2,L 4,3,B 4,3,L 4,3,R 4,3,T 5,3,B 5,3,L"],["S","3,0,R 3,0,T 4,0,L 4,0,T"],["Q","4,0,B 4,0,R 4,1,R 4,1,T 5,0,B 5,0,L 5,1,L 5,1,T"],["M","4,2,R 4,2,T 5,2,B 5,2,L 5,2,R 5,2,T 5,3,R 5,3,T"]]},{"ko":"로봇","en":"Robot","rows":[".c...",".###.",".###c",".####","d###b",".ba.."],"sol":[["L","0,4,B 0,4,R 1,3,B 1,3,R 1,4,B 1,4,L 1,4,R 1,4,T 2,3,B 2,3,L 2,4,B 2,4,L 2,4,R 2,4,T 3,4,B 3,4,L"],["L","1,0,B 1,0,L 1,1,B 1,1,L 1,1,R 1,1,T 1,2,B 1,2,L 1,2,R 1,2,T 1,3,L 1,3,T 2,1,B 2,1,L 2,2,L 2,2,T"],["S","1,5,R 1,5,T 2,5,L 2,5,T"],["M","2,1,R 2,1,T 3,1,B 3,1,L 3,1,R 3,1,T 3,2,R 3,2,T"],["Q","2,2,B 2,2,R 2,3,R 2,3,T 3,2,B 3,2,L 3,3,L 3,3,T"],["S","3,3,B 3,3,R 3,4,R 3,4,T"],["P","4,2,B 4,2,L 4,3,B 4,3,L 4,3,R 4,3,T 4,4,R 4,4,T"]]}];
+const TG_ORDER=[0,1,2,5,8,4,6,3,9,11,7,10,12,13,14,15];
+const TG_BASE={L:[[0,0],[4,0],[2,2]],M:[[0,0],[2,0],[0,2]],S:[[0,0],[2,0],[1,1]],Q:[[1,0],[2,1],[1,2],[0,1]],P:[[0,0],[2,0],[3,1],[1,1]]};
+const TG_COL=['#ff6b6b','#4dabf7','#ffd43b','#69db7c','#b197fc','#ff922b','#f783ac'];
+const TG_QC={T:[.5,.17],R:[.83,.5],B:[.5,.83],L:[.17,.5]};
+const TG_TRI=(x,y,q)=>({T:[[x,y],[x+1,y],[x+.5,y+.5]],R:[[x+1,y],[x+1,y+1],[x+.5,y+.5]],B:[[x,y+1],[x+1,y+1],[x+.5,y+.5]],L:[[x,y],[x,y+1],[x+.5,y+.5]]}[q]);
+let TG=null;
+function tgPoly(p){return TG_BASE[p.t].map(([a,b])=>{if(p.f)a=-a;for(let k=0;k<p.r;k++)[a,b]=[-b,a];return [a+p.x,b+p.y]})}
+function tgCent(poly){let x=0,y=0;for(const [a,b] of poly){x+=a;y+=b}return [x/poly.length,y/poly.length]}
+function tgIn(pt,poly){let c=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const [xi,yi]=poly[i],[xj,yj]=poly[j];if(((yi>pt[1])!==(yj>pt[1]))&&(pt[0]<(xj-xi)*(pt[1]-yi)/(yj-yi)+xi))c=!c}return c}
+function tgFoot(poly){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),out=new Set();
+  for(let y=Math.floor(Math.min(...ys));y<Math.ceil(Math.max(...ys));y++)for(let x=Math.floor(Math.min(...xs));x<Math.ceil(Math.max(...xs));x++)for(const q of 'TRBL'){const c=TG_QC[q];if(tgIn([x+c[0],y+c[1]],poly))out.add(x+','+y+','+q)}return out}
+MODES.tangram={lobby(g,wrap,redo){if(!isSolo())lvPills(g,wrap,redo)},
+ init(keep){const L=SES.solo?SES.lv:(S.lv.tangram||5);let fi;if(keep!==undefined)fi=keep;else if(SES.solo)fi=TG_ORDER[(L-1)%TG_ORDER.length];else{const pool=L<=2?TG_ORDER.slice(0,6):L<=5?TG_ORDER.slice(3,12):TG_ORDER.slice(6);fi=rnd(pool)}
+   const F=TGF[fi],mirror=SES.solo&&L>TG_ORDER.length&&L%2===0;const W=Math.max(...F.rows.map(r=>r.length)),H=F.rows.length;
+   const mx=(x,q)=>mirror?[W-1-x,{L:'R',R:'L'}[q]||q]:[x,q];
+   const tx=Math.round((12-W)/2),ty=Math.max(1,Math.round((9-H)/2));const tgt=new Set();
+   F.rows.forEach((r,y)=>[...r].forEach((ch,x)=>{for(const q of {'#':'TRBL','.':'','a':'TL','b':'TR','c':'LB','d':'RB'}[ch]){const [X,Q]=mx(x,q);tgt.add((X+tx)+','+(y+ty)+','+Q)}}));
+   const sol=F.sol.map(([t,qs])=>[t,qs.split(' ').map(s=>{const [x,y,q]=s.split(',');const [X,Q]=mx(+x,q);return (X+tx)+','+(+y+ty)+','+Q})]);
+   const hint=L<=(SES.solo?5:2)?7:L<=(SES.solo?10:5)?3:0;
+   const slots=[[1,10.5],[6.5,10.5],[.5,14],[4,14],[7.5,13.5],[1.5,16.3],[6.5,16.3]];const types=['L','L','M','S','S','Q','P'];
+   const pcs=types.map((t,i)=>({t,x:slots[i][0],y:slots[i][1],r:(i*3)%4,f:false,c:TG_COL[i],i}));
+   for(const p of pcs){const v=tgPoly(p),xs=v.map(q=>q[0]),ys=v.map(q=>q[1]);if(Math.min(...xs)<.2)p.x+=Math.ceil(.2-Math.min(...xs));if(Math.max(...xs)>11.8)p.x-=Math.ceil(Math.max(...xs)-11.8);if(Math.max(...ys)>17.8)p.y-=Math.ceil(Math.max(...ys)-17.8);if(Math.min(...ys)<9.6)p.y+=Math.ceil(9.6-Math.min(...ys))}
+   TG={L,fi,F,tgt,sol,hint,hintIdx:shuffle([0,1,2,3,4,5,6]).slice(0,hint),pcs,done:false,moves:0,mirror}},
+ show(){tgShow()}};
+function tgSolved(){const all=new Set();let n=0;for(const p of TG.pcs){if(p.r%1)return false;const f=tgFoot(tgPoly(p));n+=f.size;for(const k of f)all.add(k)}
+  if(n!==all.size||all.size!==TG.tgt.size)return false;for(const k of all)if(!TG.tgt.has(k))return false;return true}
+function tgPaint(){const sv=$('#tgsv');if(!sv)return;let s='';
+  for(const k of TG.tgt){const [x,y,q]=k.split(',');s+=`<polygon points="${TG_TRI(+x,+y,q).map(p=>p.join(',')).join(' ')}" fill="#3b3456" stroke="#3b3456" stroke-width=".03"/>`}
+  TG.hintIdx.forEach(i=>{const [t,qs]=TG.sol[i];for(const k of qs){const [x,y,q]=k.split(',');s+=`<polygon points="${TG_TRI(+x,+y,q).map(p=>p.join(',')).join(' ')}" fill="${['#5d5480','#6e6593','#4d456d','#7a71a0','#575079','#665d8c','#524a74'][i]}" stroke="#2f2947" stroke-width=".02"/>`}});
+  for(const p of TG.pcs){const poly=tgPoly(p);s+=`<polygon class="tgp" data-i="${p.i}" points="${poly.map(v=>v.join(',')).join(' ')}" fill="${p.c}" stroke="#fff" stroke-width=".07" stroke-linejoin="round"/>`}
+  sv.innerHTML=s}
+function tgShow(){const sc=gameBar(SES.solo?`<span class="lvchip">Lv.${TG.L}</span>`:'');const w=el('div','tgw');const F=TG.F;
+  w.innerHTML=`<div class="sdinfo"><span>🧩 ${esc(isEN()?F.en:F.ko)}</span><span>${esc(t('tgGoal'))}</span></div><div class="tgbox"><svg id="tgsv" viewBox="0 0 12 18" class="tgsv"></svg></div>`;
+  const tools=el('div','row center');const mk=(lab,fn)=>{const b=el('button','btn sm',esc(lab));b.onclick=fn;tools.appendChild(b)};
+  mk(t('tgReset'),()=>{pop();MODES.tangram.init(TG.fi);tgShow()});
+  if(!SES.solo){mk(t('tgShow'),()=>{tgReveal();pop();tgPaint()});mk(t('sdNew'),()=>{pop();MODES.tangram.init();tgShow()})}
+  w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('tgHelp'))));sc.appendChild(w);show('play');tgPaint();
+  const sv=$('#tgsv');let drag=null;
+  const pt=e=>{const m=sv.getScreenCTM().inverse();return [e.clientX*m.a+e.clientY*m.c+m.e,e.clientX*m.b+e.clientY*m.d+m.f]};
+  sv.addEventListener('pointerdown',e=>{const el2=e.target.closest('.tgp');if(!el2||TG.done)return;e.preventDefault();const p=TG.pcs[+el2.dataset.i];TG.pcs.splice(TG.pcs.indexOf(p),1);TG.pcs.push(p);const [x,y]=pt(e);drag={p,sx:x,sy:y,ox:p.x,oy:p.y,moved:false};try{sv.setPointerCapture(e.pointerId)}catch(x){}tgPaint()});
+  sv.addEventListener('pointermove',e=>{if(!drag)return;const [x,y]=pt(e);const dx=x-drag.sx,dy=y-drag.sy;if(Math.hypot(dx,dy)>.15)drag.moved=true;drag.p.x=drag.ox+dx;drag.p.y=drag.oy+dy;tgPaint()});
+  const up=()=>{if(!drag)return;const p=drag.p;if(!drag.moved){const c0=tgCent(tgPoly(p));if(p.t==='P'){const st=((p.r%2)+(p.f?2:0)+1)%4;p.r=st%2;p.f=st>=2}else p.r=(p.r+1)%4;const c1=tgCent(tgPoly(p));p.x+=c0[0]-c1[0];p.y+=c0[1]-c1[1];beep(520,.05,'triangle',.18)}
+    p.x=Math.round(p.x);p.y=Math.round(p.y);drag=null;TG.moves++;tgPaint();
+    if(tgSolved()){TG.done=true;tgPaint();if(SES.solo)return soloEnd('win');fanfare();confetti(140);toast(t('tgWin'))}};
+  sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up)}
+function tgReveal(){const used=new Set();TG.sol.forEach(([t,qs])=>{const want=new Set(qs);const p=TG.pcs.find(p=>p.t===t&&!used.has(p));if(!p)return;used.add(p);
+  const xs=qs.map(k=>+k.split(',')[0]),ys=qs.map(k=>+k.split(',')[1]);
+  outer:for(const f of (t==='P'?[false,true]:[false]))for(let r=0;r<4;r++)for(let y=Math.min(...ys)-4;y<=Math.max(...ys)+4;y++)for(let x=Math.min(...xs)-4;x<=Math.max(...xs)+4;x++){const c={...p,r,f,x,y};const fp=tgFoot(tgPoly(c));if(fp.size===want.size&&[...fp].every(k=>want.has(k))){Object.assign(p,{r,f,x,y});break outer}}});TG.done=true}
+
+/* ================= 물 정렬 (시험관 색 맞추기) ================= */
+const WS_COL=['#ff4d6d','#4b7bff','#ffd23f','#3ccf6e','#b06bff','#ff9f40','#3fd0e0','#ff7ad9','#8d6e63','#1f9e89','#9aa0aa','#c6ff3d'];
+let WS=null;
+function wsSolvable(tubes,cap,limit){const seen=new Set();let nodes=0;const key=ts=>ts.map(t=>t.join('')).sort().join('|');
+  const done=ts=>ts.every(t=>!t.length||(t.length===cap&&t.every(c=>c===t[0])));
+  function dfs(ts){if(done(ts))return true;if(++nodes>limit)return null;const k=key(ts);if(seen.has(k))return false;seen.add(k);
+    for(let i=0;i<ts.length;i++){const a=ts[i];if(!a.length)continue;const c=a[a.length-1];let run=1;while(run<a.length&&a[a.length-1-run]===c)run++;if(run===cap)continue;
+      for(let j=0;j<ts.length;j++){if(i===j)continue;const b=ts[j];if(b.length>=cap||(b.length&&b[b.length-1]!==c)||(!b.length&&run===a.length))continue;
+        const m=Math.min(run,cap-b.length),nt=ts.map(t=>t.slice());for(let k=0;k<m;k++)nt[j].push(nt[i].pop());const r=dfs(nt);if(r)return true;if(r===null)return null}}return false}
+  return dfs(tubes)}
+function wsMake(L){const n=Math.min(12,[0,3,4,4,5,5,6,7,8,9,10,11][Math.min(L,11)]||12),cap=4;
+  for(let tries=0;tries<60;tries++){const units=shuffle([...Array(n*cap)].map((_,i)=>i%n));const tubes=[];for(let i=0;i<n;i++)tubes.push(units.slice(i*cap,i*cap+cap));tubes.push([],[]);
+    if(tubes.some(t=>t.length===cap&&t.every(c=>c===t[0])))continue;const r=wsSolvable(tubes.map(t=>t.slice()),cap,n<=8?60000:20000);if(r===false)continue;return {tubes,cap,n}}
+  const tubes=[];for(let i=0;i<n;i++)tubes.push([...Array(cap)].map((_,k)=>(i+k)%n));tubes.push([],[]);return {tubes,cap,n}}
+MODES.water={lobby(g,wrap,redo){if(!isSolo())lvPills(g,wrap,redo,true)},
+ init(){const L=SES.solo?SES.lv:(S.lv.water||3);const m=wsMake(L);WS={L,...m,start:m.tubes.map(t=>t.slice()),sel:-1,hist:[],moves:0,extra:1,done:false}},show(){wsShow()}};
+function wsDone(){return WS.tubes.every(t=>!t.length||(t.length===WS.cap&&t.every(c=>c===t[0])))}
+function wsShow(){const sc=gameBar(`<span class="lvchip">Lv.${WS.L}</span>`);const w=el('div','wsw');
+  w.appendChild(el('div','sdinfo',`<span>🧪 ${esc(t('wsMoves',WS.moves))}</span><span>${esc(t('wsGoal'))}</span>`));
+  const box=el('div','wsbox');WS.tubes.forEach((tb,i)=>{const full=tb.length===WS.cap&&tb.every(c=>c===tb[0]);const b=el('button','wst'+(i===WS.sel?' sel':'')+(full?' full':''));
+    b.innerHTML=[...Array(WS.cap)].map((_,k)=>{const c=tb[WS.cap-1-k];return `<i style="${c!==undefined?'background:'+WS_COL[c]:''}"></i>`}).join('');b.onclick=()=>wsTap(i);box.appendChild(b)});
+  w.appendChild(box);
+  const tools=el('div','row center');const mk=(lab,fn,dis)=>{const b=el('button','btn sm',esc(lab));b.disabled=!!dis;b.onclick=fn;tools.appendChild(b)};
+  mk(t('undo'),()=>{const h=WS.hist.pop();if(!h)return;WS.tubes=h;WS.moves=Math.max(0,WS.moves-1);WS.sel=-1;pop();wsShow()},!WS.hist.length||WS.done);
+  mk(t('tgReset'),()=>{WS.tubes=WS.start.map(t=>t.slice());WS.hist=[];WS.moves=0;WS.sel=-1;WS.extra=1;pop();wsShow()},WS.done);
+  mk(t('wsExtra',WS.extra),()=>{if(!WS.extra)return;WS.extra--;WS.hist.push(WS.tubes.map(t=>t.slice()));WS.tubes.push([]);pop();wsShow()},!WS.extra||WS.done);
+  if(!SES.solo)mk(t('sdNew'),()=>{pop();MODES.water.init();wsShow()});
+  w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('wsHelp'))));sc.appendChild(w);show('play')}
+function wsTap(i){if(WS.done)return;const T=WS.tubes;
+  if(WS.sel<0){if(!T[i].length)return;WS.sel=i;pop();return wsShow()}
+  if(WS.sel===i){WS.sel=-1;return wsShow()}
+  const a=T[WS.sel],b=T[i],c=a[a.length-1];
+  if(b.length>=WS.cap||(b.length&&b[b.length-1]!==c)){if(T[i].length){WS.sel=i;pop();return wsShow()}WS.sel=-1;buzz();return wsShow()}
+  WS.hist.push(T.map(t=>t.slice()));let n=0;while(a.length&&a[a.length-1]===c&&b.length<WS.cap){b.push(a.pop());n++}WS.moves++;WS.sel=-1;beep(300+b.length*80,.12,'sine',.25);
+  if(wsDone()){WS.done=true;wsShow();if(SES.solo)return soloEnd('win');fanfare();confetti(140);return toast(t('wsWin'))}
+  wsShow()}
+
+/* ================= 색깔 선 잇기 ================= */
+const FL_COL=['#ff4d6d','#4b7bff','#ffd23f','#3ccf6e','#b06bff','#ff9f40','#3fd0e0','#ff7ad9','#8d6e63','#ffffff','#1f9e89','#c6ff3d'];
+let FL=null;
+function flMake(L){const N=Math.min(9,[0,5,5,6,6,7,7,8,8,9][Math.min(L,9)]||9);
+  const path=[];for(let y=0;y<N;y++)for(let x=0;x<N;x++)path.push(y*N+(y%2?N-1-x:x));
+  const adj=(a,b)=>Math.abs(a%N-b%N)+Math.abs(((a/N)|0)-((b/N)|0))===1;
+  for(let it=0;it<N*N*60;it++){const end=Math.random()<.5;if(end)path.reverse();const e=path[0],ex=e%N,ey=(e/N)|0;
+    const nb=[[1,0],[-1,0],[0,1],[0,-1]].map(([dx,dy])=>[ex+dx,ey+dy]).filter(([x,y])=>x>=0&&y>=0&&x<N&&y<N).map(([x,y])=>y*N+x);const v=rnd(nb);const i=path.indexOf(v);if(i<=1)continue;
+    const head=path.slice(0,i).reverse();path.splice(0,i,...head)}
+  const k=Math.min(FL_COL.length,Math.max(3,Math.round(N*N/(L<=2?6:L<=5?7:8))));const cuts=[];let ok=false;
+  for(let tries=0;tries<200&&!ok;tries++){const c=new Set();while(c.size<k-1)c.add(3+Math.floor(Math.random()*(N*N-5)));const s=[0,...[...c].sort((a,b)=>a-b),N*N];ok=s.every((v,j)=>!j||v-s[j-1]>=3);if(ok)cuts.splice(0,cuts.length,...s)}
+  if(!ok){cuts.length=0;const len=Math.floor(N*N/k);for(let j=0;j<k;j++)cuts.push(j*len);cuts.push(N*N)}
+  const segs=[];for(let j=0;j<cuts.length-1;j++)segs.push(path.slice(cuts[j],cuts[j+1]));
+  const dots={};segs.forEach((sg,c)=>{dots[sg[0]]=c;dots[sg[sg.length-1]]=c});return {N,dots,segs,k:segs.length}}
+MODES.flow={lobby(g,wrap,redo){if(!isSolo())lvPills(g,wrap,redo)},init(){const L=SES.solo?SES.lv:(S.lv.flow||5);FL={L,...flMake(L),paths:{},cur:null,done:false}},show(){flShow()}};
+function flOwner(cell){for(const c in FL.paths)if(FL.paths[c].includes(cell))return +c;return -1}
+function flComplete(c){const p=FL.paths[c];if(!p||p.length<2)return false;return FL.dots[p[0]]===c&&FL.dots[p[p.length-1]]===c&&p[0]!==p[p.length-1]}
+function flPaint(){const sv=$('#flsv');if(!sv)return;const N=FL.N;let s='';
+  for(let i=0;i<N*N;i++){const x=i%N,y=(i/N)|0,o=flOwner(i);s+=`<rect x="${x*100+2}" y="${y*100+2}" width="96" height="96" rx="10" fill="${o>=0?FL_COL[o]:'#2c2745'}" fill-opacity="${o>=0?.22:1}"/>`}
+  for(const c in FL.paths){const p=FL.paths[c];if(p.length<2)continue;s+=`<polyline points="${p.map(i=>`${(i%N)*100+50},${((i/N)|0)*100+50}`).join(' ')}" fill="none" stroke="${FL_COL[c]}" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>`}
+  for(const i in FL.dots){const x=i%N,y=(i/N)|0;s+=`<circle cx="${x*100+50}" cy="${y*100+50}" r="34" fill="${FL_COL[FL.dots[i]]}" stroke="#1d1830" stroke-width="4"/>`}
+  sv.innerHTML=s;const fill=new Set(Object.values(FL.paths).flat()).size,conn=Object.keys(FL.paths).filter(c=>flComplete(+c)).length;
+  const e=$('#flInfo');if(e)e.textContent=`🔗 ${conn} / ${FL.k} · ${Math.round(fill/(N*N)*100)}%`}
+function flShow(){const sc=gameBar(`<span class="lvchip">Lv.${FL.L}</span>`);const w=el('div','flw'),N=FL.N;
+  w.innerHTML=`<div class="sdinfo"><span id="flInfo"></span><span>${esc(t('flGoal'))}</span></div><div class="flbox"><svg id="flsv" viewBox="0 0 ${N*100} ${N*100}" class="flsv"></svg></div>`;
+  const tools=el('div','row center');const r=el('button','btn sm',esc(t('tgReset')));r.onclick=()=>{if(FL.done)return;FL.paths={};pop();flPaint()};tools.appendChild(r);
+  if(!SES.solo){const n=el('button','btn sm',esc(t('sdNew')));n.onclick=()=>{pop();MODES.flow.init();flShow()};tools.appendChild(n)}
+  w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('flHelp'))));sc.appendChild(w);show('play');flPaint();
+  const sv=$('#flsv');const cellAt=e=>{const r=sv.getBoundingClientRect(),x=Math.floor((e.clientX-r.left)/r.width*N),y=Math.floor((e.clientY-r.top)/r.height*N);return x<0||y<0||x>=N||y>=N?-1:y*N+x};
+  sv.addEventListener('pointerdown',e=>{if(FL.done)return;const i=cellAt(e);if(i<0)return;e.preventDefault();try{sv.setPointerCapture(e.pointerId)}catch(x){}
+    if(FL.dots[i]!==undefined){const c=FL.dots[i];FL.paths[c]=[i];FL.cur=c}
+    else{const o=flOwner(i);if(o<0)return;const p=FL.paths[o];FL.paths[o]=p.slice(0,p.indexOf(i)+1);FL.cur=o}pop();flPaint()});
+  sv.addEventListener('pointermove',e=>{if(FL.cur===null||FL.done)return;const i=cellAt(e);if(i<0)return;const c=FL.cur,p=FL.paths[c],last=p[p.length-1];if(i===last)return;
+    const ax=last%N,ay=(last/N)|0,bx=i%N,by=(i/N)|0;if(Math.abs(ax-bx)+Math.abs(ay-by)!==1)return;
+    const back=p.indexOf(i);if(back>=0){FL.paths[c]=p.slice(0,back+1);return flPaint()}
+    if(flComplete(c))return;if(FL.dots[i]!==undefined&&FL.dots[i]!==c)return;
+    const o=flOwner(i);if(o>=0&&o!==c){const q=FL.paths[o];FL.paths[o]=q.slice(0,q.indexOf(i))}
+    p.push(i);if(FL.dots[i]===c&&i!==p[0])beep(700,.08,'triangle',.22);flPaint()});
+  const up=()=>{if(FL.cur===null)return;FL.cur=null;const all=[...Array(FL.k).keys()].every(c=>flComplete(c));
+    if(all&&new Set(Object.values(FL.paths).flat()).size<FL.N*FL.N){toast(t('flFill'));return}
+    if(all){FL.done=true;flPaint();if(SES.solo)return soloEnd('win');fanfare();confetti(140);toast(t('flWin'))}};
+  sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up)}
+
 /* 새 기능 문구 */
-Object.assign(T.ko,{party:'파티 모드',solo:'개인 모드',myChar:'내 캐릭터',closet:'꾸미기',xpNext:n=>`다음 레벨까지 ${n} XP`,totalWins:n=>`개인 모드 승리 ${n}번`,
- slot_body:'몸 색',slot_hat:'모자',slot_glasses:'안경',slot_hand:'손 아이템',slot_face:'얼굴 꾸미기',slot_bg:'배경',slotLocked:n=>`레벨 ${n}이 되면 열려요!`,itemLocked:n=>`레벨 ${n}이 되면 쓸 수 있어요!`,noItem:'없음',
+Object.assign(T.ko,{
+ tgGoal:'일곱 조각으로 모양을 꽉 채워요',tgReset:'처음부터',tgShow:'정답 보기',tgHelp:'조각을 끌어서 옮기고, 톡 누르면 돌아가요. 평행사변형은 누를 때마다 돌거나 뒤집혀요.',tgWin:'칠교 완성! 🎉',
+ wsMoves:n=>`${n}번 옮김`,wsGoal:'한 시험관에 한 가지 색만!',wsHelp:'시험관을 누른 다음 부을 시험관을 눌러요. 같은 색 위나 빈 시험관에만 부을 수 있어요.',wsExtra:n=>`빈 시험관 추가 (${n})`,wsWin:'정렬 완료! 🎉',
+ flGoal:'같은 색 잇고 모든 칸 채우기',flHelp:'점에서 시작해 같은 색 점까지 손가락으로 길을 그려요. 다른 색 길과 겹칠 수 없어요.',flWin:'모두 연결했어요! 🎉',flFill:'연결은 다 됐어요! 빈 칸도 모두 채워 봐요',
+ party:'파티 모드',solo:'개인 모드',myChar:'내 캐릭터',closet:'꾸미기',xpNext:n=>`다음 레벨까지 ${n} XP`,totalWins:n=>`개인 모드 승리 ${n}번`,
+ slot_body:'몸 색',slot_eyes:'눈',slot_mouth:'입',slot_outfit:'옷',slot_shoes:'신발',slot_brows:'눈썹',slot_acc:'액세서리',namePh:'캐릭터 이름 짓기',girlBean:'여자 콩',boyBean:'남자 콩',basicItem:'기본',slot_hat:'모자',slot_glasses:'안경',slot_hand:'손에 들기',slot_face:'얼굴 꾸미기',slot_bg:'배경',slotLocked:n=>`레벨 ${n}이 되면 열려요!`,itemLocked:n=>`레벨 ${n}이 되면 쓸 수 있어요!`,noItem:'없음',
  myRecords:'게임별 내 단계',winsN:n=>`승리 ${n}`,soloInfo:'이길 때마다 다음 단계로 올라가고, 상대가 점점 강해져요. 높은 단계일수록 XP를 많이 받아요.',soloReward:n=>`이기면 +${n} XP`,soloGo:n=>`Lv.${n} 도전하기`,
  soloWin:'이겼어요! 🎉',soloLose:'아쉬워요! 다시 도전해요',soloDraw:'비겼어요',soloNext:n=>`Lv.${n} 도전`,soloRetry:'다시 도전',soloOut:'나가기',levelUp:n=>`레벨 업! 이제 Lv.${n}`,newSlot:'새 꾸미기 칸',
  secSoloBoard:'두뇌 보드 게임',secSoloMini:'혼자 하는 미니 게임',levelN:'단계 (1~10)',
@@ -1535,9 +1830,13 @@ Object.assign(T.ko,{party:'파티 모드',solo:'개인 모드',myChar:'내 캐�
  wmGoal:n=>`길이 ${n}이 되면 성공`,wmHelp:'화면을 밀거나 화살표 버튼으로 방향을 바꿔요. 벽, 바위, 내 몸에 부딪히면 끝!',wmTap:'눌러서 시작',wmWin:'성공! 🎉',wmLose:'부딪혔어요! 다시 해 봐요',
  ldGoal:'모든 선을 한 번씩만 지나가요',ldHelp:'점에서 시작해 손가락을 떼지 말고 이어 그려요. 막히면 되돌리기!',ldReset:'처음부터',ldWin:'한붓그리기 성공! 🎉',ldStuck:'더 갈 수 없어요. 되돌리거나 처음부터 해 봐요.',
  spTime:'외우는 시간',spSec:n=>`${n}초`,spMin:'1분',spCredit:'그림: Wikimedia Commons (퍼블릭 도메인 명화)',spLoading:'명화를 불러오는 중…',spFail:'그림을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.',spRetry:'다른 그림으로 다시',
- spMemo:'그림을 잘 기억하세요!',spFind:'달라진 곳 5군데를 찾아 누르세요',spTap:'바뀐 곳을 누르세요',spReady:'다 외웠어요',spHint:n=>`힌트 (${n})`,spGive:'정답 보기',spOrig:'원래 그림 보기',spChanged:'바뀐 그림 보기',spNext:'다음 그림'});
-Object.assign(T.en,{party:'Party',solo:'Solo',myChar:'My character',closet:'Dress up',xpNext:n=>`${n} XP to the next level`,totalWins:n=>`${n} solo wins`,
- slot_body:'Color',slot_hat:'Hats',slot_glasses:'Glasses',slot_hand:'Hand items',slot_face:'Face',slot_bg:'Backgrounds',slotLocked:n=>`Unlocks at level ${n}!`,itemLocked:n=>`Unlocks at level ${n}!`,noItem:'None',
+ spMemo:'그림을 잘 기억하세요!',spFind:'달라진 곳을 모두 찾아 누르세요',spTap:'바뀐 곳을 누르세요',spReady:'다 외웠어요',spHint:n=>`힌트 (${n})`,spGive:'정답 보기',spOrig:'원래 그림 보기',spChanged:'바뀐 그림 보기',spNext:'다음 그림'});
+Object.assign(T.en,{
+ tgGoal:'Fill the shape with all seven pieces',tgReset:'Restart',tgShow:'Show answer',tgHelp:'Drag a piece to move it and tap it to rotate. Tapping the parallelogram rotates or flips it.',tgWin:'Tangram solved! 🎉',
+ wsMoves:n=>`${n} moves`,wsGoal:'One color per tube!',wsHelp:'Tap a tube, then tap where to pour. You can only pour onto the same color or into an empty tube.',wsExtra:n=>`Extra tube (${n})`,wsWin:'All sorted! 🎉',
+ flGoal:'Join colors and fill every square',flHelp:'Draw from a dot to the dot of the same color. Paths cannot cross each other.',flWin:'All connected! 🎉',flFill:'All joined! Now fill the empty squares too',
+ party:'Party',solo:'Solo',myChar:'My character',closet:'Dress up',xpNext:n=>`${n} XP to the next level`,totalWins:n=>`${n} solo wins`,
+ slot_body:'Color',slot_eyes:'Eyes',slot_mouth:'Mouth',slot_outfit:'Outfits',slot_shoes:'Shoes',slot_brows:'Eyebrows',slot_acc:'Accessories',namePh:'Name your character',girlBean:'Girl',boyBean:'Boy',basicItem:'Basic',slot_hat:'Hats',slot_glasses:'Glasses',slot_hand:'Hand items',slot_face:'Face',slot_bg:'Backgrounds',slotLocked:n=>`Unlocks at level ${n}!`,itemLocked:n=>`Unlocks at level ${n}!`,noItem:'None',
  myRecords:'My game levels',winsN:n=>`${n} wins`,soloInfo:'Every win takes you to the next level and a tougher opponent. Higher levels give more XP.',soloReward:n=>`Win to earn +${n} XP`,soloGo:n=>`Play level ${n}`,
  soloWin:'You won! 🎉',soloLose:'So close! Try again',soloDraw:'It is a draw',soloNext:n=>`Play level ${n}`,soloRetry:'Try again',soloOut:'Leave',levelUp:n=>`Level up! You are now level ${n}`,newSlot:'New dress-up slot',
  secSoloBoard:'Brain board games',secSoloMini:'Solo mini games',levelN:'Level (1-10)',
@@ -1550,7 +1849,7 @@ Object.assign(T.en,{party:'Party',solo:'Solo',myChar:'My character',closet:'Dres
  wmGoal:n=>`Reach length ${n}`,wmHelp:'Swipe or use the arrows to turn. Do not hit walls, rocks or yourself!',wmTap:'Tap to start',wmWin:'You did it! 🎉',wmLose:'Crash! Try again',
  ldGoal:'Trace every line exactly once',ldHelp:'Start on a dot and draw without lifting your finger. Stuck? Undo!',ldReset:'Restart',ldWin:'Solved in one stroke! 🎉',ldStuck:'No way forward. Undo or restart.',
  spTime:'Memorize time',spSec:n=>`${n} sec`,spMin:'1 min',spCredit:'Paintings: Wikimedia Commons (public domain)',spLoading:'Loading the painting…',spFail:'Could not load the painting. Check the internet connection.',spRetry:'Try another painting',
- spMemo:'Memorize the painting!',spFind:'Find the 5 changes',spTap:'Tap where something changed',spReady:'I am ready',spHint:n=>`Hint (${n})`,spGive:'Show answers',spOrig:'Show original',spChanged:'Show changed',spNext:'Next painting'});
+ spMemo:'Memorize the painting!',spFind:'Find all the changes',spTap:'Tap where something changed',spReady:'I am ready',spHint:n=>`Hint (${n})`,spGive:'Show answers',spOrig:'Show original',spChanged:'Show changed',spNext:'Next painting'});
 addEventListener('keydown',e=>{if(onPlay('worm')){const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];if(m){e.preventDefault();wmTurn(m)}}
   if(onPlay('sudoku')&&SD&&/^[1-9]$/.test(e.key))sdInput(+e.key)});
 
