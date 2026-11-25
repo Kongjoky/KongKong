@@ -1,6 +1,6 @@
 // 콩콩 파티게임: 한 번 열면 인터넷 없이도 열리도록 파일을 저장해 둡니다.
 // 게임을 고친 뒤에는 아래 버전 숫자를 올려 주세요.
-const VERSION = 'kongkong-v7';
+const VERSION = 'kongkong-v8';
 // 확대 사진 퀴즈 사진은 버전이 바뀌어도 지우지 않는 별도 보관함에 둡니다.
 const IMG = 'kk-img';
 const FILES = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './icon-maskable.png', './apple-touch-icon.png'];
