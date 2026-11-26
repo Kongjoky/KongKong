@@ -257,19 +257,20 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:50}
 .tile .lvb{position:absolute;right:8px;top:8px;background:#fff;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:900;color:#6c4cf5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .solohead{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 /* ---------- 장기 ---------- */
-.jgw{width:min(92vw,calc(66vh*.917),600px)}.jbd{width:100%;display:block;border-radius:18px;box-shadow:0 22px 50px rgba(110,70,20,.3);touch-action:manipulation;cursor:pointer;user-select:none}
+.jgw{width:min(calc(100vw - 12px),calc((100dvh - 150px)*.9),800px);max-width:100%}.jbd{width:100%;display:block;border-radius:18px;box-shadow:0 22px 50px rgba(110,70,20,.3);touch-action:manipulation;cursor:pointer;user-select:none}
 .jdot{width:22px;height:22px;border-radius:50%;flex:none;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}.jcap{font-family:'Noto Serif KR','Batang',serif;font-weight:800;letter-spacing:1px}
 /* ---------- 스도쿠 ---------- */
 .sdk,.tmw,.hkw,.wmw,.ldw{max-width:480px;margin:0 auto;display:grid;gap:12px}
+.sdk{max-width:min(100%,max(320px,calc(100dvh - 235px)),860px);width:100%;gap:10px}
 .tmw{max-width:min(660px,100%);width:100%}.tmtray{margin-top:22px}
 html,body,button,.tmb,.tt,canvas,svg{touch-action:manipulation}
 .sdinfo{display:flex;justify-content:space-between;gap:10px;font-weight:800;flex-wrap:wrap}
 .sdg{display:grid;grid-template-columns:repeat(9,1fr);background:#fff;border:3px solid #2a2340;border-radius:12px;overflow:hidden;aspect-ratio:1}
-.sc{border:0;border-right:1px solid #ddd6ee;border-bottom:1px solid #ddd6ee;background:#fff;font:inherit;font-size:clamp(17px,5vw,26px);font-weight:600;color:#5b3fd1;padding:0;cursor:pointer;position:relative;aspect-ratio:1}
+.sc{border:0;border-right:1px solid #ddd6ee;border-bottom:1px solid #ddd6ee;background:#fff;font:inherit;font-size:clamp(18px,min(5.9vw,4.3dvh),46px);font-weight:600;color:#5b3fd1;padding:0;cursor:pointer;position:relative;aspect-ratio:1}
 .sc.fx{color:#2a2340;font-weight:800}.sc.hl{background:#f3f0fc}.sc.same{background:#e2dafd}.sc.sel{background:#cfc2ff}.sc.bad{color:#e0245e;background:#ffe3ec}
 .sc.br{border-right:2.5px solid #2a2340}.sc.bb{border-bottom:2.5px solid #2a2340}
-.nt{position:absolute;inset:2px;display:grid;grid-template-columns:repeat(3,1fr);font-style:normal;font-size:clamp(7px,1.9vw,10px);color:#8a80a8;line-height:1}.nt s{text-decoration:none;display:grid;place-items:center}
-.sdpad{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}.sdn{border:1px solid var(--line);background:#fff;border-radius:12px;font:inherit;font-size:22px;font-weight:800;padding:8px 0 4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#2a2340}
+.nt{position:absolute;inset:2px;display:grid;grid-template-columns:repeat(3,1fr);font-style:normal;font-size:clamp(7px,min(1.9vw,1.35dvh),15px);color:#8a80a8;line-height:1}.nt s{text-decoration:none;display:grid;place-items:center}
+.sdpad{display:grid;grid-template-columns:repeat(9,1fr);gap:5px}.sdn{border:1px solid var(--line);background:#fff;border-radius:12px;font:inherit;font-size:clamp(20px,min(5.4vw,3.1dvh),34px);font-weight:800;padding:8px 0 4px;display:flex;flex-direction:column;align-items:center;cursor:pointer;color:#2a2340}
 .sdn small{font-size:10px;opacity:.5}.sdn.done{opacity:.3}
 /* ---------- 타일 매치 ---------- */
 .tmb{position:relative;aspect-ratio:6/7.3;width:min(100%,calc(64vh*.822));margin:0 auto;background:linear-gradient(160deg,#e9f9f0,#e3efff);border-radius:20px;padding:0}
@@ -301,13 +302,25 @@ html,body,button,.tmb,.tt,canvas,svg{touch-action:manipulation}
 .tgsv{width:100%;height:auto;display:block;touch-action:none;background:#211c36;border-radius:16px}
 .tgp{cursor:grab;touch-action:none}
 .tgp.on{cursor:grabbing}
-/* 물 정렬 */
-.wsbox{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 10px;padding:18px 4px 6px}
-.wst{width:46px;height:158px;padding:4px;border:3px solid rgba(255,255,255,.75);border-top:0;border-radius:4px 4px 24px 24px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;gap:0;cursor:pointer;transition:transform .15s;touch-action:manipulation}
-.wst i{display:block;flex:0 0 25%;width:100%}
-.wst i:last-child{border-radius:0 0 18px 18px}
-.wst.sel{transform:translateY(-14px);border-color:#ffd43b}
-.wst.full{box-shadow:0 0 14px rgba(255,212,59,.7)}
+/* 물 색깔 맞추기 */
+.wsbox{position:relative;display:grid;grid-template-columns:repeat(var(--pr),var(--tw));column-gap:var(--gx);row-gap:40px;justify-content:center;align-content:center;padding:34px 10px 26px;
+ background:radial-gradient(120% 95% at 50% 0%,#4a3d86 0%,#2a2250 55%,#1a1431 100%);border-radius:22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.08),0 14px 30px rgba(40,20,90,.25);touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.wst{position:relative;padding:0;border:0;background:none;cursor:pointer;transition:transform .12s ease-out;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.wst::before{content:'';position:absolute;left:-5px;right:-5px;top:-5px;height:10px;border-radius:7px;z-index:3;background:linear-gradient(180deg,#ffffff,#d9d3f5 55%,#a99fd6);box-shadow:0 2px 4px rgba(0,0,0,.35)}
+.wst.sel{transform:translateY(-18px)}
+.wst.sel .wsg{box-shadow:inset 4px 0 8px rgba(0,0,0,.25),inset -3px 0 8px rgba(255,255,255,.14),0 0 0 3px #ffd43b,0 16px 18px rgba(0,0,0,.4)}
+.wsg{position:absolute;inset:0;border:3px solid rgba(255,255,255,.78);border-top:0;border-radius:0 0 calc(var(--tw)/2) calc(var(--tw)/2);overflow:hidden;
+ background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.05) 28%,rgba(255,255,255,.03) 62%,rgba(255,255,255,.16) 88%,rgba(255,255,255,.26));
+ box-shadow:inset 4px 0 8px rgba(0,0,0,.25),inset -3px 0 8px rgba(255,255,255,.14),0 14px 16px rgba(0,0,0,.4)}
+.wsg::after{content:'';position:absolute;left:17%;top:5%;width:13%;height:84%;border-radius:99px;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.12) 70%,rgba(255,255,255,0))}
+.wsl{position:absolute;left:0;right:0;bottom:0;height:84%;display:flex;flex-direction:column-reverse;border-radius:0 0 calc(var(--tw)/2 - 3px) calc(var(--tw)/2 - 3px);overflow:hidden}
+.wsq{display:block;flex:none;width:100%;position:relative;background:linear-gradient(90deg,var(--cd) 0%,var(--c) 28%,var(--cl) 46%,var(--c) 64%,var(--cd) 100%)}
+.wsq.top::before{content:'';position:absolute;left:0;right:0;top:-5px;height:10px;border-radius:50%;background:linear-gradient(90deg,var(--c),var(--cl),var(--c));opacity:.95}
+.wst.full .wsg{box-shadow:inset 4px 0 8px rgba(0,0,0,.25),inset -3px 0 8px rgba(255,255,255,.14),0 0 18px rgba(255,214,90,.75),0 14px 16px rgba(0,0,0,.4)}
+.wst.full::after{content:'';position:absolute;left:10%;right:10%;top:-15px;height:17px;border-radius:6px 6px 3px 3px;z-index:4;background:linear-gradient(90deg,#7a4b22,#c98d55 45%,#8a5a2b);box-shadow:0 2px 3px rgba(0,0,0,.4)}
+.wsstream{position:absolute;z-index:4;border-radius:99px;transform:scaleY(0);transform-origin:50% 0;pointer-events:none}
+.wsstream.on{transform:scaleY(1)}
+#play.tight{padding-left:6px;padding-right:6px;gap:10px}
 /* 색깔 선 잇기 */
 .flbox{width:min(94vw,460px);margin:0 auto}
 .flsv{width:100%;height:auto;display:block;touch-action:none;background:#1d1830;border-radius:14px}
@@ -471,7 +484,7 @@ const GAMES=[
  {id:'hockey',cat:'board',ic:'🏒',mode:'hockey',name:N2('에어하키','Air Hockey'),desc:N2('채로 퍽을 쳐서 상대 골대에 넣어요. 컴퓨터나 친구와 한 화면에서 대결!','Hit the puck into the other goal. Play the computer or a friend on one screen.')},
  {id:'worm',cat:'board',ic:'🪱',mode:'worm',name:N2('지렁이 먹이 먹기','Hungry Worm'),desc:N2('사과를 먹고 길어져요. 벽, 바위, 내 몸에 부딪히지 않게 조심!','Eat apples to grow. Do not crash into walls, rocks or yourself!')},
  {id:'line',cat:'board',ic:'✏️',mode:'line',name:N2('한붓그리기','One Line'),desc:N2('손가락을 떼지 않고 모든 선을 한 번씩만 지나가요.','Trace every line exactly once without lifting your finger.')},
- {id:'water',cat:'board',ic:'🧪',mode:'water',name:N2('물 정렬','Water Sort'),desc:N2('시험관의 색깔 물을 옮겨 같은 색끼리 모아요.','Pour colored water until every tube holds one color.')},
+ {id:'water',cat:'board',ic:'🧪',mode:'water',name:N2('물 색깔 맞추기','Color Water Sort'),desc:N2('시험관의 색깔 물을 옮겨 담아 한 시험관에 한 가지 색만 모아요.','Pour colored water until every tube holds one color.')},
  {id:'flow',cat:'board',ic:'🔗',mode:'flow',name:N2('색깔 선 잇기','Color Connect'),desc:N2('같은 색 점끼리 선으로 잇고 모든 칸을 채워요.','Join matching dots and fill every square.')},
  {id:'tangram',cat:'board',ic:'🔷',mode:'tangram',name:N2('칠교 놀이','Tangram'),desc:N2('일곱 조각을 맞춰 주어진 모양을 완성해요.','Fit the seven pieces together to fill the shape.')},
  {id:'omok',cat:'board',ic:'⚫',mode:'omok',name:N2('오목','Gomoku'),desc:N2('가로, 세로, 대각선으로 돌 다섯 개를 먼저 이으면 이겨요. 컴퓨터나 가족과 대결해요.','Five in a row wins. Play against the computer or each other.')},
@@ -1103,7 +1116,7 @@ function soloEnd(outcome){if(!SES||!SES.solo||SES.ended)return;SES.ended=true;co
 function lvOf(g,partyKey){return SES&&SES.solo?SES.lv:(S.lv[partyKey||g.id]||(g.lv10?3:5))}
 function lvPills(g,wrap,redo,ten){const k=g.id;if(ten){wrap.appendChild(optBox(t('levelN'),pills([1,2,3,4,5,6,7,8,9,10],S.lv[k]||3,v=>String(v),v=>{S.lv[k]=v;saveS();redo()})))}
   else wrap.appendChild(optBox(t('level'),pills([2,5,8],S.lv[k]||5,v=>t({2:'easy',5:'normal',8:'hard'}[v]),v=>{S.lv[k]=v;saveS();redo()})))}
-function gameBar(right){const sc=$('#play');sc.innerHTML='';sc.appendChild(topBar(gname(SES.g),SES.g.ic,right!==undefined?right:(SES.solo?`<span class="lvchip">Lv.${SES.lv}</span>`:'')));return sc}
+function gameBar(right){const sc=$('#play');sc.innerHTML='';sc.classList.toggle('tight',!!SES&&['sudoku','janggi','water','tangram','flow'].includes(SES.type));sc.appendChild(topBar(gname(SES.g),SES.g.ic,right!==undefined?right:(SES.solo?`<span class="lvchip">Lv.${SES.lv}</span>`:'')));return sc}
 const onPlay=type=>SES&&SES.type===type&&$('#play').classList.contains('on');
 
 /* ===== 콩 캐릭터: 칸, 아이템, 그리기 ===== */
@@ -1328,17 +1341,28 @@ function mkWorker(fn){try{const src=`${fn.toString()}\nconst E=${fn.name}();onme
 MODES.janggi={
  lobby(g,wrap,redo){if(!SES_solo()){wrap.appendChild(optBox(t('omMode'),pills(['cpu','two'],S.jg.mode,v=>v==='cpu'?t('vsCpu'):t('vs2'),v=>{S.jg.mode=v;saveS();redo()})));if(S.jg.mode==='cpu')lvPills(g,wrap,redo,true)}
    if(isSolo()||S.jg.mode==='cpu')wrap.appendChild(optBox(t('jgSide'),pills(['cho','han'],S.jg.side,v=>v==='cho'?t('jgCho'):t('jgHan'),v=>{S.jg.side=v;saveS();redo()})));
+   {const cpu=isSolo()||S.jg.mode==='cpu',fm=S.jg.fm||JG_FM[0],fm2=S.jg.fm2||(cpu?'rand':JG_FM[0]);
+    wrap.appendChild(optBox(cpu?t('jgForm'):t('jgFormCho'),pills(JG_FM,fm,jgFmLab,v=>{S.jg.fm=v;saveS();redo()})));
+    wrap.appendChild(optBox(cpu?t('jgFormCpu'):t('jgFormHan'),pills(cpu?[...JG_FM,'rand']:JG_FM,cpu?fm2:(fm2==='rand'?JG_FM[0]:fm2),jgFmLab,v=>{S.jg.fm2=v;saveS();redo()})))}
    wrap.appendChild(optBox(t('jgFont'),pills(['han','kor'],S.jg.font,v=>v==='han'?'漢字 (車 馬 象)':t('jgKor'),v=>{S.jg.font=v;saveS();redo()})))},
- init(){if(JG&&JG.busy&&JW){try{JW.terminate()}catch(e){}JW=null}const solo=SES.solo;JE.load(JE.INIT+' w');
-   const mode=solo?'cpu':S.jg.mode,human=S.jg.side==='han'?-1:1;JG={mode,human,flip:mode==='cpu'&&human<0,sel:null,tg:null,last:null,busy:false,res:null,token:0,lv:solo?SES.lv:(S.lv.janggi||3),note:''};SES.rec=SES.rec||[0,0]},
+ init(){if(JG&&JG.busy&&JW){try{JW.terminate()}catch(e){}JW=null}const solo=SES.solo;
+   const mode=solo?'cpu':S.jg.mode,human=S.jg.side==='han'?-1:1;
+   const pk=v=>(!v||v==='rand')?rnd(JG_FM):v,my=S.jg.fm||JG_FM[0];let cf,hf;
+   if(mode==='cpu'){const op=pk(S.jg.fm2||'rand');if(human>0){cf=my;hf=op}else{hf=my;cf=op}}else{cf=my;hf=(S.jg.fm2&&S.jg.fm2!=='rand')?S.jg.fm2:JG_FM[0]}
+   JE.load(jgFen(cf,hf)+' w');JG={mode,human,flip:mode==='cpu'&&human<0,sel:null,tg:null,last:null,busy:false,res:null,token:0,lv:solo?SES.lv:(S.lv.janggi||3),note:''};SES.rec=SES.rec||[0,0]},
  show(){jgShow()}};
 const SES_solo=()=>isSolo()&&true;
+const JG_FM=['마상상마','마상마상','상마상마','상마마상'];
+const jgFmLab=v=>v==='rand'?t('jgRand'):isEN()?v.replace(/마/g,'馬').replace(/상/g,'象'):v;
+/* 상차림 → 시작 배치. 초는 아래쪽에서 보는 왼쪽부터, 한은 위쪽에서 자기 쪽으로 보는 왼쪽부터 */
+function jgFen(cf,hf){const m={'마':'h','상':'e'},c=[...cf].map(x=>m[x].toUpperCase()),h=[...hf].map(x=>m[x]);
+  return 'r'+h[3]+h[2]+'a1a'+h[1]+h[0]+'r/4k4/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/4K4/R'+c[0]+c[1]+'A1A'+c[2]+c[3]+'R'}
 const jgName=c=>JG.mode==='cpu'?(c===JG.human?t('me'):t('cpu')):teamName(c>0?0:1);
 const jgCpu=()=>JG.mode==='cpu'&&!JG.res&&JE.turn!==JG.human;
 function jgMsg(){const r=JG.res;if(r){if(r.type==='mate')return JG.mode==='cpu'?(r.winner===JG.human?t('jgWinMe'):t('jgWinCpu')):t('jgWin',jgName(r.winner));return r.winner?t('jgLimitWin',jgName(r.winner)):t('jgDraw')}
   if(JG.busy)return t('thinking');return (JG.note?JG.note+' ':'')+(JE.inCheck()?t('jgCheck')+' ':'')+(JG.mode==='cpu'&&JE.turn===JG.human?t('yourTurn'):t('turn',jgName(JE.turn)))}
 function jgSVG(){const B=JE.board,fl=JG.flip,X=f=>50+(fl?8-f:f)*70,Y=r=>45+(fl?9-r:r)*70,ch=S.jg.font==='kor'?JKOR:JHAN;
-  let s=`<svg class="jbd" viewBox="0 0 660 720" role="img" aria-label="janggi board"><defs><linearGradient id="jwood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d49a"/><stop offset="1" stop-color="#e2b46c"/></linearGradient><filter id="jsh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#5b3a10" flood-opacity=".35"/></filter></defs><rect width="660" height="720" rx="22" fill="url(#jwood)"/><g stroke="#7a5426" stroke-width="2" fill="none">`;
+  let s=`<svg class="jbd" viewBox="14 9 632 702" role="img" aria-label="janggi board"><defs><linearGradient id="jwood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d49a"/><stop offset="1" stop-color="#e2b46c"/></linearGradient><filter id="jsh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#5b3a10" flood-opacity=".35"/></filter></defs><rect x="14" y="9" width="632" height="702" rx="18" fill="url(#jwood)"/><g stroke="#7a5426" stroke-width="2" fill="none">`;
   for(let r=0;r<10;r++)s+=`<line x1="50" y1="${45+r*70}" x2="610" y2="${45+r*70}"/>`;for(let f=0;f<9;f++)s+=`<line x1="${50+f*70}" y1="45" x2="${50+f*70}" y2="675"/>`;
   for(const top of [45,535])s+=`<line x1="260" y1="${top}" x2="400" y2="${top+140}"/><line x1="400" y1="${top}" x2="260" y2="${top+140}"/>`;s+='</g>';
   if(JG.last)for(const q of [JG.last.f,JG.last.t])s+=`<circle cx="${X(q%9)}" cy="${Y((q/9)|0)}" r="33" fill="#f5cf4a" opacity=".45"/>`;
@@ -1359,7 +1383,7 @@ function jgShow(){const sc=gameBar();sc.appendChild(el('div','cmsg'+(JG.res?' en
   wrap.appendChild(side);sc.appendChild(wrap);
   const u=$('#jUndo');if(u){u.disabled=JG.busy||!JE.hist.length;u.onclick=jgUndo}
   $('#jFlip').onclick=()=>{pop();JG.flip=!JG.flip;jgShow()};$('#jNew').onclick=()=>{pop();if(SES.solo&&!JG.res&&JE.hist.length){SES.ended=false;return startGame(SES.g,true)}MODES.janggi.init();jgShow()};
-  const svg=bw.querySelector('svg');svg.addEventListener('click',ev=>{const r=svg.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width*660,y=(ev.clientY-r.top)/r.height*720;let f=Math.round((x-50)/70),rr=Math.round((y-45)/70);if(f<0||f>8||rr<0||rr>9)return;if(JG.flip){f=8-f;rr=9-rr}jgTap(rr*9+f)});
+  const svg=bw.querySelector('svg');svg.addEventListener('click',ev=>{const r=svg.getBoundingClientRect(),x=14+(ev.clientX-r.left)/r.width*632,y=9+(ev.clientY-r.top)/r.height*702;let f=Math.round((x-50)/70),rr=Math.round((y-45)/70);if(f<0||f>8||rr<0||rr>9)return;if(JG.flip){f=8-f;rr=9-rr}jgTap(rr*9+f)});
   show('play');if(jgCpu()&&!JG.busy)jgThink()}
 function jgTap(q){if(JG.res||JG.busy)return;if(JG.mode==='cpu'&&JE.turn!==JG.human)return;const p=JE.board[q],c=JE.turn;
   if(JG.sel!=null&&JG.tg&&JG.tg.has(q))return jgDo(JG.tg.get(q));
@@ -1752,8 +1776,8 @@ function tgReveal(){const used=new Set();TG.sol.forEach(([t,qs])=>{const want=ne
   const xs=qs.map(k=>+k.split(',')[0]),ys=qs.map(k=>+k.split(',')[1]);
   outer:for(const f of (t==='P'?[false,true]:[false]))for(let r=0;r<4;r++)for(let y=Math.min(...ys)-4;y<=Math.max(...ys)+4;y++)for(let x=Math.min(...xs)-4;x<=Math.max(...xs)+4;x++){const c={...p,r,f,x,y};const fp=tgFoot(tgPoly(c));if(fp.size===want.size&&[...fp].every(k=>want.has(k))){Object.assign(p,{r,f,x,y});break outer}}});TG.done=true}
 
-/* ================= 물 정렬 (시험관 색 맞추기) ================= */
-const WS_COL=['#ff4d6d','#4b7bff','#ffd23f','#3ccf6e','#b06bff','#ff9f40','#3fd0e0','#ff7ad9','#8d6e63','#1f9e89','#9aa0aa','#c6ff3d'];
+/* ================= 물 색깔 맞추기 (시험관) ================= */
+const WS_COL=['#ff3d5e','#3f74ff','#ffd02a','#2fcf68','#a95cff','#ff9029','#29d3e6','#ff6fd3','#9a6a4f','#14a58c','#b8bfca','#bdf72b'];
 let WS=null;
 function wsSolvable(tubes,cap,limit){const seen=new Set();let nodes=0;const key=ts=>ts.map(t=>t.join('')).sort().join('|');
   const done=ts=>ts.every(t=>!t.length||(t.length===cap&&t.every(c=>c===t[0])));
@@ -1767,27 +1791,63 @@ function wsMake(L){const n=Math.min(12,[0,3,4,4,5,5,6,7,8,9,10,11][Math.min(L,11
     if(tubes.some(t=>t.length===cap&&t.every(c=>c===t[0])))continue;const r=wsSolvable(tubes.map(t=>t.slice()),cap,n<=8?60000:20000);if(r===false)continue;return {tubes,cap,n}}
   const tubes=[];for(let i=0;i<n;i++)tubes.push([...Array(cap)].map((_,k)=>(i+k)%n));tubes.push([],[]);return {tubes,cap,n}}
 MODES.water={lobby(g,wrap,redo){if(!isSolo())lvPills(g,wrap,redo,true)},
- init(){const L=SES.solo?SES.lv:(S.lv.water||3);const m=wsMake(L);WS={L,...m,start:m.tubes.map(t=>t.slice()),sel:-1,hist:[],moves:0,extra:1,done:false}},show(){wsShow()}};
+ init(){const L=SES.solo?SES.lv:(S.lv.water||3);const m=wsMake(L);WS={L,...m,start:m.tubes.map(t=>t.slice()),sel:-1,hist:[],moves:0,extra:1,done:false,anim:null}},show(){wsShow()}};
+const WS_T=[130,210,120];/* 기울이기 · 붓기 · 돌아오기 (ms) */
 function wsDone(){return WS.tubes.every(t=>!t.length||(t.length===WS.cap&&t.every(c=>c===t[0])))}
+function wsFull(tb){return tb.length===WS.cap&&tb.every(c=>c===tb[0])}
+function wsShade(h,f){const n=parseInt(h.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;const t=f<0?0:255,p=Math.abs(f);r=Math.round(r+(t-r)*p);g=Math.round(g+(t-g)*p);b=Math.round(b+(t-b)*p);return `rgb(${r},${g},${b})`}
+function wsSeg(c,top,h){const c0=WS_COL[c];return `<i class="wsq${top?' top':''}" style="height:${h}%;--c:${c0};--cd:${wsShade(c0,-.32)};--cl:${wsShade(c0,.38)}"></i>`}
+/* 시험관 크기: 화면에 들어가는 한 가장 크게 */
+function wsLayout(){const n=WS.tubes.length,play=$('#play'),aw=Math.min((play?play.clientWidth:360)-24,620),ah=Math.max(260,innerHeight-285);let best=null;
+  for(let rows=1;rows<=3;rows++){const pr=Math.ceil(n/rows);if(rows>1&&Math.ceil(n/(rows-1))===pr)continue;let tw=Math.min(78,aw/(pr+.38*(pr-1)));let th=Math.min(tw*3.3,(ah-rows*40)/rows);tw=Math.min(tw,th/2.55);
+    if(tw<26)continue;const sc=tw*th;if(!best||sc>best.sc)best={rows,pr,tw:Math.floor(tw),th:Math.floor(th),sc}}
+  if(!best)best={rows:2,pr:Math.ceil(n/2),tw:30,th:90};best.gx=Math.max(8,Math.round(best.tw*.38));return best}
+function wsTube(tb,i,lay){const full=wsFull(tb),u=100/WS.cap;let segs='';tb.forEach((c,k)=>{segs+=wsSeg(c,k===tb.length-1,u)});
+  return `<button class="wst${i===WS.sel?' sel':''}${full?' full':''}" data-i="${i}" style="width:${lay.tw}px;height:${lay.th}px;--tw:${lay.tw}px"><span class="wsg"><span class="wsl">${segs}</span></span></button>`}
+function wsDraw(){const box=$('#wsbox');if(!box)return;const lay=wsLayout();WS.lay=lay;
+  box.style.cssText=`--pr:${lay.pr};--tw:${lay.tw}px;--gx:${lay.gx}px`;box.innerHTML=WS.tubes.map((tb,i)=>wsTube(tb,i,lay)).join('');
+  const mv=$('#wsMv');if(mv)mv.textContent='🧪 '+t('wsMoves',WS.moves);
+  const u=$('#wsUndo');if(u)u.disabled=!WS.hist.length||WS.done;const r=$('#wsReset');if(r)r.disabled=WS.done;const x=$('#wsExtra');if(x){x.disabled=!WS.extra||WS.done;x.textContent=t('wsExtra',WS.extra)}}
 function wsShow(){const sc=gameBar(`<span class="lvchip">Lv.${WS.L}</span>`);const w=el('div','wsw');
-  w.appendChild(el('div','sdinfo',`<span>🧪 ${esc(t('wsMoves',WS.moves))}</span><span>${esc(t('wsGoal'))}</span>`));
-  const box=el('div','wsbox');WS.tubes.forEach((tb,i)=>{const full=tb.length===WS.cap&&tb.every(c=>c===tb[0]);const b=el('button','wst'+(i===WS.sel?' sel':'')+(full?' full':''));
-    b.innerHTML=[...Array(WS.cap)].map((_,k)=>{const c=tb[WS.cap-1-k];return `<i style="${c!==undefined?'background:'+WS_COL[c]:''}"></i>`}).join('');b.onclick=()=>wsTap(i);box.appendChild(b)});
-  w.appendChild(box);
-  const tools=el('div','row center');const mk=(lab,fn,dis)=>{const b=el('button','btn sm',esc(lab));b.disabled=!!dis;b.onclick=fn;tools.appendChild(b)};
-  mk(t('undo'),()=>{const h=WS.hist.pop();if(!h)return;WS.tubes=h;WS.moves=Math.max(0,WS.moves-1);WS.sel=-1;pop();wsShow()},!WS.hist.length||WS.done);
-  mk(t('tgReset'),()=>{WS.tubes=WS.start.map(t=>t.slice());WS.hist=[];WS.moves=0;WS.sel=-1;WS.extra=1;pop();wsShow()},WS.done);
-  mk(t('wsExtra',WS.extra),()=>{if(!WS.extra)return;WS.extra--;WS.hist.push(WS.tubes.map(t=>t.slice()));WS.tubes.push([]);pop();wsShow()},!WS.extra||WS.done);
-  if(!SES.solo)mk(t('sdNew'),()=>{pop();MODES.water.init();wsShow()});
-  w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('wsHelp'))));sc.appendChild(w);show('play')}
-function wsTap(i){if(WS.done)return;const T=WS.tubes;
-  if(WS.sel<0){if(!T[i].length)return;WS.sel=i;pop();return wsShow()}
-  if(WS.sel===i){WS.sel=-1;return wsShow()}
-  const a=T[WS.sel],b=T[i],c=a[a.length-1];
-  if(b.length>=WS.cap||(b.length&&b[b.length-1]!==c)){if(T[i].length){WS.sel=i;pop();return wsShow()}WS.sel=-1;buzz();return wsShow()}
-  WS.hist.push(T.map(t=>t.slice()));let n=0;while(a.length&&a[a.length-1]===c&&b.length<WS.cap){b.push(a.pop());n++}WS.moves++;WS.sel=-1;beep(300+b.length*80,.12,'sine',.25);
-  if(wsDone()){WS.done=true;wsShow();if(SES.solo)return soloEnd('win');fanfare();confetti(140);return toast(t('wsWin'))}
-  wsShow()}
+  w.appendChild(el('div','sdinfo',`<span id="wsMv"></span><span>${esc(t('wsGoal'))}</span>`));
+  const box=el('div','wsbox');box.id='wsbox';box.addEventListener('click',e=>{const b=e.target.closest('.wst');if(b)wsTap(+b.dataset.i)});w.appendChild(box);
+  const tools=el('div','row center');const mk=(id,lab,fn)=>{const b=el('button','btn sm',esc(lab));b.id=id;b.onclick=fn;tools.appendChild(b)};
+  mk('wsUndo',t('undo'),()=>{wsFinish();const h=WS.hist.pop();if(!h)return;WS.tubes=h;WS.moves=Math.max(0,WS.moves-1);WS.sel=-1;pop();wsDraw()});
+  mk('wsReset',t('tgReset'),()=>{wsFinish();WS.tubes=WS.start.map(t=>t.slice());WS.hist=[];WS.moves=0;WS.sel=-1;WS.extra=1;pop();wsDraw()});
+  mk('wsExtra',t('wsExtra',WS.extra),()=>{wsFinish();if(!WS.extra||WS.done)return;WS.extra--;WS.hist.push(WS.tubes.map(t=>t.slice()));WS.tubes.push([]);pop();wsDraw()});
+  if(!SES.solo)mk('wsNew',t('sdNew'),()=>{wsFinish();pop();MODES.water.init();wsShow()});
+  w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('wsHelp'))));sc.appendChild(w);show('play');wsDraw()}
+addEventListener('resize',()=>{if(typeof onPlay==='function'&&onPlay('water')&&WS&&!WS.anim)wsDraw()});
+function wsFinish(){const a=WS&&WS.anim;if(!a)return;a.timers.forEach(clearTimeout);WS.anim=null;wsDraw();a.after()}
+function wsAfter(j){if(wsFull(WS.tubes[j]))beep(1046,.12,'triangle',.22);
+  if(!WS.done&&wsDone()){WS.done=true;wsDraw();if(SES.solo)return soloEnd('win');fanfare();confetti(140);toast(t('wsWin'))}}
+function wsTap(i){if(WS.anim)wsFinish();if(WS.done)return;const T=WS.tubes;
+  if(WS.sel<0){if(!T[i].length||wsFull(T[i]))return;WS.sel=i;pop();return wsDraw()}
+  if(WS.sel===i){WS.sel=-1;return wsDraw()}
+  const s=WS.sel,a=T[s],b=T[i],c=a[a.length-1];
+  if(b.length>=WS.cap||(b.length&&b[b.length-1]!==c)){if(T[i].length&&!wsFull(T[i])){WS.sel=i;pop();return wsDraw()}WS.sel=-1;buzz();return wsDraw()}
+  WS.hist.push(T.map(t=>t.slice()));const preA=a.length,preB=b.length;let n=0;while(a.length&&a[a.length-1]===c&&b.length<WS.cap){b.push(a.pop());n++}WS.moves++;WS.sel=-1;
+  const mv=$('#wsMv');if(mv)mv.textContent='🧪 '+t('wsMoves',WS.moves);
+  wsPour(s,i,c,n,preA,preB)}
+/* 붓는 모습: 시험관이 옮겨가 기울어지고, 물줄기가 떨어지며 받는 쪽이 차올라요 */
+function wsPour(si,di,c,n,preA,preB){const box=$('#wsbox'),A=box&&box.querySelector(`.wst[data-i="${si}"]`),B=box&&box.querySelector(`.wst[data-i="${di}"]`),lay=WS.lay;
+  const after=()=>wsAfter(di);if(!A||!B||!lay){wsDraw();return after()}
+  const tw=lay.tw,th=lay.th,side=A.offsetLeft<=B.offsetLeft?1:-1;
+  const px=A.offsetLeft+tw/2,py=A.offsetTop,tx=B.offsetLeft+tw/2-side*tw*.12,ty=B.offsetTop-tw*.55;
+  A.classList.remove('sel');A.style.zIndex=5;A.style.transformOrigin='50% 0%';A.style.transition=`transform ${WS_T[0]}ms cubic-bezier(.3,.7,.4,1)`;
+  A.style.transform=`translate(${tx-px}px,${ty-py}px) rotate(${side*96}deg)`;
+  beep(300+preB*90,.16,'sine',.18);
+  const timers=[];WS.anim={timers,after};
+  timers.push(setTimeout(()=>{const la=A.querySelector('.wsl'),lb=B.querySelector('.wsl'),u=100/WS.cap;
+    const segA=[...la.children];segA.forEach(e=>e.classList.remove('top'));for(let k=preA-n;k<preA;k++){const e=segA[k];if(e){e.style.transition=`height ${WS_T[1]}ms linear`;e.style.height='0%'}}if(segA[preA-n-1])segA[preA-n-1].classList.add('top');
+    [...lb.children].forEach(e=>e.classList.remove('top'));const add=[];for(let k=0;k<n;k++){lb.insertAdjacentHTML('beforeend',wsSeg(c,k===n-1,0));add.push(lb.lastElementChild)}
+    add.forEach(e=>e.style.transition=`height ${WS_T[1]}ms linear`);requestAnimationFrame(()=>requestAnimationFrame(()=>add.forEach(e=>e.style.height=u+'%')));
+    const st=document.createElement('span');st.className='wsstream';const sx=tx+side*tw*.06,sw=Math.max(5,tw*.13),sy=ty+4,ey=B.offsetTop+th-4-(preB/WS.cap)*(th*.84);
+    st.style.cssText=`left:${sx-sw/2}px;top:${sy}px;width:${sw}px;height:${Math.max(10,ey-sy)}px;background:linear-gradient(90deg,${wsShade(WS_COL[c],-.25)},${WS_COL[c]},${wsShade(WS_COL[c],.3)});transition:transform 70ms linear,opacity 90ms linear`;
+    box.appendChild(st);requestAnimationFrame(()=>st.classList.add('on'));
+    timers.push(setTimeout(()=>{st.style.opacity='0';A.style.transition=`transform ${WS_T[2]}ms ease-in`;A.style.transform=''},WS_T[1]));
+  },WS_T[0]));
+  timers.push(setTimeout(()=>{if(WS.anim&&WS.anim.timers===timers){WS.anim=null;wsDraw();after()}},WS_T[0]+WS_T[1]+WS_T[2]+20))}
 
 /* ================= 색깔 선 잇기 ================= */
 const FL_COL=['#ff4d6d','#4b7bff','#ffd23f','#3ccf6e','#b06bff','#ff9f40','#3fd0e0','#ff7ad9','#8d6e63','#ffffff','#1f9e89','#c6ff3d'];
@@ -1835,14 +1895,14 @@ function flShow(){const sc=gameBar(`<span class="lvchip">Lv.${FL.L}</span>`);con
 /* 새 기능 문구 */
 Object.assign(T.ko,{
  tgGoal:'일곱 조각으로 모양을 꽉 채워요',tgReset:'처음부터',tgShow:'정답 보기',tgHelp:'조각을 꾹 눌러 끌어다 놓고, 톡 누르면 돌아가요. 조각끼리는 겹칠 수 없어요. 평행사변형은 누를 때마다 돌거나 뒤집혀요.',tgWin:'칠교 완성! 🎉',
- wsMoves:n=>`${n}번 옮김`,wsGoal:'한 시험관에 한 가지 색만!',wsHelp:'시험관을 누른 다음 부을 시험관을 눌러요. 같은 색 위나 빈 시험관에만 부을 수 있어요.',wsExtra:n=>`빈 시험관 추가 (${n})`,wsWin:'정렬 완료! 🎉',
+ wsMoves:n=>`${n}번 옮김`,wsGoal:'한 시험관에 한 가지 색만!',wsHelp:'시험관을 누른 다음 부을 시험관을 눌러요. 같은 색 위나 빈 시험관에만 부을 수 있어요.',wsExtra:n=>`빈 시험관 추가 (${n})`,wsWin:'색깔 맞추기 완성! 🎉',
  flGoal:'같은 색 잇고 모든 칸 채우기',flHelp:'점에서 시작해 같은 색 점까지 손가락으로 길을 그려요. 다른 색 길과 겹칠 수 없어요.',flWin:'모두 연결했어요! 🎉',flFill:'연결은 다 됐어요! 빈 칸도 모두 채워 봐요',
  party:'파티 모드',solo:'개인 모드',myChar:'내 캐릭터',closet:'꾸미기',xpNext:n=>`다음 레벨까지 ${n} XP`,totalWins:n=>`개인 모드 승리 ${n}번`,
  slot_body:'몸 색',slot_eyes:'눈',slot_mouth:'입',slot_outfit:'옷',slot_shoes:'신발',slot_brows:'눈썹',slot_acc:'액세서리',namePh:'캐릭터 이름 짓기',girlBean:'여자 콩',boyBean:'남자 콩',basicItem:'기본',slot_hat:'모자',slot_glasses:'안경',slot_hand:'손에 들기',slot_face:'얼굴 꾸미기',slot_bg:'배경',slotLocked:n=>`레벨 ${n}이 되면 열려요!`,itemLocked:n=>`레벨 ${n}이 되면 쓸 수 있어요!`,noItem:'없음',
  myRecords:'게임별 내 단계',winsN:n=>`승리 ${n}`,soloInfo:'이길 때마다 다음 단계로 올라가고, 상대가 점점 강해져요. 높은 단계일수록 XP를 많이 받아요.',soloReward:n=>`이기면 +${n} XP`,soloGo:n=>`Lv.${n} 도전하기`,
  soloWin:'이겼어요! 🎉',soloLose:'아쉬워요! 다시 도전해요',soloDraw:'비겼어요',soloNext:n=>`Lv.${n} 도전`,soloRetry:'다시 도전',soloOut:'나가기',levelUp:n=>`레벨 업! 이제 Lv.${n}`,newSlot:'새 꾸미기 칸',
  secSoloBoard:'두뇌 보드 게임',secSoloMini:'혼자 하는 미니 게임',levelN:'단계 (1~10)',
- jgSide:'내 진영',jgCho:'초 (초록 · 먼저)',jgHan:'한 (빨강)',jgFont:'말 글씨',jgKor:'한글 (차 마 상)',jgCheck:'장군!',jgPass:'둘 곳이 없어 한 번 쉬었어요.',
+ jgForm:'내 상차림',jgFormCpu:'컴퓨터 상차림',jgFormCho:'초 상차림',jgFormHan:'한 상차림',jgRand:'무작위', jgSide:'내 진영',jgCho:'초 (초록 · 먼저)',jgHan:'한 (빨강)',jgFont:'말 글씨',jgKor:'한글 (차 마 상)',jgCheck:'장군!',jgPass:'둘 곳이 없어 한 번 쉬었어요.',
  jgWinMe:'외통수! 내가 이겼어요! 🎉',jgWinCpu:'외통수! 컴퓨터가 이겼어요!',jgWin:n=>`외통수! ${n} 승리! 🎉`,jgLimitWin:n=>`수가 너무 길어져 점수로 판정: ${n} 승리`,jgDraw:'무승부예요.',
  jgHelp:'내 말을 누르면 갈 수 있는 곳이 점으로 보여요. 궁(왕)을 피할 곳 없이 공격하면(외통수) 이겨요. 포는 말 하나를 넘어서만 움직여요.',
  sdErase:'지우기',sdNote:'메모',sdHint:'힌트',sdNew:'새 판',sdFail:'실수 3번! 다시 해 봐요',sdDone:s=>`완성! 걸린 시간 ${s}`,
@@ -1861,7 +1921,7 @@ Object.assign(T.en,{
  myRecords:'My game levels',winsN:n=>`${n} wins`,soloInfo:'Every win takes you to the next level and a tougher opponent. Higher levels give more XP.',soloReward:n=>`Win to earn +${n} XP`,soloGo:n=>`Play level ${n}`,
  soloWin:'You won! 🎉',soloLose:'So close! Try again',soloDraw:'It is a draw',soloNext:n=>`Play level ${n}`,soloRetry:'Try again',soloOut:'Leave',levelUp:n=>`Level up! You are now level ${n}`,newSlot:'New dress-up slot',
  secSoloBoard:'Brain board games',secSoloMini:'Solo mini games',levelN:'Level (1-10)',
- jgSide:'My side',jgCho:'Cho (green, moves first)',jgHan:'Han (red)',jgFont:'Piece labels',jgKor:'Korean letters',jgCheck:'Check!',jgPass:'No legal moves, so the turn was passed.',
+ jgForm:'My setup',jgFormCpu:'Computer setup',jgFormCho:'Cho setup',jgFormHan:'Han setup',jgRand:'Random', jgSide:'My side',jgCho:'Cho (green, moves first)',jgHan:'Han (red)',jgFont:'Piece labels',jgKor:'Korean letters',jgCheck:'Check!',jgPass:'No legal moves, so the turn was passed.',
  jgWinMe:'Checkmate! You win! 🎉',jgWinCpu:'Checkmate! The computer wins!',jgWin:n=>`Checkmate! ${n} wins! 🎉`,jgLimitWin:n=>`Game too long, decided on points: ${n} wins`,jgDraw:'It is a draw.',
  jgHelp:'Tap a piece to see where it can go. Trap the general so it cannot escape to win. Cannons must jump over exactly one piece.',
  sdErase:'Erase',sdNote:'Notes',sdHint:'Hint',sdNew:'New game',sdFail:'Three mistakes! Try again',sdDone:s=>`Solved in ${s}!`,
