@@ -297,9 +297,10 @@ html,body,button,.tmb,.tt,canvas,svg{touch-action:manipulation}
 
 /* 칠교 */
 .tgw,.wsw,.flw{display:flex;flex-direction:column;gap:8px}
-.tgbox{width:min(94vw,420px);margin:0 auto}
+.tgbox{width:min(96vw,520px);margin:0 auto}
 .tgsv{width:100%;height:auto;display:block;touch-action:none;background:#211c36;border-radius:16px}
-.tgp{cursor:grab}
+.tgp{cursor:grab;touch-action:none}
+.tgp.on{cursor:grabbing}
 /* 물 정렬 */
 .wsbox{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 10px;padding:18px 4px 6px}
 .wst{width:46px;height:158px;padding:4px;border:3px solid rgba(255,255,255,.75);border-top:0;border-radius:4px 4px 24px 24px;background:rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;gap:0;cursor:pointer;transition:transform .15s;touch-action:manipulation}
@@ -1696,37 +1697,57 @@ function tgFoot(poly){const xs=poly.map(p=>p[0]),ys=poly.map(p=>p[1]),out=new Se
 MODES.tangram={lobby(g,wrap,redo){if(!isSolo())lvPills(g,wrap,redo)},
  init(keep){const L=SES.solo?SES.lv:(S.lv.tangram||5);let fi;if(keep!==undefined)fi=keep;else if(SES.solo)fi=TG_ORDER[(L-1)%TG_ORDER.length];else{const pool=L<=2?TG_ORDER.slice(0,6):L<=5?TG_ORDER.slice(3,12):TG_ORDER.slice(6);fi=rnd(pool)}
    const F=TGF[fi],mirror=SES.solo&&L>TG_ORDER.length&&L%2===0;const W=Math.max(...F.rows.map(r=>r.length)),H=F.rows.length;
+   const VW=Math.max(8,W+2),T=H+2,VH=T+4;
    const mx=(x,q)=>mirror?[W-1-x,{L:'R',R:'L'}[q]||q]:[x,q];
-   const tx=Math.round((12-W)/2),ty=Math.max(1,Math.round((9-H)/2));const tgt=new Set();
+   const tx=Math.floor((VW-W)/2),ty=1;const tgt=new Set();
    F.rows.forEach((r,y)=>[...r].forEach((ch,x)=>{for(const q of {'#':'TRBL','.':'','a':'TL','b':'TR','c':'LB','d':'RB'}[ch]){const [X,Q]=mx(x,q);tgt.add((X+tx)+','+(y+ty)+','+Q)}}));
    const sol=F.sol.map(([t,qs])=>[t,qs.split(' ').map(s=>{const [x,y,q]=s.split(',');const [X,Q]=mx(+x,q);return (X+tx)+','+(+y+ty)+','+Q})]);
    const hint=L<=(SES.solo?5:2)?7:L<=(SES.solo?10:5)?3:0;
-   const slots=[[1,10.5],[6.5,10.5],[.5,14],[4,14],[7.5,13.5],[1.5,16.3],[6.5,16.3]];const types=['L','L','M','S','S','Q','P'];
-   const pcs=types.map((t,i)=>({t,x:slots[i][0],y:slots[i][1],r:(i*3)%4,f:false,c:TG_COL[i],i}));
-   for(const p of pcs){const v=tgPoly(p),xs=v.map(q=>q[0]),ys=v.map(q=>q[1]);if(Math.min(...xs)<.2)p.x+=Math.ceil(.2-Math.min(...xs));if(Math.max(...xs)>11.8)p.x-=Math.ceil(Math.max(...xs)-11.8);if(Math.max(...ys)>17.8)p.y-=Math.ceil(Math.max(...ys)-17.8);if(Math.min(...ys)<9.6)p.y+=Math.ceil(9.6-Math.min(...ys))}
-   TG={L,fi,F,tgt,sol,hint,hintIdx:shuffle([0,1,2,3,4,5,6]).slice(0,hint),pcs,done:false,moves:0,mirror}},
+   /* 시작 위치: 화면 맨 아래 조각 칸(가로 8, 세로 4)에 서로 겹치지 않게 놓아요 */
+   const ox=Math.floor((VW-8)/2);
+   const lay=[['L',0,0,0,false],['L',2,6,2,false],['M',0,6,0,false],['Q',0,0,2,false],['P',0,2,2,false],['S',0,5,2,false],['S',2,8,3,false]];
+   const pcs=lay.map(([t,r,x,y,f],i)=>({t,r,f,x:x+ox,y:y+T,c:TG_COL[i],i}));
+   TG={L,fi,F,tgt,sol,hint,hintIdx:shuffle([0,1,2,3,4,5,6]).slice(0,hint),pcs,done:false,moves:0,mirror,VW,VH,T}},
  show(){tgShow()}};
 function tgSolved(){const all=new Set();let n=0;for(const p of TG.pcs){if(p.r%1)return false;const f=tgFoot(tgPoly(p));n+=f.size;for(const k of f)all.add(k)}
   if(n!==all.size||all.size!==TG.tgt.size)return false;for(const k of all)if(!TG.tgt.has(k))return false;return true}
-function tgPaint(){const sv=$('#tgsv');if(!sv)return;let s='';
+function tgOthers(p){const s=new Set();for(const q of TG.pcs)if(q!==p)for(const k of tgFoot(tgPoly(q)))s.add(k);return s}
+function tgInside(v){return v.every(([x,y])=>x>-1e-6&&y>-1e-6&&x<TG.VW+1e-6&&y<TG.VH+1e-6)}
+function tgFits(p,others){const v=tgPoly(p);if(!tgInside(v))return false;for(const k of tgFoot(v))if(others.has(k))return false;return true}
+function tgClamp(p){const v=tgPoly(p),xs=v.map(q=>q[0]),ys=v.map(q=>q[1]);const a=Math.min(...xs),b=Math.max(...xs),c=Math.min(...ys),d=Math.max(...ys);
+  if(a<0)p.x-=a;else if(b>TG.VW)p.x-=b-TG.VW;if(c<0)p.y-=c;else if(d>TG.VH)p.y-=d-TG.VH}
+/* (fx,fy)에서 가장 가까운, 화면 안이면서 다른 조각과 안 겹치는 칸을 찾아요 */
+function tgPlace(p,others,fx,fy){const c=[];for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){const x=Math.round(fx)+dx,y=Math.round(fy)+dy;c.push([Math.hypot(x-fx,y-fy),x,y])}
+  c.sort((a,b)=>a[0]-b[0]);for(const [d,x,y] of c){if(d>2.6)break;p.x=x;p.y=y;if(tgFits(p,others))return true}return false}
+function tgPaint(){const sv=$('#tgsv');if(!sv)return;let s=`<rect x="-.3" y="${TG.T-.35}" width="${TG.VW+.6}" height="${TG.VH-TG.T+.65}" rx=".35" fill="#2a2441"/>`;
   for(const k of TG.tgt){const [x,y,q]=k.split(',');s+=`<polygon points="${TG_TRI(+x,+y,q).map(p=>p.join(',')).join(' ')}" fill="#3b3456" stroke="#3b3456" stroke-width=".03"/>`}
   TG.hintIdx.forEach(i=>{const [t,qs]=TG.sol[i];for(const k of qs){const [x,y,q]=k.split(',');s+=`<polygon points="${TG_TRI(+x,+y,q).map(p=>p.join(',')).join(' ')}" fill="${['#5d5480','#6e6593','#4d456d','#7a71a0','#575079','#665d8c','#524a74'][i]}" stroke="#2f2947" stroke-width=".02"/>`}});
-  for(const p of TG.pcs){const poly=tgPoly(p);s+=`<polygon class="tgp" data-i="${p.i}" points="${poly.map(v=>v.join(',')).join(' ')}" fill="${p.c}" stroke="#fff" stroke-width=".07" stroke-linejoin="round"/>`}
+  for(const p of TG.pcs){const poly=tgPoly(p),bad=TG.drag&&TG.drag.p===p&&TG.drag.bad,act=TG.drag&&TG.drag.p===p;
+    s+=`<polygon class="tgp${act?' on':''}" data-i="${p.i}" points="${poly.map(v=>v.join(',')).join(' ')}" fill="${p.c}" stroke="${bad?'#ff3b3b':'#fff'}" stroke-width="${act?.12:.07}" stroke-linejoin="round"${act?' opacity=".92"':''}/>`}
   sv.innerHTML=s}
-function tgShow(){const sc=gameBar(SES.solo?`<span class="lvchip">Lv.${TG.L}</span>`:'');const w=el('div','tgw');const F=TG.F;
-  w.innerHTML=`<div class="sdinfo"><span>🧩 ${esc(isEN()?F.en:F.ko)}</span><span>${esc(t('tgGoal'))}</span></div><div class="tgbox"><svg id="tgsv" viewBox="0 0 12 18" class="tgsv"></svg></div>`;
+function tgShow(){const sc=gameBar(SES.solo?`<span class="lvchip">Lv.${TG.L}</span>`:'');const w=el('div','tgw');const F=TG.F;TG.drag=null;
+  const pad=.3,ar=(TG.VW+2*pad)/(TG.VH+2*pad);
+  w.innerHTML=`<div class="sdinfo"><span>🧩 ${esc(isEN()?F.en:F.ko)}</span><span>${esc(t('tgGoal'))}</span></div><div class="tgbox" style="width:min(96vw,520px,calc((100dvh - 235px)*${ar.toFixed(3)}))"><svg id="tgsv" viewBox="${-pad} ${-pad} ${TG.VW+2*pad} ${TG.VH+2*pad}" class="tgsv"></svg></div>`;
   const tools=el('div','row center');const mk=(lab,fn)=>{const b=el('button','btn sm',esc(lab));b.onclick=fn;tools.appendChild(b)};
   mk(t('tgReset'),()=>{pop();MODES.tangram.init(TG.fi);tgShow()});
   if(!SES.solo){mk(t('tgShow'),()=>{tgReveal();pop();tgPaint()});mk(t('sdNew'),()=>{pop();MODES.tangram.init();tgShow()})}
   w.appendChild(tools);w.appendChild(el('p','muted center',esc(t('tgHelp'))));sc.appendChild(w);show('play');tgPaint();
-  const sv=$('#tgsv');let drag=null;
+  const sv=$('#tgsv');
   const pt=e=>{const m=sv.getScreenCTM().inverse();return [e.clientX*m.a+e.clientY*m.c+m.e,e.clientX*m.b+e.clientY*m.d+m.f]};
-  sv.addEventListener('pointerdown',e=>{const el2=e.target.closest('.tgp');if(!el2||TG.done)return;e.preventDefault();const p=TG.pcs[+el2.dataset.i];TG.pcs.splice(TG.pcs.indexOf(p),1);TG.pcs.push(p);const [x,y]=pt(e);drag={p,sx:x,sy:y,ox:p.x,oy:p.y,moved:false};try{sv.setPointerCapture(e.pointerId)}catch(x){}tgPaint()});
-  sv.addEventListener('pointermove',e=>{if(!drag)return;const [x,y]=pt(e);const dx=x-drag.sx,dy=y-drag.sy;if(Math.hypot(dx,dy)>.15)drag.moved=true;drag.p.x=drag.ox+dx;drag.p.y=drag.oy+dy;tgPaint()});
-  const up=()=>{if(!drag)return;const p=drag.p;if(!drag.moved){const c0=tgCent(tgPoly(p));if(p.t==='P'){const st=((p.r%2)+(p.f?2:0)+1)%4;p.r=st%2;p.f=st>=2}else p.r=(p.r+1)%4;const c1=tgCent(tgPoly(p));p.x+=c0[0]-c1[0];p.y+=c0[1]-c1[1];beep(520,.05,'triangle',.18)}
-    p.x=Math.round(p.x);p.y=Math.round(p.y);drag=null;TG.moves++;tgPaint();
+  sv.addEventListener('pointerdown',e=>{if(TG.drag||TG.done)return;const hit=e.target.closest('.tgp');if(!hit)return;e.preventDefault();
+    const p=TG.pcs.find(q=>q.i===+hit.dataset.i);if(!p)return;TG.pcs.splice(TG.pcs.indexOf(p),1);TG.pcs.push(p);
+    const [x,y]=pt(e);TG.drag={p,id:e.pointerId,sx:x,sy:y,ox:p.x,oy:p.y,moved:false,bad:false,others:tgOthers(p)};try{sv.setPointerCapture(e.pointerId)}catch(x){}tgPaint()});
+  sv.addEventListener('pointermove',e=>{const d=TG.drag;if(!d||e.pointerId!==d.id)return;e.preventDefault();const [x,y]=pt(e);const dx=x-d.sx,dy=y-d.sy;if(!d.moved&&Math.hypot(dx,dy)<.2)return;d.moved=true;
+    d.p.x=d.ox+dx;d.p.y=d.oy+dy;tgClamp(d.p);const fx=d.p.x,fy=d.p.y;d.p.x=Math.round(fx);d.p.y=Math.round(fy);d.bad=!tgFits(d.p,d.others);d.p.x=fx;d.p.y=fy;tgPaint()});
+  const up=e=>{const d=TG.drag;if(!d||(e&&e.pointerId!==d.id))return;const p=d.p;TG.drag=null;
+    if(!d.moved){/* 톡 누르기: 제자리에서 돌리기 (못 돌리면 그대로) */
+      const keep={r:p.r,f:p.f,x:p.x,y:p.y};const c0=tgCent(tgPoly(p));if(p.t==='P'){const st=((p.r%2)+(p.f?2:0)+1)%4;p.r=st%2;p.f=st>=2}else p.r=(p.r+1)%4;
+      const c1=tgCent(tgPoly(p));const fx=p.x+c0[0]-c1[0],fy=p.y+c0[1]-c1[1];
+      if(tgPlace(p,d.others,fx,fy))beep(520,.05,'triangle',.18);else{Object.assign(p,keep);buzz()}}
+    else{const fx=p.x,fy=p.y;if(!tgPlace(p,d.others,fx,fy)){p.x=d.ox;p.y=d.oy;buzz()}else beep(440,.04,'triangle',.15)}
+    TG.moves++;tgPaint();
     if(tgSolved()){TG.done=true;tgPaint();if(SES.solo)return soloEnd('win');fanfare();confetti(140);toast(t('tgWin'))}};
-  sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up)}
+  sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up);sv.addEventListener('lostpointercapture',up)}
 function tgReveal(){const used=new Set();TG.sol.forEach(([t,qs])=>{const want=new Set(qs);const p=TG.pcs.find(p=>p.t===t&&!used.has(p));if(!p)return;used.add(p);
   const xs=qs.map(k=>+k.split(',')[0]),ys=qs.map(k=>+k.split(',')[1]);
   outer:for(const f of (t==='P'?[false,true]:[false]))for(let r=0;r<4;r++)for(let y=Math.min(...ys)-4;y<=Math.max(...ys)+4;y++)for(let x=Math.min(...xs)-4;x<=Math.max(...xs)+4;x++){const c={...p,r,f,x,y};const fp=tgFoot(tgPoly(c));if(fp.size===want.size&&[...fp].every(k=>want.has(k))){Object.assign(p,{r,f,x,y});break outer}}});TG.done=true}
@@ -1813,7 +1834,7 @@ function flShow(){const sc=gameBar(`<span class="lvchip">Lv.${FL.L}</span>`);con
 
 /* 새 기능 문구 */
 Object.assign(T.ko,{
- tgGoal:'일곱 조각으로 모양을 꽉 채워요',tgReset:'처음부터',tgShow:'정답 보기',tgHelp:'조각을 끌어서 옮기고, 톡 누르면 돌아가요. 평행사변형은 누를 때마다 돌거나 뒤집혀요.',tgWin:'칠교 완성! 🎉',
+ tgGoal:'일곱 조각으로 모양을 꽉 채워요',tgReset:'처음부터',tgShow:'정답 보기',tgHelp:'조각을 꾹 눌러 끌어다 놓고, 톡 누르면 돌아가요. 조각끼리는 겹칠 수 없어요. 평행사변형은 누를 때마다 돌거나 뒤집혀요.',tgWin:'칠교 완성! 🎉',
  wsMoves:n=>`${n}번 옮김`,wsGoal:'한 시험관에 한 가지 색만!',wsHelp:'시험관을 누른 다음 부을 시험관을 눌러요. 같은 색 위나 빈 시험관에만 부을 수 있어요.',wsExtra:n=>`빈 시험관 추가 (${n})`,wsWin:'정렬 완료! 🎉',
  flGoal:'같은 색 잇고 모든 칸 채우기',flHelp:'점에서 시작해 같은 색 점까지 손가락으로 길을 그려요. 다른 색 길과 겹칠 수 없어요.',flWin:'모두 연결했어요! 🎉',flFill:'연결은 다 됐어요! 빈 칸도 모두 채워 봐요',
  party:'파티 모드',solo:'개인 모드',myChar:'내 캐릭터',closet:'꾸미기',xpNext:n=>`다음 레벨까지 ${n} XP`,totalWins:n=>`개인 모드 승리 ${n}번`,
@@ -1832,7 +1853,7 @@ Object.assign(T.ko,{
  spTime:'외우는 시간',spSec:n=>`${n}초`,spMin:'1분',spCredit:'그림: Wikimedia Commons (퍼블릭 도메인 명화)',spLoading:'명화를 불러오는 중…',spFail:'그림을 불러오지 못했어요. 인터넷 연결을 확인해 주세요.',spRetry:'다른 그림으로 다시',
  spMemo:'그림을 잘 기억하세요!',spFind:'달라진 곳을 모두 찾아 누르세요',spTap:'바뀐 곳을 누르세요',spReady:'다 외웠어요',spHint:n=>`힌트 (${n})`,spGive:'정답 보기',spOrig:'원래 그림 보기',spChanged:'바뀐 그림 보기',spNext:'다음 그림'});
 Object.assign(T.en,{
- tgGoal:'Fill the shape with all seven pieces',tgReset:'Restart',tgShow:'Show answer',tgHelp:'Drag a piece to move it and tap it to rotate. Tapping the parallelogram rotates or flips it.',tgWin:'Tangram solved! 🎉',
+ tgGoal:'Fill the shape with all seven pieces',tgReset:'Restart',tgShow:'Show answer',tgHelp:'Drag a piece to move it and tap it to rotate. Pieces cannot overlap. Tapping the parallelogram rotates or flips it.',tgWin:'Tangram solved! 🎉',
  wsMoves:n=>`${n} moves`,wsGoal:'One color per tube!',wsHelp:'Tap a tube, then tap where to pour. You can only pour onto the same color or into an empty tube.',wsExtra:n=>`Extra tube (${n})`,wsWin:'All sorted! 🎉',
  flGoal:'Join colors and fill every square',flHelp:'Draw from a dot to the dot of the same color. Paths cannot cross each other.',flWin:'All connected! 🎉',flFill:'All joined! Now fill the empty squares too',
  party:'Party',solo:'Solo',myChar:'My character',closet:'Dress up',xpNext:n=>`${n} XP to the next level`,totalWins:n=>`${n} solo wins`,
